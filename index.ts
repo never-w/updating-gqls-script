@@ -11,26 +11,30 @@ type GqlsASTNodeAndPath = {
 
 function updateWorkspaceGqls(relativeFolderPathOfGqls: string) {
   const gqlsFiles = getGqlsFiles(relativeFolderPathOfGqls)
-  const gqlsASTNodeAndPathList = gqlsFiles
-    .map((gqlFile) => {
-      const content = fs.readFileSync(gqlFile, "utf8")
-      if (!content) return null
-
-      let workspaceDocumentAst: DocumentNode
-      try {
-        workspaceDocumentAst = parseOperationWithDescriptions(content)
-      } catch {
-        return null
-      }
-
-      return {
-        absoluteGqlFilePath: gqlFile,
-        operationASTNodes: workspaceDocumentAst.definitions,
-      }
-    })
-    .filter(Boolean) as GqlsASTNodeAndPath[]
+  const gqlsASTNodeAndPathList = getGqlsASTNodeAndPath(gqlsFiles)
 
   console.dir(gqlsASTNodeAndPathList[0]?.operationASTNodes)
+}
+
+function getGqlsASTNodeAndPath(gqlsFiles: string[]) {
+  const result = gqlsFiles.map((gqlFile) => {
+    const content = fs.readFileSync(gqlFile, "utf8")
+    if (!content) return null
+
+    let workspaceDocumentAst: DocumentNode
+    try {
+      workspaceDocumentAst = parseOperationWithDescriptions(content)
+    } catch {
+      return null
+    }
+
+    return {
+      absoluteGqlFilePath: gqlFile,
+      operationASTNodes: workspaceDocumentAst.definitions,
+    }
+  })
+
+  return result.filter(Boolean) as GqlsASTNodeAndPath[]
 }
 
 function getGqlsFiles(relativeFolderPathOfGqls: string) {
