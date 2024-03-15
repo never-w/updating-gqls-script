@@ -1,0 +1,48 @@
+## 所有仓库
+query listPitayaWarehouse {
+  listPitayaWarehouse {
+    address
+    houseNumber
+    remark
+    warehouseId
+    warehouseName
+  }
+}
+
+## 当前用户的仓库
+query userWarehouse {
+  userWarehouse {
+    warehouseId
+    warehouseName
+  }
+}
+
+query warehouse($warehouseId: ID!) {
+  warehouse(warehouseId: $warehouseId) {
+    warehouseId
+    warehouseName
+    address
+    houseNumber
+    remark
+  }
+}
+mutation insertWarehouse($warehouseInput: WarehouseInput!) {
+  insertWarehouse(warehouseInput: $warehouseInput)
+}
+
+mutation updatePitayaWarehouse($warehouseInput: WarehouseInput!) {
+  updatePitayaWarehouse(warehouseInput: $warehouseInput)
+}
+mutation deleteWarehouse($warehouseId: ID!) {
+  deleteWarehouse(warehouseId: $warehouseId)
+}
+
+query listWarehouseWithCondition($input: ListPitayaWarehouseInput) {
+  listWarehouseWithCondition(input: $input) {
+    address
+    houseNumber
+    remark
+    warehouseId
+    warehouseName
+  }
+}

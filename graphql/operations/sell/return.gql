@@ -1,0 +1,291 @@
+# 成品销售退货:选择商品
+query listSaleReturnCommodities(
+  $listSaleReturnCommoditiesInput: ListSaleReturnCommoditiesInput
+) {
+  listSaleReturnCommodities(
+    listSaleReturnCommoditiesInput: $listSaleReturnCommoditiesInput
+  ) {
+    customer {
+      customerId
+      customerName
+      customerType
+    }
+    saleTime
+    outOrderId
+    outOrderCode
+    inOrderId
+    inOrderType
+    deliveryRequired
+    commodities {
+      commoditySku {
+        commoditySkuId
+        commoditySkuName
+        commodityId
+        commodityName
+        commoditySpecOptionId
+        commoditySpecOptionName
+        conversion
+        totalType {
+          unitId
+          unitName
+        }
+        unitType {
+          unitId
+          unitName
+        }
+        categoryId
+        categoryName
+      }
+      unitType {
+        unitId
+        unitName
+      }
+      totalType {
+        unitId
+        unitName
+      }
+      outBoundTotalQuantity
+      outBoundUnitQuantity
+      saleReturnFinishedTotalQuantity
+      saleReturnFinishedUnitQuantity
+      saleReturnableQuantity
+      saleReturnableUnitQuantity
+      outOrderItemId
+      receivedTotalQuantity
+    }
+  }
+}
+
+# 成品销售退货:查询销售退货订单列表
+query pageSaleReturn($pageSaleReturnInput: PageSaleReturnInput, $page: Page) {
+  pageSaleReturn(pageSaleReturnInput: $pageSaleReturnInput, page: $page) {
+    records {
+      inOrderId
+      inOrderCode
+      inOrderType
+      inOrderTypeName
+      commodityTypeId
+      commodityTypeName
+      warehouse {
+        warehouseId
+        warehouseName
+      }
+      saleTime
+      customer {
+        customerId
+        customerName
+        customerType
+      }
+      createTime
+      createUser {
+        userId
+        userName
+        phoneNum
+      }
+      remark
+      financialDescription
+      inOrderStatus
+      inOrderStatusName
+      latestDescription
+      commodities {
+        outOrderId
+        outOrderCode
+        commoditySkuId
+        inOrderId
+        commoditySku {
+          commoditySkuId
+          commoditySkuName
+          commodityId
+          commodityName
+          commoditySpecOptionId
+          commoditySpecOptionName
+          conversion
+          totalType {
+            unitId
+            unitName
+          }
+          unitType {
+            unitId
+            unitName
+          }
+        }
+        totalType {
+          unitId
+          unitName
+        }
+        unitType {
+          unitId
+          unitName
+        }
+        returnQuantity {
+          unitQuantity
+          totalQuantity
+        }
+        outOrderItemId
+        inOrderType
+        deliveryRequired
+      }
+      belongOrg {
+        orgId
+        orgName
+      }
+    }
+    pageCurrent
+    pageSize
+    totalRecords
+  }
+}
+
+# 成品销售退货:查询销售退货订单不同状态记录条数
+query countSaleReturn($countSaleReturnInput: CountSaleReturnInput) {
+  countSaleReturn(countSaleReturnInput: $countSaleReturnInput) {
+    toSubmit
+    toInbound
+    finished
+  }
+}
+
+# 退货单详情
+query getSaleReturn($getSaleReturnInput: GetSaleReturnInput) {
+  getSaleReturn(getSaleReturnInput: $getSaleReturnInput) {
+    countInBounds
+    inOrderId
+    inOrderCode
+    inOrderType
+    inOrderTypeName
+    commodityTypeId
+    commodityTypeName
+    warehouse {
+      warehouseId
+      warehouseName
+    }
+    saleTime
+    customer {
+      customerId
+      customerName
+      customerType
+    }
+    createTime
+    createUser {
+      userId
+      userName
+      phoneNum
+    }
+    remark
+    inOrderStatus
+    inOrderStatusName
+    latestDescription
+    commodities {
+      outOrderId
+      outOrderCode
+      commoditySkuId
+      inOrderId
+      commoditySku {
+        commoditySkuId
+        commoditySkuName
+        commodityId
+        commodityName
+        commoditySpecOptionId
+        commoditySpecOptionName
+        conversion
+        totalType {
+          unitId
+          unitName
+        }
+        unitType {
+          unitId
+          unitName
+        }
+        categoryId
+        categoryName
+      }
+      totalType {
+        unitId
+        unitName
+      }
+      unitType {
+        unitId
+        unitName
+      }
+      returnQuantity {
+        unitQuantity
+        totalQuantity
+      }
+      saleReturnQuantity {
+        outBoundTotalQuantity
+        outBoundUnitQuantity
+        saleReturnFinishedTotalQuantity
+        saleReturnFinishedUnitQuantity
+        saleReturnableQuantity
+        saleReturnableUnitQuantity
+        receivedTotalQuantity
+      }
+      outOrderItemId
+      inOrderType
+      deliveryRequired
+      inOrderItemId
+      stockBatchInfo {
+        customerBelongInfo {
+          customerId
+          customerName
+          customerType
+        }
+        batchCode
+        batchId
+        createTime
+        totalQuantity
+        unitQuantity
+      }
+    }
+    belongOrg {
+      orgId
+      orgName
+    }
+    financialDescription
+  }
+}
+
+# 新增销售退货单
+mutation createSaleReturn($saleReturnInsertInput: SaleReturnInsertInput) {
+  createSaleReturn(saleReturnInsertInput: $saleReturnInsertInput) {
+    inOrderId
+  }
+}
+
+# 原件销售退货:新增原件退货单
+mutation createOriginalReturn(
+  $originalReturnInsertInput: OriginalReturnInsertInput
+) {
+  createOriginalReturn(originalReturnInsertInput: $originalReturnInsertInput) {
+    inOrderId
+  }
+}
+
+# 修改销售退货单
+mutation updateSaleReturn($saleReturnUpdateInput: SaleReturnUpdateInput) {
+  updateSaleReturn(saleReturnUpdateInput: $saleReturnUpdateInput)
+}
+
+# 原件销售退货:修改原件退货单
+mutation updateOriginalReturn(
+  $originalReturnUpdateInput: OriginalReturnUpdateInput
+) {
+  updateOriginalReturn(originalReturnUpdateInput: $originalReturnUpdateInput)
+}
+
+# 取消销售退货单
+mutation cancelSaleReturn($saleReturnCancelInput: SaleReturnCancelInput) {
+  cancelSaleReturn(saleReturnCancelInput: $saleReturnCancelInput)
+}
+
+# 提交销售退货单
+mutation submitSaleReturn($saleReturnSubmitInput: SaleReturnSubmitInput) {
+  submitSaleReturn(saleReturnSubmitInput: $saleReturnSubmitInput)
+}
+
+# v2.11 销售退货:提交财务
+mutation submitReturnFinance(
+  $submitReturnFinanceInput: SubmitReturnFinanceInput
+) {
+  submitReturnFinance(submitReturnFinanceInput: $submitReturnFinanceInput)
+}

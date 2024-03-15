@@ -1,0 +1,42 @@
+## 流程相关的公共接口
+## 出入库分开玩
+
+## 入库流程 提交订单
+mutation flowSubmitInOrder($inOrderId: ID!) {
+  submitInOrder(inOrderId: $inOrderId)
+}
+
+## 入库流程 取消订单
+mutation flowCancelInOrder($cancelInOrderInput: CancelInOrderInput!) {
+  cancelInOrder(cancelInOrderInput: $cancelInOrderInput)
+}
+
+## 入库流程 驳回订单
+mutation flowRejectedInOrderAudit($rejectedInput: RejectedInput) {
+  rejectedInOrderAudit(rejectedInput: $rejectedInput)
+}
+
+## 出库流程 提交订单
+mutation flowSubmitOutOrder($outOrderId: ID!) {
+  submitOutOrder(outOrderId: $outOrderId)
+}
+
+## 出库流程 取消订单
+mutation flowCancelOutOrder($cancelOutOrderInput: CancelOutOrderInput) {
+  cancelOutOrder(cancelOutOrderInput: $cancelOutOrderInput)
+}
+
+## 出库流程 驳回订单
+
+## 订单操作日志
+query flowListLogs($listLogsInput: ListLogsInput) {
+  listLogs(listLogsInput: $listLogsInput) {
+    flowLog {
+      typeName
+      note
+      createTime
+      createUserName
+      flowId
+    }
+  }
+}

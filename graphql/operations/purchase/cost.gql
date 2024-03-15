@@ -1,0 +1,15 @@
+mutation updateCostOrder($updateCostOrderInput: UpdateCostOrderInput) {
+  updateCostOrder(updateCostOrderInput: $updateCostOrderInput)
+}
+
+mutation updateCostStatus($updateCostStatusInput: UpdateCostStatusInput) {
+  updateCostStatus(updateCostStatusInput: $updateCostStatusInput)
+}
+
+query statusGroupCount($statusGroupCountInput: StatusGroupCountInput) {
+  statusGroupCount(statusGroupCountInput: $statusGroupCountInput) {
+    billStatus
+    number
+    billMainType
+  }
+}

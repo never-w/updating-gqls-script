@@ -1,0 +1,52 @@
+## 用户分页
+query userInformationList($page: Page) {
+  userInformationList(page: $page) {
+    records {
+      userId
+      userName
+      userPhoneNum
+      positions
+      stores
+    }
+    pageCurrent
+    pageSize
+    totalRecords
+  }
+}
+
+## 用户详情
+query userInformation($userId: Int) {
+  userInformation(userId: $userId) {
+    userId
+    userName
+    userPhoneNum
+    createTime
+    positions {
+      positionId
+      positionName
+    }
+    stores {
+      storehouseId
+      storehouseName
+    }
+  }
+}
+
+# createUser(userInput:UserInput):Int
+mutation updatePitayaUser($userInput: UserInput) {
+  updatePitayaUser(userInput: $userInput)
+}
+
+## 电话号码是否可用
+query userExist($phoneNum: String!) {
+  userExist(phoneNum: $phoneNum)
+}
+
+## 公共基础信息
+query userBaseInfo($phoneNum: String!) {
+  userBaseInfo(phoneNum: $phoneNum) {
+    userId
+    userName
+    userPhoneNum
+  }
+}

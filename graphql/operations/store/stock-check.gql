@@ -1,0 +1,169 @@
+# # 查询库存信息
+query checkStocks($checkConditionInput: CheckConditionInput) {
+  checkStocks(checkConditionInput: $checkConditionInput) {
+    skuId
+    commodityTypeId
+    commodityTypeName
+    commodityId
+    commodityName
+    batchCode
+    batchId
+    skuTextDescriptionList
+    unitQuantity
+    unitType
+    unitTypeName
+    totalQuantity
+    totalType
+    totalTypeName
+    belongId
+    belongType
+    belongName
+    unitPrice
+    priceType
+    priceTypeName
+    createTime
+    checkTime
+    displayBelongName
+    abnormalQuantity
+    lockedQuantity {
+      totalQuantity
+      unitQuantity
+    }
+    systemStockQuantity {
+      totalQuantity
+      unitQuantity
+    }
+    inStockTime
+  }
+}
+
+# # 完成盘点
+mutation finishCheck($checkInfoInput: CheckInfoInput) {
+  finishCheck(checkInfoInput: $checkInfoInput) {
+    checkId
+    checkInNum
+    checkOutNum
+  }
+}
+
+# 盘点: 盘点库存记录
+query checkPageRecords($page: Page, $checkRecordConfitionInput: CheckRecordConfitionInput) {
+  checkPageRecords(
+    page: $page
+    checkRecordConfitionInput: $checkRecordConfitionInput
+  ) {
+    records {
+      checkId
+      checkDate
+      warehouseName
+      checkStatus
+      commodityTypeIdList
+      commodityTypeNameList
+      checkNum
+      belongIdList
+      belongTypeList
+      belongNameList
+      username
+      operateDate
+      checkCode
+      abnormalQuantity
+      checkTime
+      auditStatus
+      auditStatusDesc
+      tag
+    }
+    pageCurrent
+    pageSize
+    totalRecords
+  }
+}
+
+# 盘点: 盘点库存详情
+query checkDetail($checkId: ID) {
+  checkDetail(checkId: $checkId) {
+    stockCheck {
+      checkId
+      warehouseName
+      checkDate
+      commodityTypeId
+      commodityTypeIdList
+      commodityTypeName
+      commodityTypeNameList
+      belongId
+      belongIdList
+      belongType
+      belongTypeList
+      belongName
+      belongNameList
+      username
+      checkStatus
+      operateDate
+      remark
+      checkNum
+      checkErrorNum
+      checkCode
+      abnormalQuantity
+    }
+    checkOrderList {
+      checkOrderId
+      stockOrderNumber
+      stockOrderId
+      checkType
+      belongId
+      belongType
+      belongName
+      warehouseName
+      commodityTypeId
+      commodityTypeName
+      username
+      operateDate
+    }
+    stockCheckItemList {
+      checkItemId
+      checkId
+      checkOrderId
+      batchId
+      skuId
+      batchCode
+      orderType
+      orderId
+      commodityTypeId
+      commodityName
+      skuTextDescriptionList
+      unitQuantity
+      unitType
+      unitTypeName
+      totalQuantity
+      totalTypeName
+      totalType
+      checkUnitQuantity
+      checkTotalQuantity
+      remark
+      createTime
+      belongId
+      belongType
+      belongName
+      checkLabelId
+      checkLabelDesc
+      changeLogsList {
+        checkLabelId
+        labelContent
+        remark
+        createTime
+        createBy {
+          userId
+          userName
+          phoneNum
+        }
+      }
+    }
+  }
+}
+
+# 盘点: 盘点标签列表
+query listStockCheckLabel {
+  listStockCheckLabel {
+    label: labelContent
+    value: stockCheckLabelId
+  }
+}

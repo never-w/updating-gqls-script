@@ -1,0 +1,292 @@
+# 借调:审核统计
+query auditSecondmentCount {
+  auditSecondmentCount
+}
+
+# 借调:日志列表
+query getSecondmentLogs($secondmentId: ID!) {
+  getSecondmentLogs(secondmentId: $secondmentId) {
+    createBy
+    createTime
+    createUserName
+    secondmentId
+    secondmentLogDescription
+    secondmentLogId
+    secondmentLogType
+    secondmentLogTypeText
+  }
+}
+
+# 借调:列表
+query pageUserSecondment($page: Page, $secondmentPageInput: SecondmentPageInput!) {
+  pageUserSecondment(page: $page, secondmentPageInput: $secondmentPageInput) {
+    pageCurrent
+    pageSize
+    records {
+      belongOrg {
+        orgId
+        orgName
+      }
+      commodityTypeId
+      commodityTypeName
+      createBy {
+        phoneNum
+        userId
+        userName
+      }
+      createTime
+      description
+      inBelongId
+      inBelongName
+      inBelongType
+      outBelongId
+      outBelongName
+      outBelongType
+      remark
+      secondmentCode
+      secondmentId
+      secondmentOrderItemList {
+        batch {
+          batchCode
+          batchId
+        }
+        commoditySku {
+          categoryId
+          categoryName
+          commodityId
+          commodityName
+          commoditySkuId
+          commoditySkuName
+          commoditySpecOptionId
+          commoditySpecOptionName
+          conversion
+          totalType {
+            unitId
+            unitName
+          }
+          unitType {
+            unitId
+            unitName
+          }
+        }
+        priceType {
+          unitId
+          unitName
+        }
+        secondmentId
+        secondmentItemId
+        totalQuantity
+        transferPrice
+        transferTotalQuantity
+        transferUnitQuantity
+        unitPrice
+        unitQuantity
+      }
+      secondmentStatus
+      secondmentStatusName
+      warehouse {
+        warehouseId
+        warehouseName
+      }
+    }
+    totalRecords
+  }
+}
+
+# 借调:详情
+query secondmentDetail($secondmentId: ID!) {
+  secondmentDetail(secondmentId: $secondmentId) {
+    belongOrg {
+      orgId
+      orgName
+    }
+    commodityTypeId
+    commodityTypeName
+    description
+    inBelongId
+    inBelongName
+    inBelongType
+    outBelongId
+    outBelongName
+    outBelongType
+    remark
+    secondmentCode
+    secondmentId
+    secondmentOrderItemList {
+      batch {
+        batchCode
+        batchId
+      }
+      commoditySku {
+        categoryId
+        categoryName
+        commodityId
+        commodityName
+        commoditySkuId
+        commoditySkuName
+        commoditySpecOptionId
+        commoditySpecOptionName
+        conversion
+        totalType {
+          unitId
+          unitName
+        }
+        unitType {
+          unitId
+          unitName
+        }
+      }
+      priceType {
+        unitId
+        unitName
+      }
+      secondmentId
+      secondmentItemId
+      totalQuantity
+      transferPrice
+      transferTotalQuantity
+      transferUnitQuantity
+      unitPrice
+      unitQuantity
+    }
+    secondmentStatus
+    warehouse {
+      warehouseId
+      warehouseName
+    }
+    createBy {
+      phoneNum
+      userId
+      userName
+    }
+    createTime
+  }
+}
+
+# 借调:库存
+query secondmentStocks($secondmentCondition: SecondmentConditionInput) {
+  secondmentStocks(secondmentCondition: $secondmentCondition) {
+    batchCode
+    batchId
+    belongId
+    belongName
+    belongType
+    commoditySku {
+      categoryId
+      categoryName
+      commodityId
+      commodityName
+      commoditySkuId
+      commoditySkuName
+      commoditySpecOptionId
+      commoditySpecOptionName
+      conversion
+      totalType {
+        unitId
+        unitName
+      }
+      unitType {
+        unitId
+        unitName
+      }
+    }
+    priceType {
+      unitId
+      unitName
+    }
+    totalQuantity
+    unitPrice
+    unitQuantity
+    inStockTime
+  }
+}
+
+# 借调:状态变更
+mutation changeSecondmentStatus($secondmentStatusInput: SecondmentStatusInput) {
+  changeSecondmentStatus(secondmentStatusInput: $secondmentStatusInput)
+}
+
+# 借调:新增
+mutation insertSecondment($secondmentInput: SecondmentInput) {
+  insertSecondment(secondmentInput: $secondmentInput)
+}
+
+# 借调:修改
+mutation updateSecondment($secondmentInput: SecondmentInput) {
+  updateSecondment(secondmentInput: $secondmentInput)
+}
+
+query pageOrgSecondment($page: Page, $secondmentPageInput: SecondmentPageInput) {
+  pageOrgSecondment(page: $page, secondmentPageInput: $secondmentPageInput) {
+    pageCurrent
+    pageSize
+    records {
+      belongOrg {
+        orgId
+        orgName
+      }
+      commodityTypeId
+      commodityTypeName
+      createBy {
+        phoneNum
+        userId
+        userName
+      }
+      createTime
+      description
+      inBelongId
+      inBelongName
+      inBelongType
+      outBelongId
+      outBelongName
+      outBelongType
+      remark
+      secondmentCode
+      secondmentId
+      secondmentOrderItemList {
+        batch {
+          batchCode
+          batchId
+        }
+        commoditySku {
+          categoryId
+          categoryName
+          commodityId
+          commodityName
+          commoditySkuId
+          commoditySkuName
+          commoditySpecOptionId
+          commoditySpecOptionName
+          conversion
+          totalType {
+            unitId
+            unitName
+          }
+          unitType {
+            unitId
+            unitName
+          }
+        }
+        priceType {
+          unitId
+          unitName
+        }
+        secondmentId
+        secondmentItemId
+        totalQuantity
+        transferPrice
+        transferTotalQuantity
+        transferUnitQuantity
+        unitPrice
+        unitQuantity
+      }
+      secondmentStatus
+      secondmentStatusName
+      warehouse {
+        warehouseId
+        warehouseName
+      }
+    }
+    totalRecords
+  }
+}

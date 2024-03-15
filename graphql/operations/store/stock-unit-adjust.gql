@@ -1,0 +1,299 @@
+# 库存单位调整:记录列表页
+query pitayaPageUnitAdjustment(
+  $input: PitayaPageUnitAdjustmentInput!
+  $page: Page
+) {
+  pitayaPageUnitAdjustment(input: $input, page: $page) {
+    pageCurrent
+    pageSize
+    records {
+      belongOrg {
+        orgId
+        orgName
+      }
+      commodityType {
+        commodityTypeId
+        commodityTypeName
+      }
+      createUser {
+        phoneNum
+        userId
+        userName
+      }
+      customerBelongInfo {
+        customerId
+        customerName
+        customerType
+      }
+      warehouse {
+        warehouseId
+        warehouseName
+      }
+      createTime
+      items {
+        commoditySku {
+          availableSkuQuantity {
+            businessUnit {
+              unitId
+              unitName
+            }
+            unit {
+              unitId
+              unitName
+            }
+            conversion
+          }
+          baseUnit {
+            unitId
+            unitName
+          }
+          categoryId
+          categoryName
+          commodityId
+          commodityName
+          commoditySkuId
+          commoditySkuName
+          commoditySpecOptionId
+          commoditySpecOptionName
+        }
+        batchInfos {
+          stockBatchInfo {
+            customerBelongInfo {
+              customerId
+              customerName
+              customerType
+            }
+            unit {
+              unitId
+              unitName
+            }
+            batchCode
+            batchId
+            createTime
+            lockQuantity
+            lockQuantityItem {
+              unit {
+                unitId
+                unitName
+              }
+              quantity
+            }
+            quantity
+            quantityItem {
+              unit {
+                unitId
+                unitName
+              }
+              quantity
+            }
+          }
+          afterQuantity {
+            unit {
+              unitId
+              unitName
+            }
+            quantity
+          }
+          beforeQuantity {
+            unit {
+              unitId
+              unitName
+            }
+            quantity
+          }
+          quantity
+          unit {
+            unitId
+            unitName
+          }
+        }
+      }
+      orderCode
+      orderId
+      sumSku
+    }
+    totalRecords
+  }
+}
+
+# 库存单位调整:详情页
+query pitayaUnitAdjustmentDetail($detailId: ID!) {
+  pitayaUnitAdjustmentDetail(detailId: $detailId) {
+    belongOrg {
+      orgId
+      orgName
+    }
+    commodityType {
+      commodityTypeId
+      commodityTypeName
+    }
+    createUser {
+      phoneNum
+      userId
+      userName
+    }
+    customerBelongInfo {
+      customerId
+      customerName
+      customerType
+    }
+    warehouse {
+      warehouseId
+      warehouseName
+    }
+    createTime
+    items {
+      commoditySku {
+        availableSkuQuantity {
+          businessUnit {
+            unitId
+            unitName
+          }
+          unit {
+            unitId
+            unitName
+          }
+          conversion
+        }
+        baseUnit {
+          unitId
+          unitName
+        }
+        categoryId
+        categoryName
+        commodityId
+        commodityName
+        commoditySkuId
+        commoditySkuName
+        commoditySpecOptionId
+        commoditySpecOptionName
+      }
+      batchInfos {
+        stockBatchInfo {
+          customerBelongInfo {
+            customerId
+            customerName
+            customerType
+          }
+          unit {
+            unitId
+            unitName
+          }
+          batchCode
+          batchId
+          createTime
+          lockQuantity
+          lockQuantityItem {
+            unit {
+              unitId
+              unitName
+            }
+            quantity
+          }
+          quantity
+          quantityItem {
+            unit {
+              unitId
+              unitName
+            }
+            quantity
+          }
+        }
+        afterQuantity {
+          unit {
+            unitId
+            unitName
+          }
+          quantity
+        }
+        beforeQuantity {
+          unit {
+            unitId
+            unitName
+          }
+          quantity
+        }
+        quantity
+        unit {
+          unitId
+          unitName
+        }
+      }
+    }
+    orderCode
+    orderId
+    sumSku
+  }
+}
+
+# 库存单位调整:选批次
+query listUnitAdjustmentBatchItems($input: ListAdjustmentBatchInput!) {
+  listUnitAdjustmentBatchItems(input: $input) {
+    commoditySku {
+      availableSkuQuantity {
+        businessUnit {
+          unitId
+          unitName
+        }
+        unit {
+          unitId
+          unitName
+        }
+        conversion
+      }
+      baseUnit {
+        unitId
+        unitName
+      }
+      categoryId
+      categoryName
+      commodityId
+      commodityName
+      commoditySkuId
+      commoditySkuName
+      commoditySpecOptionId
+      commoditySpecOptionName
+    }
+    commodityType {
+      commodityTypeId
+      commodityTypeName
+    }
+    batchInfos {
+      stockBatchInfo {
+        customerBelongInfo {
+          customerId
+          customerName
+          customerType
+        }
+        unit {
+          unitId
+          unitName
+        }
+        batchCode
+        batchId
+        createTime
+        lockQuantity
+        lockQuantityItem {
+          unit {
+            unitId
+            unitName
+          }
+          quantity
+        }
+        quantity
+        quantityItem {
+          unit {
+            unitId
+            unitName
+          }
+          quantity
+        }
+      }
+    }
+  }
+}
+
+# 库存单位调整:新增
+mutation createPitayaUnitAdjustment($input: PitayaCreateUnitAdjustmentInput!) {
+  createPitayaUnitAdjustment(input: $input)
+}

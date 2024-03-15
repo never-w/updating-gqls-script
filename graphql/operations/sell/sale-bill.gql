@@ -1,0 +1,1147 @@
+# 销售开单:商品sku批次
+query listSaleInvoiceBatch($input: ListSaleInvoiceBatchInput) {
+  listSaleInvoiceBatch(input: $input) {
+    commoditySku {
+      categoryId
+      categoryName
+      commodityId
+      commodityName
+      commoditySkuId
+      commoditySkuName
+      commoditySpecOptionId
+      commoditySpecOptionName
+      availableSkuQuantity {
+        businessUnit {
+          unitId
+          unitName
+        }
+        unit {
+          unitId
+          unitName
+        }
+        conversion
+      }
+      baseUnit {
+        unitId
+        unitName
+      }
+    }
+    batchCount
+    batchItem {
+      batchInfo {
+        warehouse {
+          warehouseId
+          warehouseName
+        }
+        batchCode
+        batchId
+        createTime
+        commodityTypeId
+        commodityTypeName
+        customer {
+          customerId
+          customerName
+          customerType
+          lastLevelId
+          lastLevelName
+        }
+        unit {
+          unitId
+          unitName
+        }
+        quantity
+        quantityItem {
+          unit {
+            unitId
+            unitName
+          }
+          quantity
+        }
+      }
+      commoditySku {
+        categoryId
+        categoryName
+        commodityId
+        commodityName
+        commoditySkuId
+        commoditySkuName
+        commoditySpecOptionId
+        commoditySpecOptionName
+        availableSkuQuantity {
+          businessUnit {
+            unitId
+            unitName
+          }
+          unit {
+            unitId
+            unitName
+          }
+          conversion
+        }
+        baseUnit {
+          unitId
+          unitName
+        }
+      }
+      customer {
+        customerId
+        customerName
+        customerType
+        lastLevelId
+        lastLevelName
+      }
+      commodityTypeDesc
+      commodityTypeId
+      uniqueMark
+      ableSaleQuantity {
+        unit {
+          unitId
+          unitName
+        }
+        quantity
+      }
+      inStockTime
+    }
+  }
+}
+
+# 销售开单:商品品类列表
+query listSaleInvoiceCategory($input: ListSaleInvoiceCategoryInput) {
+  listSaleInvoiceCategory(input: $input) {
+    categoryId
+    categoryName
+  }
+}
+
+# 销售开单:关联配送单列表查看
+query listSaleInvoiceDelivery($orderId: ID!) {
+  listSaleInvoiceDelivery(orderId: $orderId) {
+    belongOrg {
+      orgId
+      orgName
+    }
+    createBy {
+      phoneNum
+      userId
+      userName
+    }
+    org {
+      orgId
+      orgName
+    }
+    belongInfo {
+      customerBelongInfo {
+        customerId
+        customerName
+        customerType
+      }
+    }
+    businessUserName
+    carNum
+    carType
+    completeTime
+    createTime
+    deliveryDate
+    deliveryGoodsSource
+    deliveryGoodsSourceDesc
+    deliveryMode
+    deliveryModeDesc
+    deliveryOrderFee {
+      billDetailsList {
+        supplier {
+          supplierId
+          supplierName
+        }
+        billCostData
+        billDetailId
+        billMainId
+        businessItemValue
+        costAmount
+        costId
+        costName
+        dictItemId
+        note
+        ruleCode
+        ruleId
+        showField
+        paymentType
+      }
+      billMainId
+      billTemplateId
+    }
+    deliveryOrderItem {
+      customerBelongInfo {
+        customerId
+        customerName
+        customerType
+      }
+      commodityDetail {
+        sku {
+          categoryId
+          categoryName
+          commodityId
+          commodityName
+          commoditySkuId
+          commoditySkuName
+          commoditySpecOptionId
+          commoditySpecOptionName
+          availableSkuQuantity {
+            businessUnit {
+              unitId
+              unitName
+            }
+            unit {
+              unitId
+              unitName
+            }
+            conversion
+          }
+          baseUnit {
+            unitId
+            unitName
+          }
+        }
+        commodityTypeId
+        commodityTypeName
+        deliveryOutItemId
+        differenceReason
+        itemId
+        saleOrderItemId
+        warehouse {
+          address
+          belongId
+          belongType
+          houseNumber
+          id
+          locationList
+          name
+          orgId
+          remark
+          status
+          typeId
+        }
+        stockBatchInfo {
+          customerBelongInfo {
+            customerId
+            customerName
+            customerType
+          }
+          batchCode
+          batchId
+          createTime
+          unit {
+            unitId
+            unitName
+          }
+          lockQuantity
+          lockQuantityItem {
+            unit {
+              unitId
+              unitName
+            }
+            quantity
+          }
+          quantity
+          quantityItem {
+            unit {
+              unitId
+              unitName
+            }
+            quantity
+          }
+        }
+        unit {
+          unitId
+          unitName
+        }
+        actualQuantity
+        deliverableQuantity
+        deliveredQuantity
+        differenceQuantity
+        markList
+        outQuantity
+        quantity
+        quantityItem {
+          unit {
+            unitId
+            unitName
+          }
+          quantity
+        }
+        returnQuantity
+      }
+      itemId
+      orderId
+      outOrderId
+      saleDeliveryOrderType
+      sourceOrderCode
+      sourceOrderId
+      sourceOrderSaleDate
+    }
+    deliveryRequirement
+    deliveryRequirementDesc
+    deliveryReturnOrderCount
+    driverContact
+    driverName
+    orderCode
+    orderId
+    orderStatus
+    orderStatusDesc
+    saleOrderDate
+    statusNote
+    supplementalOrderCount
+    auditUser {
+      phoneNum
+      userId
+      userName
+    }
+    fileInfoList {
+      accessType
+      contentType
+      createTime
+      fileUrl
+      id
+      name
+      size
+      tags
+      updateTime
+    }
+  }
+}
+
+# 销售开单:商品模糊查询
+query listSaleInvoiceSkuByName($input: ListSaleInvoiceSkuByNameInput) {
+  listSaleInvoiceSkuByName(input: $input) {
+    commoditySku {
+      categoryId
+      categoryName
+      commodityId
+      commodityName
+      commoditySkuId
+      commoditySkuName
+      commoditySpecOptionId
+      commoditySpecOptionName
+      availableSkuQuantity {
+        businessUnit {
+          unitId
+          unitName
+        }
+        unit {
+          unitId
+          unitName
+        }
+        conversion
+      }
+      baseUnit {
+        unitId
+        unitName
+      }
+    }
+  }
+}
+
+# 销售开单:商品spu和sku列表
+query listSaleInvoiceSpuAndSku($input: ListSaleInvoiceSpuAndSkuInput) {
+  listSaleInvoiceSpuAndSku(input: $input) {
+    commodityId
+    commodityName
+    commoditySkuList {
+      commoditySku {
+        categoryId
+        categoryName
+        commodityId
+        commodityName
+        commoditySkuId
+        commoditySkuName
+        commoditySpecOptionId
+        commoditySpecOptionName
+        availableSkuQuantity {
+          businessUnit {
+            unitId
+            unitName
+          }
+          unit {
+            unitId
+            unitName
+          }
+          conversion
+        }
+        baseUnit {
+          unitId
+          unitName
+        }
+      }
+    }
+  }
+}
+
+# 销售开单:销售开单列表
+query pageSaleInvoice($input: PageSaleInvoiceInput, $page: Page) {
+  pageSaleInvoice(input: $input, page: $page) {
+    pageCurrent
+    pageSize
+    records {
+      belongOrg {
+        orgId
+        orgName
+      }
+      createUser {
+        phoneNum
+        userId
+        userName
+      }
+      customer {
+        customerId
+        customerName
+        customerType
+        lastLevelId
+        lastLevelName
+      }
+      commodityList {
+        batchInfo {
+          warehouse {
+            warehouseId
+            warehouseName
+          }
+          batchCode
+          batchId
+          createTime
+          customer {
+            customerId
+            customerName
+            customerType
+            lastLevelId
+            lastLevelName
+          }
+          unit {
+            unitId
+            unitName
+          }
+          commodityTypeId
+          commodityTypeName
+          quantity
+          quantityItem {
+            unit {
+              unitId
+              unitName
+            }
+            quantity
+          }
+        }
+        commoditySku {
+          categoryId
+          categoryName
+          commodityId
+          commodityName
+          commoditySkuId
+          commoditySkuName
+          commoditySpecOptionId
+          commoditySpecOptionName
+          availableSkuQuantity {
+            businessUnit {
+              unitId
+              unitName
+            }
+            unit {
+              unitId
+              unitName
+            }
+            conversion
+          }
+          baseUnit {
+            unitId
+            unitName
+          }
+        }
+        commodityTypeId
+        commodityTypeName
+        orderId
+        orderItemId
+        salePrice
+        saleTotalPrice
+        ableSaleQuantity {
+          unit {
+            unitId
+            unitName
+          }
+          quantity
+        }
+        dynamicQuantity {
+          unit {
+            unitId
+            unitName
+          }
+          quantity
+          quantityItem {
+            unit {
+              unitId
+              unitName
+            }
+            quantity
+          }
+        }
+        index
+        mark
+        markName
+        photos {
+          fileInfoList {
+            accessType
+            contentType
+            createTime
+            fileUrl
+            id
+            name
+            size
+            tags
+            updateTime
+          }
+        }
+      }
+      createTime
+      orderCode
+      orderId
+      orderStatus
+      orderStatusDesc
+      orderType
+      orderTypeDesc
+      remark
+      saleTime
+      deliveryType
+      deliveryTypeDesc
+      deliveryCount
+      payMode
+      payModeDesc
+      saleIncomeId
+      saleOrderReturnList {
+        belongOrg {
+          orgId
+          orgName
+        }
+        createBy {
+          phoneNum
+          userId
+          userName
+        }
+        customer {
+          customerId
+          customerName
+          customerType
+          lastLevelId
+          lastLevelName
+        }
+        bill2FetchData {
+          billDetailsList {
+            supplier {
+              supplierId
+              supplierName
+            }
+            billCostData
+            billDetailId
+            billMainId
+            businessItemValue
+            costAmount
+            costId
+            costName
+            dictItemId
+            note
+            paymentType
+            ruleCode
+            ruleId
+            showField
+          }
+          billMainId
+          templateId
+          totalTransportFees
+        }
+        commodities {
+          commoditySku {
+            availableSkuQuantity {
+              businessUnit {
+                unitId
+                unitName
+              }
+              unit {
+                unitId
+                unitName
+              }
+              conversion
+            }
+            baseUnit {
+              unitId
+              unitName
+            }
+            categoryId
+            categoryName
+            commodityId
+            commodityName
+            commoditySkuId
+            commoditySkuName
+            commoditySpecOptionId
+            commoditySpecOptionName
+          }
+          unit {
+            unitId
+            unitName
+          }
+          amount
+          batches {
+            batchInfo {
+              customer {
+                customerId
+                customerName
+                customerType
+                lastLevelId
+                lastLevelName
+              }
+              unit {
+                unitId
+                unitName
+              }
+              warehouse {
+                warehouseId
+                warehouseName
+              }
+              batchCode
+              batchId
+              commodityTypeId
+              commodityTypeName
+              createTime
+              quantity
+              quantityItem {
+                unit {
+                  unitId
+                  unitName
+                }
+                quantity
+              }
+            }
+            batch {
+              unit {
+                unitId
+                unitName
+              }
+              batchCode
+              batchId
+              createTime
+              quantity
+              quantityItem {
+                unit {
+                  unitId
+                  unitName
+                }
+                quantity
+              }
+              sourceBatchCode
+              sourceBatchId
+            }
+            dynamicQuantity {
+              unit {
+                unitId
+                unitName
+              }
+              quantity
+              quantityItem {
+                unit {
+                  unitId
+                  unitName
+                }
+                quantity
+              }
+            }
+            index
+            itemId
+          }
+          commodityType
+          commodityTypeName
+          mark
+          markName
+          returnId
+          returnType
+          returnableAmount
+          returnableQuantity
+          saleData {
+            quantity
+            saleOrderId
+            salePrice
+            saleTotalPrice
+          }
+          stockQuantity {
+            unit {
+              unitId
+              unitName
+            }
+            quantity
+          }
+        }
+        createTime
+        differenceOrderType
+        remark
+        returnCode
+        returnId
+        returnStatus
+        returnStatusName
+        returnTime
+        returnType
+        returnTypeName
+        saleOrderCode
+        saleOrderId
+        saleReturnWay
+        saleReturnWayName
+        saleTime
+        sourceBill2Data {
+          billDetailsList {
+            supplier {
+              supplierId
+              supplierName
+            }
+            billCostData
+            billDetailId
+            billMainId
+            businessItemValue
+            costAmount
+            costId
+            costName
+            dictItemId
+            note
+            paymentType
+            ruleCode
+            ruleId
+            showField
+          }
+          billMainId
+          templateId
+          totalTransportFees
+        }
+      }
+      saleReturnCount
+      type
+    }
+    totalRecords
+  }
+}
+
+# 销售开单:状态角标
+query saleInvoiceBadge {
+  saleInvoiceBadge {
+    toBeSubmit
+  }
+}
+
+# 销售开单:销售开单详情
+query saleInvoiceDetail($orderId: ID!) {
+  saleInvoiceDetail(orderId: $orderId) {
+    belongOrg {
+      orgId
+      orgName
+    }
+    createUser {
+      phoneNum
+      userId
+      userName
+    }
+    customer {
+      customerId
+      customerName
+      customerType
+      lastLevelId
+      lastLevelName
+    }
+    commodityList {
+      batchInfo {
+        warehouse {
+          warehouseId
+          warehouseName
+        }
+        batchCode
+        batchId
+        createTime
+        commodityTypeId
+        commodityTypeName
+        customer {
+          customerId
+          customerName
+          customerType
+          lastLevelId
+          lastLevelName
+        }
+        unit {
+          unitId
+          unitName
+        }
+        quantity
+        quantityItem {
+          unit {
+            unitId
+            unitName
+          }
+          quantity
+        }
+      }
+      commoditySku {
+        categoryId
+        categoryName
+        commodityId
+        commodityName
+        commoditySkuId
+        commoditySkuName
+        commoditySpecOptionId
+        commoditySpecOptionName
+        availableSkuQuantity {
+          businessUnit {
+            unitId
+            unitName
+          }
+          unit {
+            unitId
+            unitName
+          }
+          conversion
+        }
+        baseUnit {
+          unitId
+          unitName
+        }
+      }
+      commodityTypeId
+      commodityTypeName
+      orderId
+      orderItemId
+      photos {
+        fileInfoList {
+          accessType
+          contentType
+          createTime
+          fileUrl
+          id
+          name
+          size
+          tags
+          updateTime
+        }
+      }
+      salePrice
+      saleTotalPrice
+      ableSaleQuantity {
+        unit {
+          unitId
+          unitName
+        }
+        quantity
+      }
+      mark
+      markName
+      dynamicQuantity {
+        unit {
+          unitId
+          unitName
+        }
+        quantity
+        quantityItem {
+          unit {
+            unitId
+            unitName
+          }
+          quantity
+        }
+      }
+      index
+    }
+    createTime
+    deliveryCount
+    deliveryType
+    deliveryTypeDesc
+    orderCode
+    orderId
+    orderStatus
+    orderStatusDesc
+    orderType
+    orderTypeDesc
+    payMode
+    payModeDesc
+    remark
+    saleOrderReturnList {
+      belongOrg {
+        orgId
+        orgName
+      }
+      createBy {
+        phoneNum
+        userId
+        userName
+      }
+      customer {
+        customerId
+        customerName
+        customerType
+        lastLevelId
+        lastLevelName
+      }
+      commodities {
+        commoditySku {
+          categoryId
+          categoryName
+          commodityId
+          commodityName
+          commoditySkuId
+          commoditySkuName
+          commoditySpecOptionId
+          commoditySpecOptionName
+          availableSkuQuantity {
+            businessUnit {
+              unitId
+              unitName
+            }
+            unit {
+              unitId
+              unitName
+            }
+            conversion
+          }
+          baseUnit {
+            unitId
+            unitName
+          }
+        }
+        batches {
+          batchInfo {
+            warehouse {
+              warehouseId
+              warehouseName
+            }
+            batchCode
+            batchId
+            createTime
+            commodityTypeId
+            commodityTypeName
+            customer {
+              customerId
+              customerName
+              customerType
+              lastLevelId
+              lastLevelName
+            }
+            unit {
+              unitId
+              unitName
+            }
+            quantity
+            quantityItem {
+              unit {
+                unitId
+                unitName
+              }
+              quantity
+            }
+          }
+          itemId
+          batch {
+            unit {
+              unitId
+              unitName
+            }
+            batchCode
+            batchId
+            createTime
+            quantity
+            quantityItem {
+              unit {
+                unitId
+                unitName
+              }
+              quantity
+            }
+            sourceBatchCode
+            sourceBatchId
+          }
+          dynamicQuantity {
+            unit {
+              unitId
+              unitName
+            }
+            quantity
+            quantityItem {
+              unit {
+                unitId
+                unitName
+              }
+              quantity
+            }
+          }
+          index
+        }
+        commodityType
+        commodityTypeName
+        returnId
+        returnType
+        returnableQuantity
+        saleData {
+          salePrice
+          saleTotalPrice
+          quantity
+          saleOrderId
+        }
+        stockQuantity {
+          unit {
+            unitId
+            unitName
+          }
+          quantity
+        }
+        amount
+        returnableAmount
+        mark
+        markName
+        unit {
+          unitId
+          unitName
+        }
+      }
+      createTime
+      remark
+      returnCode
+      returnId
+      returnStatus
+      returnStatusName
+      returnTime
+      returnType
+      returnTypeName
+      saleOrderCode
+      saleOrderId
+      saleTime
+      differenceOrderType
+      saleReturnWay
+      saleReturnWayName
+      bill2FetchData {
+        billDetailsList {
+          supplier {
+            supplierId
+            supplierName
+          }
+          billCostData
+          billDetailId
+          billMainId
+          businessItemValue
+          costAmount
+          costId
+          costName
+          dictItemId
+          note
+          paymentType
+          ruleCode
+          ruleId
+          showField
+        }
+        billMainId
+        templateId
+        totalTransportFees
+      }
+      sourceBill2Data {
+        billDetailsList {
+          supplier {
+            supplierId
+            supplierName
+          }
+          billCostData
+          billDetailId
+          billMainId
+          businessItemValue
+          costAmount
+          costId
+          costName
+          dictItemId
+          note
+          paymentType
+          ruleCode
+          ruleId
+          showField
+        }
+        billMainId
+        templateId
+        totalTransportFees
+      }
+    }
+    saleReturnCount
+    saleTime
+    type
+    saleIncomeId
+  }
+}
+
+# 销售开单:收款方式
+query saleInvoicePayMode {
+  saleInvoicePayMode {
+    label
+    value
+  }
+}
+
+# 销售开单:待处理角标
+query saleInvoiceTimeLimitBadge($input: SaleInvoiceTimeLimitBadgeInput) {
+  saleInvoiceTimeLimitBadge(input: $input) {
+    toBeProcessed
+  }
+}
+
+# 销售开单:取消
+mutation cancelSaleInvoice($input: CancelSaleInvoiceInput) {
+  cancelSaleInvoice(input: $input)
+}
+
+# 销售开单:新增
+mutation createSaleInvoice($input: CreateOrUpdateSaleInvoiceInput) {
+  createSaleInvoice(input: $input)
+}
+
+# 销售开单:提交
+mutation submitSaleInvoice($input: SubmitSaleInvoiceInput) {
+  submitSaleInvoice(input: $input)
+}
+
+# 销售开单:修改
+mutation updateSaleInvoice($input: CreateOrUpdateSaleInvoiceInput) {
+  updateSaleInvoice(input: $input)
+}
+
+# 销售开单:作废
+mutation voidSaleInvoice($input: VoidSaleInvoiceInput) {
+  voidSaleInvoice(input: $input)
+}
+
+# 销售开单:撤销
+mutation withdrawSaleInvoice($input: WithdrawSaleInvoiceInput) {
+  withdrawSaleInvoice(input: $input)
+}
+
+# 销售开单:再来一单
+mutation oneMoreSaleInvoice($input: OneMoreSaleInvoiceInput) {
+  oneMoreSaleInvoice(input: $input) {
+    outOfStockItems {
+      commoditySku {
+        categoryId
+        categoryName
+        commodityId
+        commodityName
+        commoditySkuId
+        commoditySkuName
+        commoditySpecOptionId
+        commoditySpecOptionName
+        availableSkuQuantity {
+          businessUnit {
+            unitId
+            unitName
+          }
+          unit {
+            unitId
+            unitName
+          }
+          conversion
+        }
+        baseUnit {
+          unitId
+          unitName
+        }
+      }
+    }
+    saleOrderId
+  }
+}

@@ -1,0 +1,165 @@
+query pageStockAdjustment(
+  $pageStockAdjustmentInput: PageStockAdjustmentInput
+  $page: Page
+) {
+  pageStockAdjustment(
+    pageStockAdjustmentInput: $pageStockAdjustmentInput
+    page: $page
+  ) {
+    records {
+      commoditySku {
+        commoditySkuId
+        commoditySkuName
+        commodityId
+        commodityName
+        commoditySpecOptionId
+        commoditySpecOptionName
+        conversion
+        totalType {
+          unitId
+          unitName
+        }
+        unitType {
+          unitId
+          unitName
+        }
+      }
+      unitType {
+        unitId
+        unitName
+      }
+      unitQuantity
+      totalType {
+        unitId
+        unitName
+      }
+      totalQuantity
+      createUser {
+        userId
+        userName
+        phoneNum
+      }
+      createTime
+      stockAdjustmentId
+      stockAdjustmentStatus
+    }
+    pageCurrent
+    pageSize
+    totalRecords
+  }
+}
+
+mutation rejectStockAdjustment(
+  $rejectStockAdjustmentInput: RejectStockAdjustmentInput
+) {
+  rejectStockAdjustment(rejectStockAdjustmentInput: $rejectStockAdjustmentInput)
+}
+
+mutation passStockAdjustment(
+  $passStockAdjustmentInput: PassStockAdjustmentInput
+) {
+  passStockAdjustment(passStockAdjustmentInput: $passStockAdjustmentInput)
+}
+
+query stockAdjustmentStatus {
+  stockAdjustmentStatus {
+    toBeAudit
+  }
+}
+
+mutation createProductionStockAdjustment(
+  $input: CreateProductionStockAdjustmentInput
+) {
+  createProductionStockAdjustment(input: $input)
+}
+
+query pageProductionStockAdjustment(
+  $input: PageProductionStockAdjustmentInput
+  $page: Page
+) {
+  pageProductionStockAdjustment(input: $input, page: $page) {
+    records {
+      adjustmentId
+      adjustmentStatus
+      adjustmentType
+      createBy {
+        userId
+        userName
+        phoneNum
+      }
+      createTime
+      org {
+        orgId
+        orgName
+      }
+      tenantId
+      warehouse {
+        warehouseId
+        warehouseName
+      }
+      commodityList {
+        batchId
+        createBy {
+          userId
+          userName
+          phoneNum
+        }
+        createTime
+        commoditySku {
+          commoditySkuId
+          commoditySkuName
+          commodityId
+          commodityName
+          commoditySpecOptionId
+          commoditySpecOptionName
+          conversion
+          totalType {
+            unitId
+            unitName
+          }
+          unitType {
+            unitId
+            unitName
+          }
+          categoryId
+          categoryName
+        }
+        stockAdjustmentId
+        stockAdjustmentItemId
+        totalQuantity
+        totalType {
+          unitId
+          unitName
+        }
+        unitQuantity
+        unitType {
+          unitId
+          unitName
+        }
+        adjustmentReason
+      }
+    }
+    pageCurrent
+    pageSize
+    totalRecords
+  }
+}
+
+query ProductionStockAdjustmentStatus {
+  ProductionStockAdjustmentStatus {
+    toBeAuditStockIn
+    toBeAuditStockOut
+  }
+}
+
+mutation auditProductionStockAdjustment(
+  $input: ChangeProductionStockAdjustmentStatusInput
+) {
+  auditProductionStockAdjustment(input: $input)
+}
+
+mutation rejectProductionStockAdjustment(
+  $input: ChangeProductionStockAdjustmentStatusInput
+) {
+  rejectProductionStockAdjustment(input: $input)
+}

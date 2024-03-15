@@ -1,0 +1,993 @@
+# v2.22供应商: 按条件查询供应商列表
+query pitayaAllSuppliers($supplierCondition: SupplierConditionInput) {
+  pitayaAllSuppliers(supplierCondition: $supplierCondition) {
+    belongOrg {
+      orgId
+      orgName
+    }
+    org {
+      orgId
+      orgName
+    }
+    addressIds {
+      city {
+        firstChar
+        hasChildren
+        id
+        locationType
+        name
+      }
+      district {
+        firstChar
+        hasChildren
+        id
+        locationType
+        name
+      }
+      province {
+        firstChar
+        hasChildren
+        id
+        locationType
+        name
+      }
+      addressName
+      contactList {
+        alias
+        contactUserId
+        customerDetailId
+        fileRecordList {
+          beginTime
+          endTime
+          fileList {
+            fileId
+            fileName
+            fileUploadTime
+            fileUrl
+            fileInfo {
+              accessType
+              contentType
+              createTime
+              fileUrl
+              id
+              name
+              size
+              tags
+              updateTime
+            }
+            fileDirection
+          }
+          fileType
+        }
+        id
+        mail
+        name
+        otherInfoOfIdCard
+        phone
+        remark
+        userId
+        wechat
+        idNumber
+      }
+      coordinateList
+      country
+      customerDetailId
+      deliveryName
+      id
+      shortAddress
+      status
+    }
+    attributeEnum
+    bankAccounts {
+      accountType
+      bankCardNo
+      bankCityName
+      bankName
+      bankProvinceName
+      id
+      note
+      pics {
+        beginTime
+        endTime
+        fileList {
+          fileId
+          fileName
+          fileUploadTime
+          fileUrl
+          fileInfo {
+            accessType
+            contentType
+            createTime
+            fileUrl
+            id
+            name
+            size
+            tags
+            updateTime
+          }
+          fileDirection
+        }
+        fileType
+      }
+      accountTypeName
+      supplierId
+      accountName
+    }
+    commodityTypeId
+    commodityTypeName
+    contacts {
+      alias
+      contactUserId
+      id
+      mail
+      name
+      note
+      otherInfoOfIdCard
+      phone
+      pics {
+        beginTime
+        endTime
+        fileList {
+          fileId
+          fileName
+          fileUploadTime
+          fileUrl
+          fileInfo {
+            accessType
+            contentType
+            createTime
+            fileUrl
+            id
+            name
+            size
+            tags
+            updateTime
+          }
+          fileDirection
+        }
+        fileType
+      }
+      supplierDetailId
+      wechat
+      idCard
+    }
+    controlUser
+    createTime
+    enable
+    financialSystemCode
+    houseNum
+    householdRegistration
+    idCard
+    invoiceSubject {
+      id
+      name
+      supplierDetailId
+      supplierId
+      type
+    }
+    landlineNum
+    legalPerson
+    longCooperation
+    mail
+    operateAddress
+    payTaxesType
+    phoneNum
+    pics {
+      beginTime
+      endTime
+      fileList {
+        fileId
+        fileName
+        fileUploadTime
+        fileUrl
+        fileInfo {
+          accessType
+          contentType
+          createTime
+          fileUrl
+          id
+          name
+          size
+          tags
+          updateTime
+        }
+        fileDirection
+      }
+      fileType
+    }
+    recordDate
+    registerAddress
+    registerStatus
+    registeredCapital
+    remark
+    supplierAddress
+    supplierBaseType
+    supplierCooperation {
+      balanceMode
+      cycleBalance
+      cycleCheck
+      cycleInvoicing
+      cyclePay
+      id
+      invoiceType
+      note
+      quota
+      rate
+      supplierDetailId
+      balanceModeName
+      invoiceTypeName
+    }
+    supplierDetailId
+    supplierId
+    supplierName
+    supplierQualification {
+      assetOther
+      assetProperty
+      assetVehicle
+      description
+      historyAchievement
+      id
+      mainSale {
+        categoryId
+        categoryName
+      }
+      note
+      pics {
+        beginTime
+        endTime
+        fileList {
+          fileId
+          fileName
+          fileUploadTime
+          fileUrl
+          fileInfo {
+            accessType
+            contentType
+            createTime
+            fileUrl
+            id
+            name
+            size
+            tags
+            updateTime
+          }
+          fileDirection
+        }
+        fileType
+      }
+      supplierId
+      goodsSource
+    }
+    supplierShortName
+    supplierSubType
+    supplierTypeId
+    tfn
+    wechat
+    payTaxesTypeName
+    registerStatusName
+    supplierSubTypeName
+    supplierBaseTypeName
+    typeName
+  }
+}
+
+# v2.22供应商: 供应商详情接口
+query pitayaSupplier($getSupplierInput: GetSupplierInput) {
+  pitayaSupplier(getSupplierInput: $getSupplierInput) {
+    belongOrg {
+      orgId
+      orgName
+    }
+    org {
+      orgId
+      orgName
+    }
+    addressIds {
+      city {
+        firstChar
+        hasChildren
+        id
+        locationType
+        name
+      }
+      district {
+        firstChar
+        hasChildren
+        id
+        locationType
+        name
+      }
+      province {
+        firstChar
+        hasChildren
+        id
+        locationType
+        name
+      }
+      addressName
+      contactList {
+        alias
+        contactUserId
+        customerDetailId
+        fileRecordList {
+          beginTime
+          endTime
+          fileList {
+            fileId
+            fileName
+            fileUploadTime
+            fileUrl
+            fileInfo {
+              accessType
+              contentType
+              createTime
+              fileUrl
+              id
+              name
+              size
+              tags
+              updateTime
+            }
+            fileDirection
+          }
+          fileType
+        }
+        id
+        mail
+        name
+        otherInfoOfIdCard
+        phone
+        remark
+        userId
+        wechat
+        idNumber
+      }
+      coordinateList
+      country
+      customerDetailId
+      deliveryName
+      id
+      shortAddress
+      status
+    }
+    attributeEnum
+    bankAccounts {
+      accountType
+      bankCardNo
+      bankCityName
+      bankName
+      bankProvinceName
+      id
+      note
+      pics {
+        beginTime
+        endTime
+        fileList {
+          fileId
+          fileName
+          fileUploadTime
+          fileUrl
+          fileInfo {
+            accessType
+            contentType
+            createTime
+            fileUrl
+            id
+            name
+            size
+            tags
+            updateTime
+          }
+          fileDirection
+        }
+        fileType
+      }
+      accountTypeName
+      supplierId
+      accountName
+    }
+    commodityTypeId
+    commodityTypeName
+    contacts {
+      alias
+      contactUserId
+      id
+      mail
+      name
+      note
+      otherInfoOfIdCard
+      phone
+      pics {
+        beginTime
+        endTime
+        fileList {
+          fileId
+          fileName
+          fileUploadTime
+          fileUrl
+          fileInfo {
+            accessType
+            contentType
+            createTime
+            fileUrl
+            id
+            name
+            size
+            tags
+            updateTime
+          }
+          fileDirection
+        }
+        fileType
+      }
+      supplierDetailId
+      wechat
+      idCard
+    }
+    controlUser
+    createTime
+    enable
+    financialSystemCode
+    houseNum
+    householdRegistration
+    idCard
+    invoiceSubject {
+      id
+      name
+      supplierDetailId
+      supplierId
+      type
+    }
+    landlineNum
+    legalPerson
+    longCooperation
+    mail
+    operateAddress
+    payTaxesType
+    phoneNum
+    pics {
+      beginTime
+      endTime
+      fileList {
+        fileId
+        fileName
+        fileUploadTime
+        fileUrl
+        fileInfo {
+          accessType
+          contentType
+          createTime
+          fileUrl
+          id
+          name
+          size
+          tags
+          updateTime
+        }
+        fileDirection
+      }
+      fileType
+    }
+    recordDate
+    registerAddress
+    registerStatus
+    registeredCapital
+    remark
+    supplierAddress
+    supplierBaseType
+    supplierCooperation {
+      balanceMode
+      cycleBalance
+      cycleCheck
+      cycleInvoicing
+      cyclePay
+      id
+      invoiceType
+      note
+      quota
+      rate
+      supplierDetailId
+      balanceModeName
+      invoiceTypeName
+    }
+    supplierDetailId
+    supplierId
+    supplierName
+    supplierQualification {
+      assetOther
+      assetProperty
+      assetVehicle
+      description
+      historyAchievement
+      id
+      mainSale {
+        categoryId
+        categoryName
+      }
+      note
+      pics {
+        beginTime
+        endTime
+        fileList {
+          fileId
+          fileName
+          fileUploadTime
+          fileUrl
+          fileInfo {
+            accessType
+            contentType
+            createTime
+            fileUrl
+            id
+            name
+            size
+            tags
+            updateTime
+          }
+          fileDirection
+        }
+        fileType
+      }
+      supplierId
+      goodsSource
+    }
+    supplierShortName
+    supplierSubType
+    supplierTypeId
+    tfn
+    wechat
+    payTaxesTypeName
+    registerStatusName
+    supplierSubTypeName
+    supplierBaseTypeName
+    typeName
+  }
+}
+
+# v2.22供应商: 供应商分页列表接口
+query pitayaSupplierPages($page: Page, $supplierCondition: SupplierConditionInput) {
+  pitayaSupplierPages(page: $page, supplierCondition: $supplierCondition) {
+    pageCurrent
+    pageSize
+    records {
+      belongOrg {
+        orgId
+        orgName
+      }
+      org {
+        orgId
+        orgName
+      }
+      addressIds {
+        city {
+          firstChar
+          hasChildren
+          id
+          locationType
+          name
+        }
+        district {
+          firstChar
+          hasChildren
+          id
+          locationType
+          name
+        }
+        province {
+          firstChar
+          hasChildren
+          id
+          locationType
+          name
+        }
+        addressName
+        contactList {
+          alias
+          contactUserId
+          customerDetailId
+          fileRecordList {
+            beginTime
+            endTime
+            fileList {
+              fileId
+              fileName
+              fileUploadTime
+              fileUrl
+              fileInfo {
+                accessType
+                contentType
+                createTime
+                fileUrl
+                id
+                name
+                size
+                tags
+                updateTime
+              }
+              fileDirection
+            }
+            fileType
+          }
+          id
+          mail
+          name
+          otherInfoOfIdCard
+          phone
+          remark
+          userId
+          wechat
+          idNumber
+        }
+        coordinateList
+        country
+        customerDetailId
+        deliveryName
+        id
+        shortAddress
+        status
+      }
+      attributeEnum
+      bankAccounts {
+        accountType
+        bankCardNo
+        bankCityName
+        bankName
+        bankProvinceName
+        id
+        note
+        pics {
+          beginTime
+          endTime
+          fileList {
+            fileId
+            fileName
+            fileUploadTime
+            fileUrl
+            fileInfo {
+              accessType
+              contentType
+              createTime
+              fileUrl
+              id
+              name
+              size
+              tags
+              updateTime
+            }
+            fileDirection
+          }
+          fileType
+        }
+        accountTypeName
+        supplierId
+        accountName
+      }
+      commodityTypeId
+      commodityTypeName
+      contacts {
+        alias
+        contactUserId
+        id
+        mail
+        name
+        note
+        otherInfoOfIdCard
+        phone
+        pics {
+          beginTime
+          endTime
+          fileList {
+            fileId
+            fileName
+            fileUploadTime
+            fileUrl
+            fileInfo {
+              accessType
+              contentType
+              createTime
+              fileUrl
+              id
+              name
+              size
+              tags
+              updateTime
+            }
+            fileDirection
+          }
+          fileType
+        }
+        supplierDetailId
+        wechat
+        idCard
+      }
+      controlUser
+      createTime
+      enable
+      financialSystemCode
+      houseNum
+      householdRegistration
+      idCard
+      invoiceSubject {
+        id
+        name
+        supplierDetailId
+        supplierId
+        type
+      }
+      landlineNum
+      legalPerson
+      longCooperation
+      mail
+      operateAddress
+      payTaxesType
+      phoneNum
+      pics {
+        beginTime
+        endTime
+        fileList {
+          fileId
+          fileName
+          fileUploadTime
+          fileUrl
+          fileInfo {
+            accessType
+            contentType
+            createTime
+            fileUrl
+            id
+            name
+            size
+            tags
+            updateTime
+          }
+          fileDirection
+        }
+        fileType
+      }
+      recordDate
+      registerAddress
+      registerStatus
+      registeredCapital
+      remark
+      supplierAddress
+      supplierBaseType
+      supplierCooperation {
+        balanceMode
+        cycleBalance
+        cycleCheck
+        cycleInvoicing
+        cyclePay
+        id
+        invoiceType
+        note
+        quota
+        rate
+        supplierDetailId
+        balanceModeName
+        invoiceTypeName
+      }
+      supplierDetailId
+      supplierId
+      supplierName
+      supplierQualification {
+        assetOther
+        assetProperty
+        assetVehicle
+        description
+        historyAchievement
+        id
+        mainSale {
+          categoryId
+          categoryName
+        }
+        note
+        pics {
+          beginTime
+          endTime
+          fileList {
+            fileId
+            fileName
+            fileUploadTime
+            fileUrl
+            fileInfo {
+              accessType
+              contentType
+              createTime
+              fileUrl
+              id
+              name
+              size
+              tags
+              updateTime
+            }
+            fileDirection
+          }
+          fileType
+        }
+        supplierId
+        goodsSource
+      }
+      supplierShortName
+      supplierSubType
+      supplierTypeId
+      tfn
+      wechat
+      payTaxesTypeName
+      registerStatusName
+      supplierSubTypeName
+      supplierBaseTypeName
+      typeName
+    }
+    totalRecords
+  }
+}
+
+# v2.22供应商: 创建供应商
+mutation createPitayaSupplier($supplierInput: PitayaSupplierInput) {
+  createPitayaSupplier(supplierInput: $supplierInput)
+}
+
+# v2.22供应商: 新增银行信息
+mutation createPitayaSupplierAccount($createPitayaSupplierAccountInput: CreatePitayaSupplierAccountInput) {
+  createPitayaSupplierAccount(
+    createPitayaSupplierAccountInput: $createPitayaSupplierAccountInput
+  )
+}
+
+# v2.22供应商: 新建联系人
+mutation createPitayaSupplierContact($pitayaCreateSupplierContactInput: PitayaCreateSupplierContactInput) {
+  createPitayaSupplierContact(
+    pitayaCreateSupplierContactInput: $pitayaCreateSupplierContactInput
+  )
+}
+
+# v2.22供应商: 新增开票主体
+mutation createPitayaSupplierContract($createPitayaSupplierContractInput: CreatePitayaSupplierContractInput) {
+  createPitayaSupplierContract(
+    createPitayaSupplierContractInput: $createPitayaSupplierContractInput
+  )
+}
+
+# v2.22供应商: 新增授信信息
+mutation createPitayaSupplierCooperation($createPitayaSupplierCooperationInput: CreatePitayaSupplierCooperationInput) {
+  createPitayaSupplierCooperation(
+    createPitayaSupplierCooperationInput: $createPitayaSupplierCooperationInput
+  )
+}
+
+# v2.22供应商: 新增供应商资质
+mutation createPitayaSupplierQualification($pitayaCreateQualificationInput: PitayaCreateQualificationInput!) {
+  createPitayaSupplierQualification(
+    pitayaCreateQualificationInput: $pitayaCreateQualificationInput
+  )
+}
+
+# v2.22供应商: 删除开票主体
+mutation delPitayaSupplierContract($delPitayaSupplierContractInput: DelPitayaSupplierContractInput) {
+  delPitayaSupplierContract(
+    delPitayaSupplierContractInput: $delPitayaSupplierContractInput
+  )
+}
+
+# v2.22供应商: 删除银行信息
+mutation delPtayaSupplierAccount($delPtayaSupplierAccountInput: DelPtayaSupplierAccountInput) {
+  delPtayaSupplierAccount(
+    delPtayaSupplierAccountInput: $delPtayaSupplierAccountInput
+  )
+}
+
+# v2.22供应商: 更新长期合作
+mutation updatePitayaLongCooperation($updatePitayaLongCooperationInput: UpdatePitayaLongCooperationInput) {
+  updatePitayaLongCooperation(
+    updatePitayaLongCooperationInput: $updatePitayaLongCooperationInput
+  )
+}
+
+# v2.22供应商: 更新供应商
+mutation updatePitayaSupplier($supplierInput: PitayaSupplierInput) {
+  updatePitayaSupplier(supplierInput: $supplierInput)
+}
+
+# v2.22供应商: 编辑联系人
+mutation updatePitayaSupplierContact($id: Int!, $pitayaCreateSupplierContactInput: PitayaCreateSupplierContactInput!) {
+  updatePitayaSupplierContact(
+    id: $id
+    pitayaCreateSupplierContactInput: $pitayaCreateSupplierContactInput
+  )
+}
+
+# v2.22供应商: 修改授信信息
+mutation updatePitayaSupplierCooperation($createPitayaSupplierCooperationInput: CreatePitayaSupplierCooperationInput!, $id: Int!) {
+  updatePitayaSupplierCooperation(
+    createPitayaSupplierCooperationInput: $createPitayaSupplierCooperationInput
+    id: $id
+  )
+}
+
+# v2.22供应商: 编辑供应商资质
+mutation updatePitayaSupplierQualification($id: Int!, $pitayaCreateQualificationInput: PitayaCreateQualificationInput!) {
+  updatePitayaSupplierQualification(
+    id: $id
+    pitayaCreateQualificationInput: $pitayaCreateQualificationInput
+  )
+}
+
+# v2.22供应商: 编辑银行信息
+mutation updatePtayaSupplierAccount($createPitayaSupplierAccountInput: CreatePitayaSupplierAccountInput!, $id: Int!) {
+  updatePtayaSupplierAccount(
+    createPitayaSupplierAccountInput: $createPitayaSupplierAccountInput
+    id: $id
+  )
+}
+
+# 供应商管理: supplier 类型列表接口
+query supplierTypes {
+  supplierTypes {
+    supplierType
+    typeName
+  }
+}
+
+# v2.22供应商: 获取供应商基本信息
+query getSupplierBase($getSupplierBaseInput: GetSupplierBaseInput!) {
+  getSupplierBase(getSupplierBaseInput: $getSupplierBaseInput) {
+    attribute
+    belongOrgId
+    belongTenantId
+    businessLicenseType
+    cityId
+    controlUser
+    country
+    countyId
+    createBy
+    createTime
+    deleted
+    fileRecordsList {
+      beginTime
+      endTime
+      fileList {
+        fileInfo {
+          accessType
+          contentType
+          createTime
+          fileUrl
+          id
+          name
+          size
+          tags
+          updateTime
+        }
+        fileDirection
+        fileId
+        fileName
+        fileUploadTime
+        fileUrl
+      }
+      fileType
+    }
+    houseNum
+    id
+    idCard
+    infoAuth
+    isAssociated
+    landlineNum
+    legalPerson
+    mail
+    name
+    operateAddress
+    operateRange
+    payTaxesType
+    payTaxesTypeName
+    phoneNum
+    provinceId
+    recordDate
+    registerStatus
+    registerStatusName
+    registeredCapital
+    supplierAddress
+    supplierBaseType
+    supplierBaseTypeName
+    tfn
+    wechat
+  }
+}

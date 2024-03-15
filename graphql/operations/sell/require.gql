@@ -1,0 +1,48 @@
+# 推荐标签接口
+query listRecommendLabel(
+  $listRecommendLabelInput: ListRecommendLabelInput
+  $page: Page
+) {
+  listRecommendLabel(
+    listRecommendLabelInput: $listRecommendLabelInput
+    page: $page
+  ) {
+    pageCurrent
+    pageSize
+    totalRecords
+    records {
+      labelId
+      labelType
+      categoryId
+      categoryName
+      labelContent
+    }
+  }
+}
+
+# 快捷标签接口
+query listQuickLabel($listQuickLabelInput: ListQuickLabelInput, $page: Page) {
+  listQuickLabel(listQuickLabelInput: $listQuickLabelInput, page: $page) {
+    pageCurrent
+    pageSize
+    totalRecords
+    records {
+      labelId
+      labelType
+      categoryId
+      categoryName
+      labelContent
+    }
+  }
+}
+
+# 创建快捷标签，增量
+mutation createQuickLabel($createQuickLabelInput: CreateQuickLabelInput) {
+  createQuickLabel(createQuickLabelInput: $createQuickLabelInput) {
+    labelId
+    labelType
+    categoryId
+    categoryName
+    labelContent
+  }
+}

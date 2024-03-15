@@ -1,0 +1,295 @@
+# 费用单操作: 状态查询
+query billStatusGroupCount(
+  $input: Bill1StatusGroupCountInput!
+  $bill2StatusGroupCountInput: Bill2StatusGroupCountInput!
+  $creatorPrivileges: Boolean
+  $incomeStatementType: BillMainTypeEnum!
+  $deliveryOrderStatusCountInput: DeliveryOrderStatusCountInput
+) {
+  # 费用单操作（未接入费用模板）: 状态查询
+  bill1StatusGroupCount(input: $input) {
+    bizUnReviewed
+    complete
+    fdConfirmed
+    fdUnReviewed
+    unConfirmed
+    unSubmitted
+    billSource
+  }
+  # 费用单操作（接入费用模板）: 状态查询
+  bill2StatusGroupCount(input: $bill2StatusGroupCountInput) {
+    billMainType
+    billStatus
+    number
+  }
+
+  # 配送费用单-接入中台: 数量角标
+  countDeliveryFee(
+    creatorPrivileges: $creatorPrivileges
+    incomeStatementType: $incomeStatementType
+  )
+  # 联营配送费用单
+  deliveryBillStatusCount(
+    deliveryOrderStatusCountInput: $deliveryOrderStatusCountInput
+  ) {
+    unSubmit
+    unAudit
+  }
+}
+
+# 费用单操作（未接入费用模板）: 详情查询
+query getBill1($input: GetBill1Input!) {
+  getBill1(input: $input) {
+    belongOrg {
+      orgId
+      orgName
+    }
+    billId
+    billPaymentResp {
+      billCode
+      supplier {
+        supplierId
+        supplierName
+      }
+      billNote
+      billPaymentFeeItemRespsList {
+        amount
+        commoditySku {
+          categoryId
+          categoryName
+          commodityId
+          commodityName
+          commoditySkuId
+          commoditySkuName
+          commoditySpecOptionId
+          commoditySpecOptionName
+          conversion
+          totalType {
+            unitId
+            unitName
+          }
+          unitType {
+            unitId
+            unitName
+          }
+        }
+        costUnitPrice
+        grossUnitQuantity
+        itemId
+        priceType {
+          unitId
+          unitName
+        }
+        sourceBatchId
+        stockType
+        totalQuantity
+        totalType {
+          unitId
+          unitName
+        }
+        unitPrice
+        unitQuantity
+        unitType {
+          unitId
+          unitName
+        }
+      }
+      totalAmount
+    }
+    billSource
+    billSourceDesc
+    billStatus
+    billStatusDesc
+    businessId
+    businessInfo {
+      otherIn {
+        commodityType
+        commodityTypeName
+        inOrderCode
+        inOrderTypeDesc
+        supplier {
+          supplierId
+          supplierName
+        }
+        wmsMarkList {
+          appId
+          businessType
+          labelContent
+          markId
+          tenantId
+        }
+        remark
+      }
+    }
+    createBy {
+      phoneNum
+      userId
+      userName
+    }
+    createTime
+    customerBelongInfo {
+      customerId
+      customerName
+      customerType
+    }
+    refuseNote
+    warehouse {
+      address
+      belongId
+      belongType
+      houseNumber
+      id
+      locationList
+      name
+      orgId
+      remark
+      status
+      typeId
+    }
+    billOperationLogPayload {
+      user {
+        phoneNum
+        userId
+        userName
+      }
+      createTime
+      endStatus
+      endStatusDesc
+      note
+      startStatus
+      startStatusDesc
+    }
+  }
+}
+
+# 费用单操作（未接入费用模板）: 列表查询
+query pageBill1($input: PageBill1Input!, $page: Page!) {
+  pageBill1(input: $input, page: $page) {
+    pageCurrent
+    pageSize
+    records {
+      belongOrg {
+        orgId
+        orgName
+      }
+      billId
+      billPaymentResp {
+        billCode
+        supplier {
+          supplierId
+          supplierName
+        }
+        billNote
+        billPaymentFeeItemRespsList {
+          amount
+          commoditySku {
+            categoryId
+            categoryName
+            commodityId
+            commodityName
+            commoditySkuId
+            commoditySkuName
+            commoditySpecOptionId
+            commoditySpecOptionName
+            conversion
+            totalType {
+              unitId
+              unitName
+            }
+            unitType {
+              unitId
+              unitName
+            }
+          }
+          costUnitPrice
+          grossUnitQuantity
+          itemId
+          priceType {
+            unitId
+            unitName
+          }
+          sourceBatchId
+          stockType
+          totalQuantity
+          totalType {
+            unitId
+            unitName
+          }
+          unitPrice
+          unitQuantity
+          unitType {
+            unitId
+            unitName
+          }
+        }
+        totalAmount
+      }
+      billSource
+      billSourceDesc
+      billStatus
+      billStatusDesc
+      businessId
+      businessInfo {
+        otherIn {
+          commodityType
+          commodityTypeName
+          inOrderCode
+          inOrderTypeDesc
+        }
+      }
+      createBy {
+        phoneNum
+        userId
+        userName
+      }
+      createTime
+      customerBelongInfo {
+        customerId
+        customerName
+        customerType
+      }
+      refuseNote
+      warehouse {
+        address
+        belongId
+        belongType
+        houseNumber
+        id
+        locationList
+        name
+        orgId
+        remark
+        status
+        typeId
+      }
+    }
+    totalRecords
+  }
+}
+
+# 其他入库费用单: 提交审核
+mutation submitOtherInBill($input: SubmitOtherInBillInput!) {
+  submitOtherInBill(input: $input)
+}
+
+# 其他入库费用单: 修改订单
+mutation updateOtherInBillInfo($input: UpdateOtherInBillInfoInput!) {
+  updateOtherInBillInfo(input: $input)
+}
+
+# 费用单操作(接入费用模板): 采购费用单修改果品供应商信息
+mutation updateBillSupplier(
+  $updateBillSupplierInput: UpdateBillSupplierInput!
+) {
+  updateBillSupplier(updateBillSupplierInput: $updateBillSupplierInput)
+}
+
+# 其他出库费用单: 修改订单
+mutation updateOtherOutBillInfo($input: UpdateOtherOutBillInfoInput!) {
+  updateOtherOutBillInfo(input: $input)
+}
+
+#  费用单操作(接入费用模板): 修改信息
+mutation updateBillMainInfo($updateBillMainInfoInput: UpdateBillMainInfoInput) {
+  updateBillMainInfo(updateBillMainInfoInput: $updateBillMainInfoInput)
+}

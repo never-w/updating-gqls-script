@@ -1,0 +1,208 @@
+# 生产sop任务: 状态查询
+query countPitayaSopTask {
+  countPitayaSopTask
+}
+
+# 生产sop任务: 列表查询
+query pagePitayaSopTask($input: PagePitayaSopTaskInput!, $page: Page!) {
+  pagePitayaSopTask(input: $input, page: $page) {
+    pageCurrent
+    pageSize
+    totalRecords
+    records {
+      createBy {
+        phoneNum
+        userId
+        userName
+      }
+      org {
+        orgId
+        orgName
+      }
+      submitUser {
+        phoneNum
+        userId
+        userName
+      }
+      categoryList {
+        categoryId
+        categoryName
+      }
+      code
+      createTime
+      remark
+      sopDate
+      sopInfo {
+        category {
+          categoryId
+          categoryName
+        }
+        matchedSopList {
+          sopDesc
+          sopId
+          sopName
+        }
+        queryBusinessId
+        sopId
+      }
+      sopTaskId
+      sopTaskStatus
+      sopTaskStatusDesc
+      sopTaskType
+      sopTaskTypeDesc
+      submitTime
+      warehouse {
+        address
+        belongId
+        belongType
+        houseNumber
+        id
+        locationList
+        name
+        orgId
+        remark
+        status
+        typeId
+      }
+    }
+  }
+}
+
+# 库存: 列表查询存在库存的品类
+query listExistBatchCategory($input: ListExistBatchCategoryInput!) {
+  listExistBatchCategory(input: $input) {
+    categoryId
+    categoryName
+  }
+}
+
+# 生产sop任务: 创建质检任务
+mutation createPitayaSopTask($input: CreatePitayaSopTaskInput!) {
+  createPitayaSopTask(input: $input)
+}
+
+# 生产sop任务: 详情
+query pitayaSopTask($input: GetPitayaSopTaskInput!) {
+  pitayaSopTask(input: $input) {
+    createBy {
+      phoneNum
+      userId
+      userName
+    }
+    org {
+      orgId
+      orgName
+    }
+    submitUser {
+      phoneNum
+      userId
+      userName
+    }
+    categoryList {
+      categoryId
+      categoryName
+    }
+    code
+    createTime
+    remark
+    sopDate
+    sopInfo {
+      category {
+        categoryId
+        categoryName
+      }
+      matchedSopList {
+        sopDesc
+        sopId
+        sopName
+      }
+      queryBusinessId
+      sopId
+    }
+    sopTaskId
+    sopTaskStatus
+    sopTaskStatusDesc
+    sopTaskType
+    sopTaskTypeDesc
+    submitTime
+    warehouse {
+      address
+      belongId
+      belongType
+      houseNumber
+      id
+      locationList
+      name
+      orgId
+      remark
+      status
+      typeId
+    }
+  }
+}
+
+# 生产sop任务: 提交质检任务
+mutation submitPitayaSopTask($input: OperatePitayaSopTaskInput!) {
+  submitPitayaSopTask(input: $input)
+}
+
+# 获取sop或答案列表
+query getSopOrResults($input: [GetSopOrResultInput]) {
+  getSopOrResults(input: $input) {
+    category {
+      categoryName
+      id
+    }
+    enabled
+    enabledName
+    sopCheckItems {
+      enabled
+      enabledName
+      inputTextRule
+      isRemark
+      name
+      nameLocale
+      options {
+        isRemark
+        name
+        nameLocale
+        remarkRequired
+        remarks
+        sort
+        value
+      }
+      remarkRequired
+      remarks
+      required
+      snapshotId
+      sopDetailId
+      sopId
+      sopResult {
+        businessId
+        cacheEnabled
+        checkResult
+        checkResultType
+        createTime
+        fileLink
+        remark
+        sopDetailId
+        sopId
+        sopResultId
+        userId
+      }
+      sort
+      type
+      typeName
+    }
+    sopId
+    templateDesc
+    templateName
+    universal
+    key
+  }
+}
+
+# 生产sop任务: 暂存质检任务
+mutation cachePitayaSopTaskResult($input: OperatePitayaSopTaskInput!) {
+  cachePitayaSopTaskResult(input: $input)
+}

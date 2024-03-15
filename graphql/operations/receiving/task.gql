@@ -1,0 +1,375 @@
+# 国产收货任务: 列表查询
+query pagePitayaDomesticReceiveTask($input: PagePitayaDomesticReceiveTaskInput!, $page: Page!) {
+  pagePitayaDomesticReceiveTask(input: $input, page: $page) {
+    pageCurrent
+    pageSize
+    records {
+      belongOrg {
+        orgId
+        orgName
+      }
+      carNo
+      commodities {
+        commoditySku {
+          categoryId
+          categoryName
+          commodityId
+          commodityName
+          commoditySkuId
+          commoditySkuName
+          commoditySpecOptionId
+          commoditySpecOptionName
+          conversion
+          totalType {
+            unitId
+            unitName
+          }
+          unitType {
+            unitId
+            unitName
+          }
+        }
+        id
+        index
+        markList
+        price
+        priceType {
+          unitId
+          unitName
+        }
+        runCode
+        totalQuantity
+        totalType {
+          unitId
+          unitName
+        }
+        unitQuantity
+        unitType {
+          unitId
+          unitName
+        }
+      }
+      canOperationTask
+      departureDate
+      domesticReceiveTaskId
+      durianBusinessId
+      estimatedArrivalDate
+      matchDate
+      matchSourceName
+      runCode
+      sopList
+      status
+      statusDesc
+      trailerNo
+      transportInfo
+    }
+    totalRecords
+  }
+}
+
+# 国产收货任务: 详情
+query pitayaDomesticReceiveTask($input: GetPitayaDomesticReceiveTaskInput!) {
+  pitayaDomesticReceiveTask(input: $input) {
+    belongOrg {
+      orgId
+      orgName
+    }
+    carNo
+    canOperationTask
+    commodities {
+      commoditySku {
+        categoryId
+        categoryName
+        commodityId
+        commodityName
+        commoditySkuId
+        commoditySkuName
+        commoditySpecOptionId
+        commoditySpecOptionName
+        conversion
+        totalType {
+          unitId
+          unitName
+        }
+        unitType {
+          unitId
+          unitName
+        }
+      }
+      id
+      index
+      markList
+      price
+      priceType {
+        unitId
+        unitName
+      }
+      runCode
+      totalQuantity
+      totalType {
+        unitId
+        unitName
+      }
+      unitQuantity
+      unitType {
+        unitId
+        unitName
+      }
+    }
+    departureDate
+    domesticReceiveTaskId
+    durianBusinessId
+    estimatedArrivalDate
+    matchDate
+    matchSourceName
+    runCode
+    sopList
+    status
+    statusDesc
+    trailerNo
+    transportInfo
+  }
+}
+
+# 国产收货任务: 完成收货
+mutation completePitayaDomesticReceiveTask($input: CompletePitayaDomesticReceiveTaskInput!) {
+  completePitayaDomesticReceiveTask(input: $input)
+}
+
+# 收货数量查询
+query receivingQuantity($input: ReceiptQuantityInput) {
+  receiptQuantity(input: $input) {
+    finishedTotal
+    totalTodoQuantity
+    waitAcceptanceTotal
+    waitEmptyCabinetTotal
+  }
+  countPitayaDomesticReceiveTask
+  countPitayaReceiveTask
+}
+
+# 生产收货任务: 状态查询
+query countPitayaReceiveTask {
+  countPitayaReceiveTask
+}
+
+# 生产收货任务: 列表查询
+query pagePitayaReceiveTask($input: PagePitayaReceiveTaskInput!, $page: Page!) {
+  pagePitayaReceiveTask(input: $input, page: $page) {
+    pageCurrent
+    pageSize
+    totalRecords
+    records {
+      belongOrg {
+        orgId
+        orgName
+      }
+      saleUser {
+        phoneNum
+        userId
+        userName
+      }
+      supplier {
+        supplierId
+        supplierName
+      }
+      canOperationTask
+      categoryList {
+        categoryId
+        categoryName
+      }
+      commodities {
+        commoditySku {
+          totalType {
+            unitId
+            unitName
+          }
+          unitType {
+            unitId
+            unitName
+          }
+          categoryId
+          categoryName
+          commodityId
+          commodityName
+          commoditySkuId
+          commoditySkuName
+          commoditySpecOptionId
+          commoditySpecOptionName
+          conversion
+        }
+        priceType {
+          unitId
+          unitName
+        }
+        totalType {
+          unitId
+          unitName
+        }
+        unitType {
+          unitId
+          unitName
+        }
+        id
+        index
+        markList
+        price
+        runCode
+        totalQuantity
+        unitQuantity
+      }
+      id
+      purchaseCode
+      purchaseDate
+      purchaseId
+      receiveTaskStatus
+      runCode
+      saleNote
+      sopList
+      sopType
+      sopTypeDesc
+      completeUser {
+        phoneNum
+        userId
+        userName
+      }
+      org {
+        orgId
+        orgName
+      }
+      saleOrg {
+        orgId
+        orgName
+      }
+      carNo
+      completeDate
+      driverPhone
+      matchedSopList {
+        sopDesc
+        sopId
+        sopName
+      }
+      saleOrderCode
+      receiveTaskStatusDesc
+    }
+  }
+}
+
+# 生产收货任务: 详情
+query pitayaReceiveTask($input: GetPitayaReceiveTaskInput!) {
+  pitayaReceiveTask(input: $input) {
+    belongOrg {
+      orgId
+      orgName
+    }
+    completeUser {
+      phoneNum
+      userId
+      userName
+    }
+    org {
+      orgId
+      orgName
+    }
+    saleOrg {
+      orgId
+      orgName
+    }
+    saleUser {
+      phoneNum
+      userId
+      userName
+    }
+    supplier {
+      supplierId
+      supplierName
+    }
+    canOperationTask
+    carNo
+    categoryList {
+      categoryId
+      categoryName
+    }
+    commodities {
+      commoditySku {
+        totalType {
+          unitId
+          unitName
+        }
+        unitType {
+          unitId
+          unitName
+        }
+        categoryId
+        categoryName
+        commodityId
+        commodityName
+        commoditySkuId
+        commoditySkuName
+        commoditySpecOptionId
+        commoditySpecOptionName
+        conversion
+      }
+      priceType {
+        unitId
+        unitName
+      }
+      totalType {
+        unitId
+        unitName
+      }
+      unitType {
+        unitId
+        unitName
+      }
+      id
+      index
+      markList
+      price
+      runCode
+      totalQuantity
+      unitQuantity
+    }
+    completeDate
+    driverPhone
+    id
+    matchedSopList {
+      sopDesc
+      sopId
+      sopName
+    }
+    purchaseCode
+    purchaseDate
+    purchaseId
+    receiveTaskStatus
+    runCode
+    saleNote
+    saleOrderCode
+    sopList
+    sopType
+    sopTypeDesc
+    fileInfoList {
+      accessType
+      contentType
+      createTime
+      fileUrl
+      id
+      name
+      size
+      tags
+      updateTime
+    }
+    fileUpdateTime
+    receiveTaskStatusDesc
+  }
+}
+
+# 生产收货任务: 完成收货
+mutation completePitayaReceiveTask($input: CompletePitayaReceiveTaskInput!) {
+  completePitayaReceiveTask(input: $input)
+}
+
+# 生产收货任务: 修改答案
+mutation updatePitayaReceiveTaskResult($input: UpdatePitayaReceiveTaskResultInput!) {
+  updatePitayaReceiveTaskResult(input: $input)
+}

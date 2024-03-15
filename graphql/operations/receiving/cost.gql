@@ -1,0 +1,159 @@
+# 销地收货费用: 查询销售收货费用（pitaya）
+query pageReceiveBill($page: Page, $pageReceiveBillInput: PageReceiveBillInput) {
+  pageReceiveBill(page: $page, pageReceiveBillInput: $pageReceiveBillInput) {
+    pageCurrent
+    pageSize
+    records {
+      belongOrgName
+      billMainCode
+      billMainId
+      billStatus
+      cabinetBatchCode
+      cabinetCode
+      categoryName
+      createTime
+      receiveUser
+      statusNote
+      trailerNo
+      billStatusDesc
+      plateNo
+      matchSourceName
+      billMainType
+      billMainTypeDesc
+      purchaseCode
+    }
+    totalRecords
+  }
+}
+
+# 收货费用单: 查询收货费用详情
+query getReceiveBill($input: GetReceiveBillInput) {
+  getReceiveBill(input: $input) {
+    belongOrg {
+      orgId
+      orgName
+    }
+    billDetailsList {
+      billCostData
+      billDetailId
+      billMainId
+      businessItemValue
+      costAmount
+      costId
+      costName
+      dictItemId
+      note
+      ruleCode
+      ruleId
+      showField
+      supplier {
+        supplierId
+        supplierName
+      }
+    }
+    billFreightResp {
+      billFreightCode
+      billType
+      totalAmount
+    }
+    billMainCode
+    billMainId
+    billPaymentResp {
+      billCode
+      billPaymentFeeItemList {
+        batchId
+        commoditySku {
+          categoryId
+          categoryName
+          commodityId
+          commodityName
+          commoditySkuId
+          commoditySkuName
+          commoditySpecOptionId
+          commoditySpecOptionName
+          conversion
+          totalType {
+            unitId
+            unitName
+          }
+          unitType {
+            unitId
+            unitName
+          }
+        }
+        totalQuantity
+        totalType {
+          unitId
+          unitName
+        }
+        unitQuantity
+        unitType {
+          unitId
+          unitName
+        }
+        amount
+        markList
+        priceType {
+          unitId
+          unitName
+        }
+        unitPrice
+      }
+      supplier {
+        supplierId
+        supplierName
+      }
+    }
+    billStatus
+    billStatusDesc
+    billTemplateId
+    businessId
+    commodityType
+    commodityTypeName
+    createBy {
+      phoneNum
+      userId
+      userName
+    }
+    createTime
+    customer {
+      customerId
+      customerName
+      customerType
+    }
+    note
+    rejectInfo
+    tempCode
+    transportInfo {
+      cabinetBatchCode
+      cabinetCode
+      carNo
+      trailerNo
+      matchSourceName
+      purchaseCode
+    }
+    billMainType
+    billMainTypeDesc
+    billOperationLogPayload {
+      user {
+        phoneNum
+        userId
+        userName
+      }
+      createTime
+      endStatus
+      endStatusDesc
+      note
+      startStatus
+      startStatusDesc
+    }
+  }
+}
+
+mutation updateReceiveBillFreight($input: UpdateReceiveBillFreightInput) {
+  updateReceiveBillFreight(input: $input)
+}
+
+mutation changeBillStatus($input: ChangeBillStatusInput) {
+  changeBillStatus(input: $input)
+}

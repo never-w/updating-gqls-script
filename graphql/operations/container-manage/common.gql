@@ -1,0 +1,350 @@
+query getFilter($input: FilterTypeEnum) {
+  getFilter(input: $input) {
+    label
+    value
+    count
+    country
+    children {
+      label
+      value
+      count
+      country
+      desc
+      disabled
+    }
+    desc
+    disabled
+  }
+}
+
+query getIFrameUrl($input: ID!) {
+  getIFrameUrl(input: $input)
+}
+
+query planCommodityDetail($input: PlanCommodityDetailInput) {
+  planCommodityDetail(input: $input) {
+    actualQuantity
+    commodityTime {
+      deliverTime
+      pickingTime
+      show
+      showSuggestSalesTime
+      suggestSalesTime
+    }
+    items {
+      actualQuantity
+      columns {
+        align
+        dataIndex
+        summing
+        title
+      }
+      id
+      records
+      sampleQuantity
+      title
+      totalGrossWeight
+      totalImportAmount
+      totalNetWeight
+      totalQuantity
+    }
+    labels {
+      files {
+        externalInfo {
+          watermarkText
+        }
+        fileId
+        fileUploadTime
+        fileUrl
+        filename
+      }
+      orchardNo
+      packagePlantNo
+    }
+    sampleQuantity
+    tags {
+      canDeleted
+      createBy
+      createTime
+      createUserName
+      enabled
+      id
+      meaning
+      name
+      planId
+      remark
+      styleColor
+      tagBelong
+      tagId
+      type
+    }
+    taskId
+    totalQuantity
+    type
+  }
+}
+
+mutation commitSopAnswer($input: SopCommitInput) {
+  commitSopAnswer(input: $input)
+}
+
+query getSopQuestion($input: SopGetInput) {
+  getSopQuestion(input: $input) {
+    finishTime
+    results {
+      answer {
+        answer
+        files {
+          externalInfo {
+            watermarkText
+          }
+          fileId
+          fileUploadTime
+          fileUrl
+          filename
+        }
+        remark
+        sopDetailId
+      }
+      checkName
+      checkResultType
+      inputTextRule
+      isRemark
+      nameLocale
+      options {
+        isRemark
+        name
+        remarkRequired
+        sopDetailOptionId
+        sort
+        value
+      }
+      remarkRequired
+      remarks
+      sopDetailId
+      sort
+    }
+    sopDesc
+    sopId
+    sopName
+  }
+}
+
+mutation modifySopAnswer($input: SopModifyInput) {
+  modifySopAnswer(input: $input)
+}
+
+# mutation customsSopReset($sopId: ID) {
+#  customsSopReset(sopId: $sopId)
+# }
+
+query operationStandards($standardType: OperationStandardType) {
+  operationStandards(standardType: $standardType)
+}
+
+query planTags($planId: ID) {
+  planTags(planId: $planId) {
+    canDeleted
+    createBy
+    createTime
+    createUserName
+    enabled
+    id
+    meaning
+    name
+    planId
+    remark
+    styleColor
+    tagBelong
+    tagId
+    type
+  }
+}
+
+query getSopAnswer($sopId: ID) {
+  getSopAnswer(sopId: $sopId) {
+    finishTime
+    results {
+      answer {
+        answer
+        files {
+          externalInfo {
+            watermarkText
+          }
+          fileId
+          fileUploadTime
+          fileUrl
+          filename
+        }
+        remark
+        sopDetailId
+      }
+      checkName
+      checkResultType
+      inputTextRule
+      isRemark
+      nameLocale
+      options {
+        isRemark
+        name
+        remarkRequired
+        sopDetailOptionId
+        sort
+        value
+      }
+      remarkRequired
+      remarks
+      sopDetailId
+      sort
+    }
+    sopDesc
+    sopId
+    sopName
+  }
+}
+
+query tags($tagName: String) {
+  tags(tagName: $tagName) {
+    children {
+      children {
+        disabled
+        key
+        styleColor
+        title
+        value
+      }
+      disabled
+      key
+      styleColor
+      title
+      value
+    }
+    disabled
+    key
+    styleColor
+    title
+    value
+  }
+}
+
+query singleDataPageApp($input: SingleDataPageAppInput) {
+  singleDataPageApp(input: $input) {
+    pageCurrent
+    pageSize
+    records {
+      cabinetBatchCode
+      cabinetCode
+      categoryId
+      categoryName
+      compositeState
+      customerId
+      customerName
+      disinfectionReportList {
+        externalInfo {
+          watermarkText
+        }
+        fileId
+        fileUploadTime
+        fileUrl
+        filename
+      }
+      effectiveDate
+      entryCustomsSupplier
+      entryCustomsSupplierId
+      entryPort
+      entryPortId
+      factoryDeliverTime
+      id
+      importDeclarationList {
+        externalInfo {
+          watermarkText
+        }
+        fileId
+        fileUploadTime
+        fileUrl
+        filename
+      }
+      inspectionQuarantineCertificateList {
+        externalInfo {
+          watermarkText
+        }
+        fileId
+        fileUploadTime
+        fileUrl
+        filename
+      }
+      mergeFile {
+        externalInfo {
+          watermarkText
+        }
+        fileId
+        fileUploadTime
+        fileUrl
+        filename
+      }
+      nucleicAcidReportList {
+        externalInfo {
+          watermarkText
+        }
+        fileId
+        fileUploadTime
+        fileUrl
+        filename
+      }
+      pictureUrl
+      progress
+      shipmentTime
+    }
+    totalRecords
+  }
+}
+
+mutation confirmEmptyCabinet($input: ConfirmEmptyCabinetInput) {
+  confirmEmptyCabinet(input: $input)
+}
+
+mutation confirmReceipt($input: ReceiptInput) {
+  confirmReceipt(input: $input)
+}
+
+query emptyCabinetBillPage($input: EmptyCabinetBillPageInput) {
+  emptyCabinetBillPage(input: $input) {
+    pageCurrent
+    pageSize
+    records {
+      cabinetBatchCode
+      cabinetCode
+      categoryName
+      importPortName
+      pictureUrl
+      receiptDate
+      receiptTaskId
+      state
+      stateDesc
+      transportInfo {
+        driverName
+        driverPhone
+        plateNo
+        shipmentDate
+        trailerNo
+      }
+    }
+    totalRecords
+  }
+}
+
+query emptyCabinetBillQuantity($input: EmptyCabinetBillInput) {
+  emptyCabinetBillQuantity(input: $input) {
+    waitCommitTotal
+    waitReviewTotal
+    waitTodoTotal
+  }
+}
+
+mutation saveAndCommitBill($input: BillSaveCommitBillInput) {
+  saveAndCommitBill(input: $input)
+}
+
+mutation withdrawBill($billBusinessId: ID) {
+  withdrawBill(billBusinessId: $billBusinessId)
+}

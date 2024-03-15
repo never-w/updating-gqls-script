@@ -1,0 +1,12 @@
+{
+  "name": "updating-gqls-script",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@fruits-chain/qiufen-pro-helpers": "^0.1.5",
+    "@types/glob": "^8.1.0",
+    "glob": "^10.3.10",
+    "graphql": "^16.8.1"
+  }
+}

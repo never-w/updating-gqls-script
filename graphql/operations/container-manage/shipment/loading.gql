@@ -1,0 +1,137 @@
+# 装货:装柜详情-回显
+query loadCabinetDetail($taskId: ID) {
+  loadCabinetDetail(taskId: $taskId) {
+    planId
+    taskId
+    planCode
+    pickingTime
+    suggestSalesTime
+    deliverTime
+    categoryId
+    categoryName
+    pictureUrl
+    cabinetCodeList
+    cabinetBatchCodeList
+    sopIdList
+    totalQuantity
+    state
+    labelList {
+      files {
+        fileId
+        filename
+        fileUrl
+        fileUploadTime
+        externalInfo {
+          watermarkText
+        }
+      }
+      orchardNo
+      packagePlantNo
+    }
+    tagList {
+      id
+      remark
+      tagId
+      planId
+      type
+      name
+      meaning
+      styleColor
+      enabled
+      canDeleted
+      tagBelong
+      createTime
+      createBy
+      createUserName
+    }
+    detail {
+      factory {
+        label
+        value
+      }
+      goodsList {
+        spu {
+          label
+          value
+          specsList {
+            value
+            name
+            itemList {
+              name
+              id
+            }
+          }
+        }
+        sku {
+          specIdsList
+          skuName
+          skuId
+          specsList {
+            name
+            id
+            specName
+            specId
+          }
+        }
+        count
+      }
+    }
+    transportMethod
+    contractCode
+    thermometerOrderId
+    thermometerOrderInfo {
+      thermometerOrderId
+      bindThermometerState
+      currentAlarmLogList {
+        id
+        alarmType
+        alarmColor
+        alarmTextColor
+        alarmDesc
+        alarmValue
+        startTime
+        endTime
+        durationTime
+        startAddress
+        endAddress
+        alarmState
+      }
+      cabinetInfo {
+        deviceId
+        cabinetId
+        cabinetCode
+        originPlanCode
+        salesPlanCode
+      }
+      orderInfo {
+        thermometerStartTime
+        thermometerEndTime
+        firstAlarmTime
+        alarmState
+        alarmLogList {
+          id
+          alarmType
+          alarmColor
+          alarmTextColor
+          alarmDesc
+          alarmValue
+          startTime
+          endTime
+          durationTime
+          startAddress
+          endAddress
+          alarmState
+        }
+      }
+      deviceInfo {
+        thermometerCode
+        lastReportTime
+        firstReportTime
+        temperature
+        currentAddress
+        lng
+        lat
+      }
+    }
+  }
+}

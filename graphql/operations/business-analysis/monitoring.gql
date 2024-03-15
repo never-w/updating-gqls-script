@@ -1,0 +1,212 @@
+# 生产管控: 生产管控查询接口
+query getProduction($input: GetProductionInput) {
+  getProduction(input: $input) {
+    taskAnalysis {
+      totalTask
+      channelStatistics {
+        channelName
+        expectNum
+        completed
+        undone
+      }
+    }
+    planAnalysis {
+      totalPlan
+      productionSale
+      completedSale
+      undoneSale
+      productionStock
+      completedStock
+      undoneStock
+      productionSplit
+      completedSplit
+      undoneSplit
+    }
+    commodityAnalysis {
+      commoditySkuTotal
+      completed
+      undone
+      channelStatistics {
+        channelName
+        expectNum
+        completed
+        undone
+        expectSale
+      }
+      expectProductionTotal
+      expectSaleTotal
+    }
+  }
+}
+
+# 生产管控: 组长情况
+query listLeaderCondition($input: GetProductionInput) {
+  listLeaderCondition(input: $input) {
+    leaderName
+    totalTask
+    completedTask
+    undoneTask
+    orderQuantity
+    completedOrder
+    undoneOrder
+  }
+}
+
+# 生产管控: 库管情况
+query listKeeperCondition($input: GetProductionInput) {
+  listKeeperCondition(input: $input) {
+    keeperName
+    inStockTotal
+    inStockOperate {
+      rawMaterial
+      assist
+      product
+      halfProduct
+      defective
+      return
+      box
+    }
+    outStockTotal
+    outStockOperate {
+      rawMaterial
+      assist
+      product
+      halfProduct
+      defective
+      return
+      box
+    }
+  }
+}
+
+# 生产管控列表页接口
+query pageMonitor($input: PageMonitorInput, $page: Page) {
+  pageMonitor(input: $input, page: $page) {
+    records {
+      customerName
+      customerDistributionName
+      taskStatus
+      taskStatusName
+      createType
+      createTypeName
+      productionCommodity
+      commodityNum
+      commodityName
+      createUserName
+      completedNum
+      expectNum
+      leaderName
+      line
+      workTime
+      taskId
+      numberActual
+      tempWorkerQuantity
+      productionCommodityPayload {
+        commodityTypeName
+        commodityName
+        commoditySpecOptionName
+        completedNum
+        expectNum
+      }
+      belongOrg {
+        orgId
+        orgName
+      }
+    }
+    pageCurrent
+    pageSize
+    totalRecords
+  }
+}
+
+# 生产管控详情页接口
+query getMonitorDetail($input: MonitorDetailInput) {
+  getMonitorDetail(input: $input) {
+    customerName
+    customerDistributionName
+    taskStatus
+    taskStatusName
+    createType
+    createTypeName
+    productionCommodity
+    completedNum
+    expectNum
+    leaderName
+    line
+    workTime
+    taskId
+    numberActual
+    tempWorkerQuantity
+    commodityNum
+    commodityName
+    createUserName
+    productionCommodityPayload {
+      planQuantity
+      commodityType
+      commodityTypeName
+      commodityName
+      commoditySpecOptionName
+      completedNum
+      expectNum
+    }
+    pickDetail {
+      commodityTypeId
+      commodityTypeName
+      commodityName
+      commodityTextDescription
+      applyUnitQuantity
+      actualUnitQuantity
+      unitType
+      unitTypeName
+      actualTotalQuantity
+      applyTotalQuantity
+      totalType
+      totalTypeName
+    }
+    inStockDetail {
+      commodityTypeId
+      commodityTypeName
+      commodityName
+      commodityTextDescription
+      applyUnitQuantity
+      actualUnitQuantity
+      unitType
+      unitTypeName
+      actualTotalQuantity
+      applyTotalQuantity
+      totalType
+      totalTypeName
+    }
+    returnDetail {
+      commodityTypeId
+      commodityTypeName
+      commodityName
+      commodityTextDescription
+      applyUnitQuantity
+      actualUnitQuantity
+      unitType
+      unitTypeName
+      actualTotalQuantity
+      applyTotalQuantity
+      totalType
+      totalTypeName
+    }
+    taskStockOverview {
+      acquiredStock
+      diffStock
+      productionStock
+      returnedStock
+      taskId
+    }
+  }
+}
+
+# 生产管控列表页头部状态数量接口
+query monitorStatusOption($input: MonitorStatusInput) {
+  monitorStatusOption(input: $input) {
+    toBeProduced
+    inProduction
+    completed
+    paused
+  }
+}

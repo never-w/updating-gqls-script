@@ -1,0 +1,126 @@
+# 选择商品（其他、报损出库）
+query commodityStockBatches($listCommodityStockBatchInput: ListCommodityStockBatchInput) {
+  commodityStockBatches(
+    listCommodityStockBatchInput: $listCommodityStockBatchInput
+  ) {
+    batchId
+    batchCode
+    categoryId
+    inStockTime
+    commoditySku {
+      availableSkuQuantity {
+        businessUnit {
+          unitId
+          unitName
+        }
+        unit {
+          unitId
+          unitName
+        }
+        conversion
+      }
+      baseUnit {
+        unitId
+        unitName
+      }
+      categoryId
+      categoryName
+      commodityId
+      commodityName
+      commoditySkuId
+      commoditySkuName
+      commoditySpecOptionId
+      commoditySpecOptionName
+    }
+    customer {
+      customerId
+      customerName
+      customerType
+      lastLevelId
+      lastLevelName
+    }
+    unit {
+      unitId
+      unitName
+    }
+    quantity
+    quantityItem {
+      unit {
+        unitId
+        unitName
+      }
+      quantity
+    }
+  }
+}
+
+# 选择商品 次品销售
+query skuStocks($stockSkuInput: ListSkuStockInput) {
+  skuStocks(stockSkuInput: $stockSkuInput) {
+    commoditySku {
+      categoryId
+      categoryName
+      commodityId
+      commodityName
+      commoditySkuId
+      commoditySkuName
+      commoditySpecOptionId
+      commoditySpecOptionName
+      availableSkuQuantity {
+        businessUnit {
+          unitId
+          unitName
+        }
+        unit {
+          unitId
+          unitName
+        }
+        conversion
+      }
+      baseUnit {
+        unitId
+        unitName
+      }
+    }
+    warehouse {
+      warehouseId
+      warehouseName
+    }
+    unit {
+      unitId
+      unitName
+    }
+    dynamicQuantity {
+      unit {
+        unitId
+        unitName
+      }
+      quantity
+    }
+    quantity
+  }
+}
+
+# 其他出入库: 获取日志记录
+query listFlowLog($input: ListFlowLogInput) {
+  listFlowLog(input: $input) {
+    createBy {
+      phoneNum
+      userId
+      userName
+    }
+    createTime
+    flowId
+    note
+    type
+    typeDesc
+  }
+}
+
+# 其他出入库: 状态数量查询
+query countApplyOrderStatus($input: CountApplyOrderStatusInput) {
+  countApplyOrderStatus(input: $input) {
+    count
+    status
+  }
+}

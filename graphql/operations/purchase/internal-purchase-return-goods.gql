@@ -1,0 +1,483 @@
+# 内部采购退货: 状态-数量角标
+query countInternalPurchaseReturn($countInternalPurchaseReturnInput: CountInternalPurchaseReturnInput) {
+  countInternalPurchaseReturn(
+    countInternalPurchaseReturnInput: $countInternalPurchaseReturnInput
+  ) {
+    count
+    status
+  }
+}
+
+# 内部采购退货: 详情
+query detailInternalPurchaseReturn($detailInternalPurchaseReturnInput: DetailInternalPurchaseReturnInput) {
+  detailInternalPurchaseReturn(
+    detailInternalPurchaseReturnInput: $detailInternalPurchaseReturnInput
+  ) {
+    extendCommodityList {
+      batchInfo {
+        customer {
+          customerId
+          customerName
+          customerType
+          lastLevelId
+          lastLevelName
+        }
+        warehouse {
+          warehouseId
+          warehouseName
+        }
+        batchCode
+        batchId
+        commodityTypeId
+        commodityTypeName
+        createTime
+        totalQuantity
+        unitQuantity
+      }
+      commoditySku {
+        totalType {
+          unitId
+          unitName
+        }
+        unitType {
+          unitId
+          unitName
+        }
+        categoryId
+        categoryName
+        commodityId
+        commodityName
+        commoditySkuId
+        commoditySkuName
+        commoditySpecOptionId
+        commoditySpecOptionName
+        conversion
+      }
+      canApplyStock
+      canOutStockQuantity {
+        totalQuantity
+        unitQuantity
+      }
+      canReturnQuantity {
+        totalQuantity
+        unitQuantity
+      }
+      commodityId
+      commodityType
+      id
+      inStockNetQuantity {
+        totalType {
+          unitId
+          unitName
+        }
+        unitType {
+          unitId
+          unitName
+        }
+        totalQuantity
+        unitQuantity
+      }
+      index
+      mark
+      markName
+      outStockNetQuantity {
+        totalType {
+          unitId
+          unitName
+        }
+        unitType {
+          unitId
+          unitName
+        }
+        totalQuantity
+        unitQuantity
+      }
+      purchaseInfo {
+        priceType {
+          unitId
+          unitName
+        }
+        totalType {
+          unitId
+          unitName
+        }
+        unitType {
+          unitId
+          unitName
+        }
+        amount
+        price
+        totalQuantity
+        unitQuantity
+      }
+      returnQuantityAndPriceInfo {
+        priceType {
+          unitId
+          unitName
+        }
+        totalType {
+          unitId
+          unitName
+        }
+        unitType {
+          unitId
+          unitName
+        }
+        amount
+        price
+        totalQuantity
+        unitQuantity
+      }
+      sourceBatchId
+    }
+    extendMainInfo {
+      createBy {
+        phoneNum
+        userId
+        userName
+      }
+      createTime
+      extendCode
+      extendId
+      extendStatus
+      extendStatusDesc
+      extendSubType
+      extendSubTypeDesc
+      extendType
+      extendTypeDesc
+      remark
+    }
+    purchaseMainInfo {
+      belongOrg {
+        orgId
+        orgName
+      }
+      createBy {
+        phoneNum
+        userId
+        userName
+      }
+      customer {
+        customerId
+        customerName
+        customerType
+        lastLevelId
+        lastLevelName
+      }
+      supplier {
+        supplierId
+        supplierName
+      }
+      user {
+        phoneNum
+        userId
+        userName
+      }
+      warehouse {
+        warehouseId
+        warehouseName
+      }
+      code
+      createTime
+      id
+      manualCode
+      note
+      purchaseDate
+      purchaseSubType
+      purchaseSubTypeName
+      runCode
+      statusEnum
+      statusEnumDesc
+      commodityType
+      commodityTypeName
+    }
+    billDetailInfoDetailPayloadList {
+      billDetailAmount
+      billDetailsList {
+        supplier {
+          supplierId
+          supplierName
+        }
+        billCostData
+        billDetailId
+        billMainId
+        businessItemValue
+        costAmount
+        costId
+        costName
+        dictItemId
+        note
+        paymentType
+        ruleCode
+        ruleId
+        showField
+      }
+      billMainId
+      billTemplateId
+    }
+  }
+}
+
+# 内部采购退货: 选择商品
+query listInternalPurchaseReturnCommodity($listInternalPurchaseCommodityInput: ListInternalPurchaseCommodityInput) {
+  listInternalPurchaseReturnCommodity(
+    listInternalPurchaseCommodityInput: $listInternalPurchaseCommodityInput
+  ) {
+    batchInfo {
+      customer {
+        customerId
+        customerName
+        customerType
+        lastLevelId
+        lastLevelName
+      }
+      warehouse {
+        warehouseId
+        warehouseName
+      }
+      batchCode
+      batchId
+      commodityTypeId
+      commodityTypeName
+      createTime
+      totalQuantity
+      unitQuantity
+    }
+    commoditySku {
+      totalType {
+        unitId
+        unitName
+      }
+      unitType {
+        unitId
+        unitName
+      }
+      categoryId
+      categoryName
+      commodityId
+      commodityName
+      commoditySkuId
+      commoditySkuName
+      commoditySpecOptionId
+      commoditySpecOptionName
+      conversion
+    }
+    canApplyStock
+    canOutStockQuantity {
+      totalQuantity
+      unitQuantity
+    }
+    canReturnQuantity {
+      totalQuantity
+      unitQuantity
+    }
+    commodityId
+    commodityType
+    id
+    inStockNetQuantity {
+      totalType {
+        unitId
+        unitName
+      }
+      unitType {
+        unitId
+        unitName
+      }
+      totalQuantity
+      unitQuantity
+    }
+    index
+    mark
+    markName
+    outStockNetQuantity {
+      totalType {
+        unitId
+        unitName
+      }
+      unitType {
+        unitId
+        unitName
+      }
+      totalQuantity
+      unitQuantity
+    }
+    purchaseInfo {
+      priceType {
+        unitId
+        unitName
+      }
+      totalType {
+        unitId
+        unitName
+      }
+      unitType {
+        unitId
+        unitName
+      }
+      amount
+      price
+      totalQuantity
+      unitQuantity
+    }
+    returnQuantityAndPriceInfo {
+      priceType {
+        unitId
+        unitName
+      }
+      totalType {
+        unitId
+        unitName
+      }
+      unitType {
+        unitId
+        unitName
+      }
+      amount
+      price
+      totalQuantity
+      unitQuantity
+    }
+    sourceBatchId
+  }
+}
+
+# 内部采购退货: 分页列表
+query pageInternalPurchaseReturn($page: Page, $pageExpandOrderInput: PageExpandOrderInput) {
+  pageInternalPurchaseReturn(
+    page: $page
+    pageExpandOrderInput: $pageExpandOrderInput
+  ) {
+    pageCurrent
+    pageSize
+    records {
+      extendCommodityList {
+        commoditySku {
+          totalType {
+            unitId
+            unitName
+          }
+          unitType {
+            unitId
+            unitName
+          }
+          categoryId
+          categoryName
+          commodityId
+          commodityName
+          commoditySkuId
+          commoditySkuName
+          commoditySpecOptionId
+          commoditySpecOptionName
+          conversion
+        }
+        batchId
+        id
+        index
+        quantityAndPriceInfo {
+          priceType {
+            unitId
+            unitName
+          }
+          totalType {
+            unitId
+            unitName
+          }
+          unitType {
+            unitId
+            unitName
+          }
+          price
+          totalQuantity
+          unitQuantity
+        }
+      }
+      extendMainInfo {
+        createBy {
+          phoneNum
+          userId
+          userName
+        }
+        createTime
+        extendCode
+        extendId
+        extendStatus
+        extendStatusDesc
+        extendSubType
+        extendSubTypeDesc
+        extendType
+        extendTypeDesc
+        remark
+      }
+      purchaseMainInfo {
+        belongOrg {
+          orgId
+          orgName
+        }
+        createBy {
+          phoneNum
+          userId
+          userName
+        }
+        customer {
+          customerId
+          customerName
+          customerType
+          lastLevelId
+          lastLevelName
+        }
+        supplier {
+          supplierId
+          supplierName
+        }
+        user {
+          phoneNum
+          userId
+          userName
+        }
+        warehouse {
+          warehouseId
+          warehouseName
+        }
+        code
+        createTime
+        id
+        manualCode
+        note
+        purchaseDate
+        purchaseSubType
+        purchaseSubTypeName
+        runCode
+        statusEnum
+        statusEnumDesc
+      }
+    }
+    totalRecords
+  }
+}
+
+# 内部采购退货:申请增加商品批次库存量
+mutation addCommodityBatchStock($addCommodityStockInput: AddCommodityStockInput) {
+  addCommodityBatchStock(addCommodityStockInput: $addCommodityStockInput)
+}
+
+# 内部采购退货: 新增
+mutation createInternalPurchaseReturn($createInternalPurchaseReturnInput: CreateInternalPurchaseReturnInput) {
+  createInternalPurchaseReturn(
+    createInternalPurchaseReturnInput: $createInternalPurchaseReturnInput
+  )
+}
+
+# 内部采购退货: 修改
+mutation updateInternalPurchaseReturn($createInternalPurchaseReturnInput: CreateInternalPurchaseReturnInput, $extOrderId: ID) {
+  updateInternalPurchaseReturn(
+    createInternalPurchaseReturnInput: $createInternalPurchaseReturnInput
+    extOrderId: $extOrderId
+  )
+}
+
+# 内部采购退货: 取消/提交
+mutation changeInternalPurchaseReturnStatus($changeInternalPurchaseReturnStatusInput: ChangeInternalPurchaseReturnStatusInput) {
+  changeInternalPurchaseReturnStatus(
+    changeInternalPurchaseReturnStatusInput: $changeInternalPurchaseReturnStatusInput
+  )
+}

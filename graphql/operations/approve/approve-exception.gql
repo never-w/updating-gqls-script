@@ -1,0 +1,246 @@
+# 异常订单: 分页
+query pageAbnormalOrder(
+  $page: Page
+  $pageAbnormalOrderInput: PageAbnormalOrderInput
+) {
+  pageAbnormalOrder(
+    page: $page
+    pageAbnormalOrderInput: $pageAbnormalOrderInput
+  ) {
+    records {
+      abnormalOrderId
+      abnormalOrderStatus
+      abnormalOrderStatusName
+      orderId
+      orderCode
+      orderType
+      orderTypeName
+      commodityType
+      commodityTypeName
+      customer {
+        customerId
+        customerName
+        customerType
+        lastLevelId
+        lastLevelName
+      }
+      supplier {
+        supplierId
+        supplierName
+      }
+      belongOrg {
+        orgId
+        orgName
+      }
+      remark
+      createBy {
+        userId
+        userName
+        phoneNum
+      }
+      createTime
+      org {
+        orgId
+        orgName
+      }
+      abnormalOrderItemPayload {
+        abnormalOrderItemId
+        abnormalOrderId
+        commoditySku {
+          commoditySkuId
+          commoditySkuName
+          commodityId
+          commodityName
+          commoditySpecOptionId
+          commoditySpecOptionName
+          conversion
+          totalType {
+            unitId
+            unitName
+          }
+          unitType {
+            unitId
+            unitName
+          }
+          categoryId
+          categoryName
+        }
+        applyUnitQuantity
+        applyTotalQuantity
+        auditUnitQuantity
+        auditTotalQuantity
+        surplusTotalQuantity
+        productAndSemiInStockTotalQuantity
+        batchCode
+        batchId
+        applyMark
+        commodityType
+        commodityTypeName
+        reason
+        warehouse {
+          warehouseId
+          warehouseName
+        }
+      }
+      abnormalOrderBasicTypeName
+      interval
+      abnormalOrderTypeName
+      taskId
+      createType
+      abnormalTask {
+        taskId
+        taskCode
+        warehouse {
+          warehouseId
+          warehouseName
+        }
+        belongOrg {
+          orgId
+          orgName
+        }
+        surplusSum
+        productAndSemiSum
+        unit {
+          unitId
+          unitName
+        }
+      }
+      taskCode
+    }
+    pageCurrent
+    pageSize
+    totalRecords
+  }
+}
+
+# 异常订单: 详情
+query abnormalOrder($abnormalOrderInput: AbnormalOrderInput) {
+  abnormalOrder(abnormalOrderInput: $abnormalOrderInput) {
+    abnormalOrderId
+    abnormalOrderStatus
+    abnormalOrderStatusName
+    orderId
+    orderCode
+    orderType
+    orderTypeName
+    commodityTypeName
+    taskCode
+    customer {
+      customerId
+      customerName
+      customerType
+    }
+    supplier {
+      supplierId
+      supplierName
+    }
+    belongOrg {
+      orgId
+      orgName
+    }
+    remark
+    createBy {
+      userId
+      userName
+      phoneNum
+    }
+    createTime
+    org {
+      orgId
+      orgName
+    }
+    abnormalOrderItemPayload {
+      abnormalOrderItemId
+      abnormalOrderId
+      reason
+      commoditySku {
+        commoditySkuId
+        commoditySkuName
+        commodityId
+        commodityName
+        commoditySpecOptionId
+        commoditySpecOptionName
+        conversion
+        totalType {
+          unitId
+          unitName
+        }
+        unitType {
+          unitId
+          unitName
+        }
+        categoryId
+        categoryName
+      }
+      applyUnitQuantity
+      applyTotalQuantity
+      auditUnitQuantity
+      auditTotalQuantity
+      batchCode
+      batchId
+      applyMark
+      commodityType
+      commodityTypeName
+      productAndSemiInStockTotalQuantity
+      surplusTotalQuantity
+      warehouse {
+        warehouseId
+        warehouseName
+      }
+    }
+    abnormalOrderBasicTypeName
+    interval
+    abnormalOrderTypeName
+    abnormalTask {
+      belongOrg {
+        orgId
+        orgName
+      }
+      unit {
+        unitId
+        unitName
+      }
+      warehouse {
+        warehouseId
+        warehouseName
+      }
+      productAndSemiSum
+      surplusSum
+      taskCode
+      taskId
+    }
+    commodityType
+    taskId
+    isBatchOrder
+  }
+}
+
+# 异常订单: 驳回操作
+mutation rejectAbnormalOrder(
+  $rejectAbnormalOrderInput: RejectAbnormalOrderInput
+) {
+  rejectAbnormalOrder(rejectAbnormalOrderInput: $rejectAbnormalOrderInput)
+}
+
+# 异常订单: 分页列表状态数量统计
+query abnormalOrderStatusStatistic(
+  $abnormalOrderStatusStatisticInput: AbnormalOrderStatusStatisticInput
+) {
+  abnormalOrderStatusStatistic(
+    abnormalOrderStatusStatisticInput: $abnormalOrderStatusStatisticInput
+  )
+}
+
+# 异常订单: 生产任务审核通过
+mutation auditAbnormalTaskOrder(
+  $auditAbnormalTaskOrderInput: AuditAbnormalTaskOrderInput
+) {
+  auditAbnormalTaskOrder(
+    auditAbnormalTaskOrderInput: $auditAbnormalTaskOrderInput
+  )
+}
+
+# 异常订单: 审核确认
+mutation auditAbnormalOrder($auditAbnormalOrderInput: AuditAbnormalOrderInput) {
+  auditAbnormalOrder(auditAbnormalOrderInput: $auditAbnormalOrderInput)
+}

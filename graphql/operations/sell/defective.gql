@@ -1,0 +1,383 @@
+# v2.8 次品销售:新增
+mutation createDefectiveSaleOrder(
+  $createDefectiveSaleOrderInput: CreateDefectiveSaleOrderInput
+) {
+  createDefectiveSaleOrder(
+    createDefectiveSaleOrderInput: $createDefectiveSaleOrderInput
+  )
+}
+
+# v2.8 次品销售:列表页
+query pageDefectiveSaleOrder(
+  $pageDefectiveSaleOrder: PageDefectiveSaleOrderInput
+  $page: Page
+) {
+  pageDefectiveSaleOrder(
+    pageDefectiveSaleOrder: $pageDefectiveSaleOrder
+    page: $page
+  ) {
+    records {
+      outOrderId
+      outOrderType
+      outOrderTypeName
+      outOrderCode
+      commodityTypeId
+      commodityTypeName
+      customerType
+      customerTypeName
+      transferId
+      transferType
+      transferOrganizationId
+      transferOrganizationName
+      userId
+      createUserPhone
+      customerId
+      customerName
+      saleTime
+      outOrderStatus
+      outOrderStatusName
+      warehouseId
+      warehouseName
+      createUserName
+      createTime
+      outOrderDescription
+      errorDescription
+      totalPrice
+      commodityList {
+        outOrderItemId
+        outOrderId
+        commodityId
+        commodityName
+        commoditySkuId
+        commoditySpecOptionId
+        skuTextDescription
+        unitQuantity
+        unitType
+        unitTypeName
+        totalQuantity
+        totalType
+        totalTypeName
+        salePrice
+        salePriceType
+        salePriceTypeName
+        maxQuantity
+        planQuantity
+        basketQuantity
+        basketCustomerId
+        basketCustomerName
+        createTime
+        createBy
+        updateTime
+        deleted
+        updateBy
+        waitUnitQuantity
+        waitTotalQuantity
+        completeOutStock
+        commodityBomId
+        unitTotalPrice
+        damageReason
+        batchId
+        batchCode
+        stockUnitPrice
+        stockUnitPriceType
+        stockUnitPriceTypeName
+        stockTotalPrice
+        belongCustomerName
+        photos
+        realQuantity
+        saleTotalPrice
+        inBoundTotalQuantity
+        inBoundUnitQuantity
+        conversion
+        outStockFinishUnitQuantity
+        outStockFinishTotalQuantity
+        belongCustomerId
+        pickingUnitQuantity
+        pickingTotalQuantity
+        commodityStatus
+      }
+      taskCode
+      inOrderId
+      inOrderCode
+      supplierId
+      supplierName
+      customerDistributionId
+      customerDistributionName
+      deliveryFee
+      organizationId
+      organizationName
+      payMethod
+      payMethodDesc
+      saleOrderInfo {
+        outOrderId
+        saleOrderId
+        saleOrderCode
+      }
+      belongOrg {
+        orgId
+        orgName
+      }
+    }
+    pageCurrent
+    pageSize
+    totalRecords
+  }
+}
+# v2.8 次品销售:修改
+mutation updateDefectiveSaleOrder(
+  $updateDefectiveSaleOrderInput: UpdateDefectiveSaleOrderInput
+) {
+  updateDefectiveSaleOrder(
+    updateDefectiveSaleOrderInput: $updateDefectiveSaleOrderInput
+  )
+}
+
+# v2.8 次品销售:详情页
+query defectiveSaleOrder($outOrderInput: OutOrderInput) {
+  outOrder(outOrderInput: $outOrderInput) {
+    outOrderId
+    outOrderType
+    outOrderTypeName
+    outOrderCode
+    commodityTypeId
+    commodityTypeName
+    customerType
+    customerTypeName
+    transferId
+    transferType
+    transferOrganizationId
+    transferOrganizationName
+    userId
+    createUserPhone
+    customerId
+    customerName
+    saleTime
+    outOrderStatus
+    outOrderStatusName
+    warehouseId
+    warehouseName
+    createUserName
+    createTime
+    outOrderDescription
+    errorDescription
+    totalPrice
+    commodityList {
+      outOrderItemId
+      outOrderId
+      commodityId
+      commodityName
+      commoditySkuId
+      commoditySpecOptionId
+      skuTextDescription
+      unitQuantity
+      unitType
+      unitTypeName
+      totalQuantity
+      totalType
+      totalTypeName
+      salePrice
+      salePriceType
+      salePriceTypeName
+      maxQuantity
+      planQuantity
+      basketQuantity
+      basketCustomerId
+      basketCustomerName
+      createTime
+      createBy
+      updateTime
+      deleted
+      updateBy
+      waitUnitQuantity
+      waitTotalQuantity
+      completeOutStock
+      commodityBomId
+      unitTotalPrice
+      damageReason
+      batchId
+      batchCode
+      stockUnitPrice
+      stockUnitPriceType
+      stockUnitPriceTypeName
+      stockTotalPrice
+      belongCustomerName
+      photos
+      realQuantity
+      saleTotalPrice
+      inBoundTotalQuantity
+      inBoundUnitQuantity
+      conversion
+      outStockFinishUnitQuantity
+      outStockFinishTotalQuantity
+      belongCustomerId
+      pickingUnitQuantity
+      pickingTotalQuantity
+      commodityStatus
+      saleOrderInfo {
+        outOrderId
+        saleOrderId
+        saleOrderCode
+      }
+      unitStockQuantity
+      stockQuantity {
+        unitQuantity
+        totalQuantity
+      }
+    }
+    taskCode
+    inOrderId
+    inOrderCode
+    supplierId
+    supplierName
+    customerDistributionId
+    customerDistributionName
+    deliveryFee
+    organizationId
+    organizationName
+    payMethod
+    payMethodDesc
+    saleOrderInfo {
+      outOrderId
+      saleOrderId
+      saleOrderCode
+    }
+    saleIncomeOrder {
+      incomeId
+      incomeStatus
+      incomeStatusName
+      incomeCode
+      sourceId
+      sourceType
+      sourceTypeName
+      warehouse {
+        warehouseId
+        warehouseName
+      }
+      remark
+      rejectReason
+      user {
+        userId
+        userName
+        phoneNum
+      }
+      customer {
+        customerId
+        customerName
+        customerType
+      }
+      createTime
+      commoditiesList {
+        incomeItemId
+        incomeId
+        commoditySku {
+          commoditySkuId
+          commoditySkuName
+          commodityId
+          commodityName
+          commoditySpecOptionId
+          commoditySpecOptionName
+          conversion
+          totalType {
+            unitId
+            unitName
+          }
+          unitType {
+            unitId
+            unitName
+          }
+        }
+        commodityName
+        unitQuantity
+        unitType {
+          unitId
+          unitName
+        }
+        saleMoney
+        photosList
+        outOrderItemId
+        salePrice
+        remark
+        totalQuantity
+        totalType {
+          unitId
+          unitName
+        }
+        batchId
+        batchCode
+        totalSalePrice
+        priceType {
+          unitId
+          unitName
+        }
+      }
+      saleCostOrderItems {
+        saleCostOrderItemId
+        saleCostOrderId
+        outOrderItemId
+        commodity {
+          commoditySkuId
+          commoditySkuName
+          commodityId
+          commodityName
+          commoditySpecOptionId
+          commoditySpecOptionName
+          conversion
+          totalType {
+            unitId
+            unitName
+          }
+          unitType {
+            unitId
+            unitName
+          }
+        }
+        packagingFee
+        materialFee
+      }
+      logs {
+        incomeLogId
+        incomeId
+        type
+        typeText
+        remark
+        createTime
+        user {
+          userId
+          userName
+          phoneNum
+        }
+      }
+      saleCostOrderId
+      functionalField {
+        saleTotalPrice
+
+        saleTotalCost
+      }
+      totalAmount
+      commodityTypeName
+      payMode
+      belongOrg {
+        orgId
+        orgName
+      }
+    }
+    belongOrg {
+      orgId
+      orgName
+    }
+  }
+}
+
+# v2.8 次品销售:状态统计
+query defectiveCountOutOrderStatus(
+  $countOutOrderStatusInput: CountOutOrderStatusInput
+) {
+  countOutOrderStatus(countOutOrderStatusInput: $countOutOrderStatusInput) {
+    toSubmit
+    toAudit
+    producing
+    toOutbound
+    finished
+    rejected
+  }
+}

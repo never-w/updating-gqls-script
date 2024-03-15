@@ -1,0 +1,253 @@
+# 费用录入: 分页查询
+query pagePitayaCostEntry($input: PitayaCostEntryPageInput, $page: Page) {
+  pagePitayaCostEntry(input: $input, page: $page) {
+    pageCurrent
+    pageSize
+    records {
+      amount
+      auditRecordList {
+        costEntryAuditLogEnum
+        costEntryAuditLogEnumDesc
+        createBy {
+          phoneNum
+          userId
+          userName
+        }
+        createTime
+        rejectReason
+      }
+      belongOrg {
+        orgId
+        orgName
+      }
+      costEntryStatus
+      costEntryStatusDesc
+      costId
+      costOrderCode
+      costPaymentMethod
+      costPaymentMethodDesc
+      costProveList {
+        fileId
+        fileName
+        fileUploadTime
+        fileUrl
+      }
+      costTimeEnd
+      costTimeStart
+      costType
+      costTypeDesc
+      createBy {
+        phoneNum
+        userId
+        userName
+      }
+      createTime
+      productionLink
+      productionLinkDesc
+      rejectReason
+      remark
+      supplier {
+        supplierId
+        supplierName
+      }
+      businessCode
+      businessId
+    }
+    totalRecords
+  }
+}
+
+# 费用录入: 明细查询
+query getPitayaCostEntryDetail($input: PitayaCostEntryIdInput) {
+  getPitayaCostEntryDetail(input: $input) {
+    amount
+    auditRecordList {
+      costEntryAuditLogEnum
+      costEntryAuditLogEnumDesc
+      createBy {
+        phoneNum
+        userId
+        userName
+      }
+      createTime
+      rejectReason
+    }
+    belongOrg {
+      orgId
+      orgName
+    }
+    costEntryStatus
+    costEntryStatusDesc
+    costId
+    costOrderCode
+    costPaymentMethod
+    costPaymentMethodDesc
+    costProveList {
+      fileId
+      fileName
+      fileUploadTime
+      fileUrl
+    }
+    costTimeEnd
+    costTimeStart
+    costType
+    costTypeDesc
+    createBy {
+      phoneNum
+      userId
+      userName
+    }
+    createTime
+    productionLink
+    productionLinkDesc
+    rejectReason
+    remark
+    supplier {
+      supplierId
+      supplierName
+    }
+    businessCode
+    businessId
+  }
+}
+
+# 费用录入: 按状态统计
+query countPitayaCostEntryByStatus($input: CostEntryCountInput) {
+  countPitayaCostEntryByStatus(input: $input) {
+    toSubmitNum
+    underReviewNum
+    underReviewNumBIZ
+  }
+}
+
+query costEntryType($input: CostEntryTypeInput) {
+  costEntryType(input: $input) {
+    typeEnum
+    typeText
+  }
+}
+
+# 费用录入: 新增
+mutation pitayaCostAdd($input: PitayaCostEntryAddInput) {
+  pitayaCostAdd(input: $input) {
+    costId
+  }
+}
+
+mutation costEdit($input: CostEntryUpdateInput) {
+  costEdit(input: $input) {
+    costId
+  }
+}
+
+# 费用录入: 编辑
+mutation pitayaCostEdit($input: PitayaCostEntryUpdateInput) {
+  pitayaCostEdit(input: $input) {
+    costId
+  }
+}
+
+mutation costSubmitFD($input: PitayaCostEntryIdInput) {
+  costSubmitFD(input: $input) {
+    costId
+  }
+}
+
+mutation pitayaCostCancel($input: PitayaCostEntryIdInput) {
+  pitayaCostCancel(input: $input)
+}
+
+mutation pitayaCostRevoke($input: PitayaCostEntryIdInput) {
+  pitayaCostRevoke(input: $input)
+}
+
+mutation costRejectBIZ($input: PitayaCostEntryIdInput) {
+  costRejectBIZ(input: $input)
+}
+
+# 费用录入: 提交到业务
+mutation costSubmitBIZ($input: PitayaCostEntryIdInput) {
+  costSubmitBIZ(input: $input) {
+    costId
+  }
+}
+
+# 费用录入: 选择关联销售单
+query listCostEntryRelationSaleOrder($input: ListCostEntryRelationSaleOrderInput!) {
+  listCostEntryRelationSaleOrder(input: $input) {
+    createBy {
+      phoneNum
+      userId
+      userName
+    }
+    customer {
+      customerId
+      customerName
+      customerType
+      lastLevelId
+    }
+    code
+    commodityItemsList {
+      commoditySku {
+        totalType {
+          unitId
+          unitName
+        }
+        unitType {
+          unitId
+          unitName
+        }
+        categoryId
+        categoryName
+        commodityId
+        commodityName
+        commoditySkuId
+        commoditySkuName
+        commoditySpecOptionId
+        commoditySpecOptionName
+        conversion
+      }
+      totalType {
+        unitId
+        unitName
+      }
+      unitType {
+        unitId
+        unitName
+      }
+      id
+      totalQuantity
+      unitQuantity
+    }
+    createTime
+    id
+    saleDate
+    subType
+    subTypeName
+  }
+}
+
+# 费用录入: 选择关联销售单客户
+query listCostEntryCustomer($input: ListCostEntryCustomerInput!) {
+  listCostEntryCustomer(input: $input) {
+    belongId
+    belongName
+    belongType
+    children {
+      belongId
+      belongName
+      belongType
+      optional
+      visible
+    }
+    optional
+    parent {
+      belongId
+      belongName
+      belongType
+      optional
+      visible
+    }
+    visible
+  }
+}

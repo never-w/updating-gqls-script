@@ -1,0 +1,632 @@
+query commodityList {
+  commodityList {
+    label
+    value
+  }
+}
+
+query commodityCategories($listCommodityCategoryInput: ListCommodityCategoryInput) {
+  commodityCategories(listCommodityCategoryInput: $listCommodityCategoryInput) {
+    categoryId
+    categoryName
+  }
+}
+
+query commodities($listCommodityInput: ListCommodityInput) {
+  commodities(listCommodityInput: $listCommodityInput) {
+    commodityId
+    commodityName
+    commodityTypeId
+    commodityTypeName
+    commodityCategoryId
+    commodityCategoryName
+    commodityVarietyId
+    commodityVarietyName
+    commodityPlaceOriginId
+    commodityPlaceOriginName
+  }
+}
+
+query commoditySpecListAndSkuList($commoditySkuesInput: CommoditySkuesInput, $listCommoditySpecInput: ListCommoditySpecInput) {
+  commoditySkues(commoditySkuesInput: $commoditySkuesInput) {
+    index
+    stockBatchCode
+    stockBatchId
+    commoditySku {
+      availableSkuQuantity {
+        businessUnit {
+          unitId
+          unitName
+        }
+        unit {
+          unitId
+          unitName
+        }
+        conversion
+      }
+      baseUnit {
+        unitId
+        unitName
+      }
+      categoryId
+      categoryName
+      commodityId
+      commodityName
+      commoditySkuId
+      commoditySkuName
+      commoditySpecOptionId
+      commoditySpecOptionName
+    }
+    customer {
+      customerId
+      customerName
+      customerType
+      lastLevelId
+      lastLevelName
+    }
+    commodityTypeId
+    commodityTypeName
+  }
+  commoditySpecs(listCommoditySpecInput: $listCommoditySpecInput) {
+    commodityId
+    commoditySpecId
+    commoditySpecName
+    commoditySpecSort
+    commoditySpecOption {
+      commoditySpecOptionId
+      commoditySpecOptionName
+    }
+  }
+}
+
+query listCommodityOptionByCategoryId($categoryId: Int) {
+  listCommodityOptionByCategoryId(categoryId: $categoryId) {
+    commodityId
+    commodityName
+  }
+}
+
+query listCommoditySpecAndOption($commodityId: Int) {
+  listCommoditySpecAndOption(commodityId: $commodityId) {
+    commoditySpecId
+    commoditySpecName
+    commoditySpecOption {
+      commoditySpecOptionId
+      commoditySpecOptionName
+    }
+    commoditySpecSort
+  }
+}
+
+query listCommoditySkuAndUnit($commodityId: Int) {
+  listCommoditySkuAndUnit(commodityId: $commodityId) {
+    commodityName
+    commoditySkuId
+    commoditySpecOptionId
+    skuTextDescription
+    unitQuantity
+    unitType
+    unitTypeName
+    totalType
+    totalTypeName
+    commodityBomId
+  }
+}
+
+query listProductLeader($productInput: ProductInput!) {
+  listProductLeader(productInput: $productInput) {
+    label
+    value
+  }
+}
+
+query supplierCommodityList {
+  supplierCommodityList {
+    label
+    value
+  }
+}
+
+query getVersion($devicePlatformInput: DevicePlatformInput) {
+  getVersion(devicePlatformInput: $devicePlatformInput) {
+    upgradeStrategy
+    platform
+    version
+    versionCode
+    updateInfo
+    downloadUrl
+    appleId
+    releaseAt
+    createAt
+    nowData
+  }
+}
+
+mutation insertAppException($appExceptionDTO: AppExceptionInput) {
+  insertAppException(appExceptionDTO: $appExceptionDTO)
+}
+
+query pitayaOrgTree($input: String) {
+  pitayaOrgTree(input: $input)
+}
+
+query payModes {
+  payModes {
+    code
+    message
+  }
+}
+
+query freightTypes($input: ListFreightTypeInput!) {
+  freightTypes(input: $input) {
+    value: freightId
+    label: freightName
+  }
+}
+
+query pagePitayaUser($input: PagePitayaUserInput!, $page: Page!) {
+  pagePitayaUser(input: $input, page: $page) {
+    records {
+      teamId
+      userId
+      userName
+      userPhoneNum
+      landlineNum
+      createTime
+      organizationName
+      organizationId
+      positions {
+        positionId
+        positionName
+      }
+      stores {
+        userId
+        storehouseId
+        storehouseName
+      }
+      idNum
+      status
+      tenantId
+      tenantName
+    }
+    pageCurrent
+    pageSize
+    totalRecords
+  }
+}
+
+query locationInformation($input: LocationInput) {
+  locationInformation(input: $input) {
+    records {
+      id
+      name
+      firstChar
+    }
+  }
+}
+
+query locationSearch($input: LocationSearchInput) {
+  locationSearch(input: $input) {
+    records {
+      id
+      name
+      detailName
+      location
+    }
+  }
+}
+
+fragment TreeNode on CustomerTreePayload {
+  belongType
+  belongId
+  belongName
+  visible
+  optional
+}
+
+# 客户: 按条件获取整体客户树(客户下拉接口)
+query customerTree($customerTreeInput: CustomerTreeInput) {
+  customerTree(customerTreeInput: $customerTreeInput) {
+    belongType
+    belongId
+    belongName
+    visible
+    optional
+    parent {
+      ...TreeNode
+    }
+    children {
+      ...TreeNode
+      parent {
+        ...TreeNode
+      }
+      children {
+        ...TreeNode
+        parent {
+          ...TreeNode
+        }
+      }
+    }
+  }
+}
+
+query orgCustomer {
+  orgCustomer {
+    customerId
+    name
+  }
+}
+
+query listBelongOrg($input: ListBelongOrgInput) {
+  listBelongOrg(input: $input) {
+    orgId
+    orgName
+    labelId
+    labelName
+  }
+}
+
+# 获取sop或答案
+query getSopOrResult($input: GetSopOrResultInput) {
+  getSopOrResult(input: $input) {
+    category {
+      categoryName
+      id
+    }
+    enabled
+    enabledName
+    sopCheckItems {
+      enabled
+      enabledName
+      inputTextRule
+      isRemark
+      name
+      nameLocale
+      options {
+        isRemark
+        name
+        nameLocale
+        remarkRequired
+        remarks
+        sort
+        value
+      }
+      remarkRequired
+      remarks
+      required
+      snapshotId
+      sopDetailId
+      sopId
+      sopResult {
+        businessId
+        cacheEnabled
+        checkResult
+        checkResultType
+        fileLink
+        remark
+        sopDetailId
+        sopId
+        sopResultId
+        userId
+        createTime
+      }
+      sort
+      type
+      typeName
+    }
+    sopId
+    templateDesc
+    templateName
+    universal
+    key
+  }
+}
+
+# 暂存答案
+mutation cacheAnswer($input: CacheAnswerInput) {
+  cacheAnswer(input: $input)
+}
+
+# 公共：根据url获取文件信息
+query getFileByUrl($url: String) {
+  getFileByUrl(url: $url) {
+    externalInfo {
+      watermarkText
+    }
+    fileId
+    fileUrl
+    fileUploadTime
+    filename
+  }
+}
+
+# 供应商和客户管理 条件查询品类
+query listCategory($filter: CategoryFilterInput) {
+  listCategory(filter: $filter) {
+    categoryId
+    categoryName
+    categorySort
+    commodityTypeId
+    commodityTypeName
+    nameLocale {
+      locale
+      name
+    }
+  }
+}
+
+# 销售售后: 选客户
+query listSaleReturnCustomers($input: ListSaleReturnCommodityInput!) {
+  listSaleReturnCustomers(input: $input) {
+    belongOrganization {
+      orgId
+      orgName
+    }
+    org {
+      orgId
+      orgName
+    }
+    addressList {
+      city {
+        firstChar
+        hasChildren
+        id
+        locationType
+        name
+      }
+      district {
+        firstChar
+        hasChildren
+        id
+        locationType
+        name
+      }
+      province {
+        firstChar
+        hasChildren
+        id
+        locationType
+        name
+      }
+      addressName
+      contactList {
+        alias
+        contactUserId
+        customerDetailId
+        fileRecordList {
+          beginTime
+          endTime
+          fileList {
+            fileInfo {
+              accessType
+              contentType
+              createTime
+              fileUrl
+              id
+              name
+              size
+              tags
+              updateTime
+            }
+            fileDirection
+            fileId
+            fileName
+            fileUploadTime
+            fileUrl
+          }
+          fileType
+        }
+        id
+        idNumber
+        mail
+        name
+        otherInfoOfIdCard
+        phone
+        remark
+        userId
+        wechat
+      }
+      coordinateList
+      country
+      customerDetailId
+      deliveryName
+      id
+      shortAddress
+      status
+    }
+    alias
+    appId
+    attribute
+    belongType
+    blacklistStatus
+    channelId
+    channelName
+    controlUser
+    cooperateTypeList
+    corporation
+    createTime
+    credit
+    customerAccountList {
+      accountType
+      bankCardNo
+      bankCityName
+      bankName
+      bankProvinceName
+      customerId
+      fileRecordList {
+        beginTime
+        endTime
+        fileList {
+          fileInfo {
+            accessType
+            contentType
+            createTime
+            fileUrl
+            id
+            name
+            size
+            tags
+            updateTime
+          }
+          fileDirection
+          fileId
+          fileName
+          fileUploadTime
+          fileUrl
+        }
+        fileType
+      }
+      id
+      updateBy
+      updateTime
+      accountName
+    }
+    customerContactList {
+      alias
+      contactUserId
+      customerDetailId
+      fileRecordList {
+        beginTime
+        endTime
+        fileList {
+          fileInfo {
+            accessType
+            contentType
+            createTime
+            fileUrl
+            id
+            name
+            size
+            tags
+            updateTime
+          }
+          fileDirection
+          fileId
+          fileName
+          fileUploadTime
+          fileUrl
+        }
+        fileType
+      }
+      id
+      idNumber
+      mail
+      name
+      otherInfoOfIdCard
+      phone
+      remark
+      userId
+      wechat
+    }
+    customerCooperation {
+      balanceMode
+      customerDetailId
+      cycleCheck
+      cycleCredit
+      cycleInvoicing
+      cyclePay
+      id
+      quota
+      updateBy
+      updateTime
+    }
+    customerId
+    customerQualification {
+      assetOther
+      assetProperty
+      assetVehicle
+      businessDuration
+      businessScale
+      businessTypesList
+      createBy
+      createTime
+      customerId
+      description
+      fileRecordList {
+        beginTime
+        endTime
+        fileList {
+          fileInfo {
+            accessType
+            contentType
+            createTime
+            fileUrl
+            id
+            name
+            size
+            tags
+            updateTime
+          }
+          fileDirection
+          fileId
+          fileName
+          fileUploadTime
+          fileUrl
+        }
+        fileType
+      }
+      historyAchievement
+      id
+      saleTypesList {
+        categoryId
+        categoryName
+      }
+      salesChannels
+      updateBy
+      updateTime
+    }
+    customerUserId
+    enable
+    establishTime
+    fascAdminId
+    fascId
+    fileRecordList {
+      beginTime
+      endTime
+      fileList {
+        fileInfo {
+          accessType
+          contentType
+          createTime
+          fileUrl
+          id
+          name
+          size
+          tags
+          updateTime
+        }
+        fileDirection
+        fileId
+        fileName
+        fileUploadTime
+        fileUrl
+      }
+      fileType
+    }
+    financialSystemCode
+    id
+    idNumber
+    infoAuth
+    initials
+    introducerId
+    longCooperation
+    mail
+    name
+    ncCode
+    operateAddress
+    payTaxesType
+    phone
+    pinyinOfName
+    realNameAuthStatus
+    registerAddress
+    registerCapital
+    registerStatus
+    remark
+    sourceType
+    taxpayerIdentificationNumber
+    tenantId
+    type
+    userStatus
+    wechat
+  }
+}

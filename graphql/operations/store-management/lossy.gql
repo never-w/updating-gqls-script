@@ -1,0 +1,156 @@
+# 门店管理: 库存信息
+query storeManagementBatchInfoDetail($batchId: ID!) {
+  storeManagementBatchInfoDetail(batchId: $batchId) {
+    depletionQuantity {
+      totalQuantity
+      unitQuantity
+    }
+    receiveQuantity {
+      totalQuantity
+      unitQuantity
+    }
+    returnQuantity {
+      totalQuantity
+      unitQuantity
+    }
+    saleQuantity {
+      totalQuantity
+      unitQuantity
+    }
+  }
+}
+
+# 差异订单:列表页
+query pageDifferenceOrder($input: PageDifferenceOrderInput!, $page: Page) {
+  pageDifferenceOrder(input: $input, page: $page) {
+    pageCurrent
+    pageSize
+    records {
+      belongOrg {
+        orgId
+        orgName
+      }
+      createUser {
+        phoneNum
+        userId
+        userName
+      }
+      customer {
+        customerId
+        customerName
+        customerType
+        lastLevelId
+        lastLevelName
+      }
+      businessCode
+      businessId
+      commodityList {
+        batchInfo {
+          customer {
+            customerId
+            customerName
+            customerType
+            lastLevelId
+            lastLevelName
+          }
+          warehouse {
+            warehouseId
+            warehouseName
+          }
+          batchCode
+          batchId
+          commodityTypeId
+          commodityTypeName
+          createTime
+          totalQuantity
+          unitQuantity
+        }
+        commoditySku {
+          totalType {
+            unitId
+            unitName
+          }
+          unitType {
+            unitId
+            unitName
+          }
+          categoryId
+          categoryName
+          commodityId
+          commodityName
+          commoditySkuId
+          commoditySkuName
+          commoditySpecOptionId
+          commoditySpecOptionName
+          conversion
+        }
+        commodityType {
+          commodityTypeId
+          commodityTypeName
+        }
+        batch {
+          batchCode
+          batchId
+          createTime
+          sourceBatchCode
+          sourceBatchId
+          totalQuantity
+          unitQuantity
+        }
+        businessItemId
+        markList
+        markNameList
+        orderId
+        orderItemId
+        originDeliveryExtendInfo {
+          deliveryGoodsSource
+          deliveryGoodsSourceDesc
+          warehouse {
+            address
+            belongId
+            belongType
+            houseNumber
+            id
+            locationList
+            name
+            orgId
+            remark
+            status
+            typeId
+          }
+        }
+        planCode
+        planSaleTime
+        reason
+        saleOrderItemId
+        totalQuantity
+        unitQuantity
+      }
+      createTime
+      deliveryTime
+      depletionTime
+      differenceOrderStatus
+      differenceOrderStatusDesc
+      differenceOrderType
+      differenceOrderTypeDesc
+      orderCode
+      orderId
+      receiveTime
+      remark
+      returnTime
+    }
+    totalRecords
+  }
+}
+
+# 差异订单:新增损耗差异
+mutation createDepletionDifferenceOrder(
+  $input: CreateDepletionDifferenceOrderInput!
+) {
+  createDepletionDifferenceOrder(input: $input)
+}
+
+# 差异订单:作废损耗差异
+mutation voidDepletionDifferenceOrder($orderId: ID!) {
+  voidDepletionDifferenceOrder(orderId: $orderId)
+}

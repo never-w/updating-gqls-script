@@ -1,0 +1,327 @@
+# 配送费用单: 数量角标
+query countDeliveryFee($incomeStatementType: BillMainTypeEnum!) {
+  countDeliveryFee(incomeStatementType: $incomeStatementType)
+}
+
+# 配送费用单: 详情
+query detailDeliveryFee($billMainId: ID!) {
+  detailDeliveryFee(billMainId: $billMainId) {
+    billOperationLogPayload {
+      user {
+        phoneNum
+        userId
+        userName
+      }
+      createTime
+      endStatus
+      endStatusDesc
+      note
+      startStatus
+      startStatusDesc
+    }
+    deliveryFeeMainInfo {
+      createBy {
+        phoneNum
+        userId
+        userName
+      }
+      billMainCode
+      billMainId
+      billMainType
+      billMainTypeDesc
+      billStatus
+      billStatusDesc
+      createTime
+      deliveryInfo {
+        belongOrg {
+          orgId
+          orgName
+        }
+        customerList {
+          customerId
+          customerName
+          customerType
+          lastLevelId
+          lastLevelName
+        }
+        user {
+          phoneNum
+          userId
+          userName
+        }
+        deliveryCode
+        deliveryId
+        deliveryTime
+        manualCode
+        receptionTime
+        fileInfoList {
+          accessType
+          contentType
+          createTime
+          fileUrl
+          id
+          name
+          size
+          tags
+          updateTime
+        }
+        carNum
+        carType
+        deliveryType
+        deliveryTypeDesc
+        driverContact
+        driverName
+      }
+      mark
+      templateId
+      note
+    }
+    freightFeeList {
+      supplier {
+        supplierId
+        supplierName
+      }
+      amount
+      costId
+      costName
+      data
+      dictItemId
+      extendId
+      note
+      ruleId
+    }
+    freightFeeTotalAmount
+    salesOrderList {
+      deliveryCommodityList {
+        commoditySku {
+          totalType {
+            unitId
+            unitName
+          }
+          unitType {
+            unitId
+            unitName
+          }
+          categoryId
+          categoryName
+          commodityId
+          commodityName
+          commoditySkuId
+          commoditySkuName
+          commoditySpecOptionId
+          commoditySpecOptionName
+          conversion
+        }
+        commodityType {
+          commodityTypeId
+          commodityTypeName
+        }
+        warehouse {
+          warehouseId
+          warehouseName
+        }
+        batchCode
+        batchId
+        deliveryQuantity {
+          priceType {
+            unitId
+            unitName
+          }
+          totalType {
+            unitId
+            unitName
+          }
+          unitType {
+            unitId
+            unitName
+          }
+          price
+          totalQuantity
+          unitQuantity
+        }
+        deliveryReturnQuantity {
+          totalQuantity
+          unitQuantity
+        }
+        differencesQuantity {
+          totalQuantity
+          unitQuantity
+        }
+        itemId
+        receptionQuantity {
+          totalQuantity
+          unitQuantity
+        }
+        sourceOrderItemId
+        markDescList
+        markList
+      }
+      sourceOrder {
+        customer {
+          customerId
+          customerName
+          customerType
+          lastLevelId
+        }
+        salesOrderCode
+        salesOrderId
+        salesOrderType
+        salesOrderTypeDesc
+        salesTime
+      }
+    }
+  }
+}
+
+# 配送费用单: 分页列表
+query pageDeliveryFee($page: Page!, $pageDeliveryFeeInput: PageDeliveryFeeInput) {
+  pageDeliveryFee(page: $page, pageDeliveryFeeInput: $pageDeliveryFeeInput) {
+    pageCurrent
+    pageSize
+    records {
+      commodityList {
+        commoditySku {
+          totalType {
+            unitId
+            unitName
+          }
+          unitType {
+            unitId
+            unitName
+          }
+          categoryId
+          categoryName
+          commodityId
+          commodityName
+          commoditySkuId
+          commoditySkuName
+          commoditySpecOptionId
+          commoditySpecOptionName
+          conversion
+        }
+        commodityType {
+          commodityTypeId
+          commodityTypeName
+        }
+        warehouse {
+          warehouseId
+          warehouseName
+        }
+        batchCode
+        batchId
+        deliveryQuantity {
+          priceType {
+            unitId
+            unitName
+          }
+          totalType {
+            unitId
+            unitName
+          }
+          unitType {
+            unitId
+            unitName
+          }
+          price
+          totalQuantity
+          unitQuantity
+        }
+        deliveryReturnQuantity {
+          totalQuantity
+          unitQuantity
+        }
+        differencesQuantity {
+          totalQuantity
+          unitQuantity
+        }
+        itemId
+        receptionQuantity {
+          totalQuantity
+          unitQuantity
+        }
+        sourceOrderItemId
+      }
+      deliveryFeeMainInfo {
+        createBy {
+          phoneNum
+          userId
+          userName
+        }
+        billMainCode
+        billMainId
+        billMainType
+        billMainTypeDesc
+        billStatus
+        billStatusDesc
+        createTime
+        deliveryInfo {
+          belongOrg {
+            orgId
+            orgName
+          }
+          customerList {
+            customerId
+            customerName
+            customerType
+            lastLevelId
+          }
+          user {
+            phoneNum
+            userId
+            userName
+          }
+          deliveryCode
+          deliveryId
+          deliveryTime
+          manualCode
+          receptionTime
+          fileInfoList {
+            accessType
+            contentType
+            createTime
+            fileUrl
+            id
+            name
+            size
+            tags
+            updateTime
+          }
+        }
+        mark
+        templateId
+      }
+    }
+    totalRecords
+  }
+}
+
+# 配送费用单: 业务审核
+mutation reviewDeliveryFeeBySalesman($changBill2StatusInput: ChangeBill2StatusInput!) {
+  reviewDeliveryFeeBySalesman(changBill2StatusInput: $changBill2StatusInput)
+}
+
+# 配送费用单: 提交业务员审核
+mutation submitDeliveryFee($submitBillInput: SubmitBillInput) {
+  submitDeliveryFee(submitBillInput: $submitBillInput)
+}
+
+# 配送费用单: 修改运杂费
+mutation updateDeliveryFeeFreight($updateDeliveryFeeFreightInput: UpdateDeliveryFeeFreightInput) {
+  updateDeliveryFeeFreight(
+    updateDeliveryFeeFreightInput: $updateDeliveryFeeFreightInput
+  )
+}
+
+# 配送费用单: 编辑手动单号
+mutation updateDeliveryFeeManualCode($updateDeliveryFeeManualCodeInput: UpdateDeliveryFeeManualCodeInput) {
+  updateDeliveryFeeManualCode(
+    updateDeliveryFeeManualCodeInput: $updateDeliveryFeeManualCodeInput
+  )
+}
+
+# 配送费用单-接入中台: 修改收货回执
+mutation updateDeliveryReceiveReceipt($updateDeliveryReceiveReceiptInput: UpdateDeliveryReceiveReceiptInput) {
+  updateDeliveryReceiveReceipt(
+    updateDeliveryReceiveReceiptInput: $updateDeliveryReceiveReceiptInput
+  )
+}

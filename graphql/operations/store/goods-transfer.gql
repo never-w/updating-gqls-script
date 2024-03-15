@@ -1,0 +1,164 @@
+# 列表页及搜索页
+query pageGoodsTransfer(
+  $pageGoodsTransferInput: PageGoodsTransferInput
+  $page: Page
+) {
+  pageGoodsTransfer(
+    pageGoodsTransferInput: $pageGoodsTransferInput
+    page: $page
+  ) {
+    records {
+      flowId
+      flowCode
+      orderStatus
+      orderStatusName
+      commodityType
+      commodityTypeName
+      sourceWarehouse {
+        warehouseId
+        warehouseName
+      }
+      targetWarehouse {
+        warehouseId
+        warehouseName
+      }
+      createUser {
+        userId
+        userName
+        phoneNum
+      }
+      createTime
+      latestDescription
+      commodities {
+        commoditySku {
+          commoditySkuId
+          commoditySkuName
+          commodityId
+          commodityName
+          commoditySpecOptionId
+          commoditySpecOptionName
+          conversion
+          totalType {
+            unitId
+            unitName
+          }
+          unitType {
+            unitId
+            unitName
+          }
+          categoryId
+          categoryName
+        }
+        stockBatchInfo {
+          batchId
+          batchCode
+          unitQuantity
+          totalQuantity
+          customerBelongInfo {
+            customerId
+            customerName
+            customerType
+          }
+        }
+        transferQuantity {
+          unitQuantity
+          totalQuantity
+        }
+      }
+    }
+    pageCurrent
+    pageSize
+    totalRecords
+  }
+}
+
+# 货物移库:详情页
+query getGoodsTransfer($transferIDInput: TransferIDInput) {
+  getGoodsTransfer(transferIDInput: $transferIDInput) {
+    flowId
+    flowCode
+    orderStatus
+    orderStatusName
+    commodityType
+    commodityTypeName
+    sourceWarehouse {
+      warehouseId
+      warehouseName
+    }
+    targetWarehouse {
+      warehouseId
+      warehouseName
+    }
+    createUser {
+      userId
+      userName
+      phoneNum
+    }
+    createTime
+    flowRemark
+    latestDescription
+    commodities {
+      commoditySku {
+        commoditySkuId
+        commoditySkuName
+        commodityId
+        commodityName
+        commoditySpecOptionId
+        commoditySpecOptionName
+        conversion
+        totalType {
+          unitId
+          unitName
+        }
+        unitType {
+          unitId
+          unitName
+        }
+        categoryId
+        categoryName
+      }
+      stockBatchInfo {
+        batchId
+        batchCode
+        unitQuantity
+        totalQuantity
+        customerBelongInfo {
+          customerId
+          customerName
+          customerType
+        }
+      }
+      transferQuantity {
+        unitQuantity
+        totalQuantity
+      }
+    }
+  }
+}
+
+# 角标展示
+query goodsTransferStatusCount($transferStatusInput: GoodsTransferStatusInput) {
+  goodsTransferStatusCount(transferStatusInput: $transferStatusInput) {
+    unProcessed
+  }
+}
+
+# 新增货物移库
+mutation createGoodsTransfer($goodsTransferInput: GoodsTransferInput) {
+  createGoodsTransfer(goodsTransferInput: $goodsTransferInput)
+}
+
+# 修改货物移库
+mutation updateGoodsTransfer($goodsTransferInput: GoodsTransferInput) {
+  updateGoodsTransfer(goodsTransferInput: $goodsTransferInput)
+}
+
+# 取消订单
+mutation cancelGoodsTransfer($transferIDInput: TransferIDInput) {
+  cancelGoodsTransfer(transferIDInput: $transferIDInput)
+}
+
+# 确认移库
+mutation confirmGoodsTransfer($transferIDInput: TransferIDInput) {
+  confirmGoodsTransfer(transferIDInput: $transferIDInput)
+}

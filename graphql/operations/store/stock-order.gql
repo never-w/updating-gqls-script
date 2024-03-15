@@ -1,0 +1,488 @@
+# 审核订单:列表
+query pageStockOrder($page: Page, $pageStockOrderInput: PageStockOrderInput) {
+  pageStockOrder(page: $page, pageStockOrderInput: $pageStockOrderInput) {
+    pageCurrent
+    pageSize
+    records {
+      createBy {
+        phoneNum
+        userId
+        userName
+      }
+      org {
+        orgId
+        orgName
+      }
+      businessId
+      businessInfo {
+        belongOrg {
+          orgId
+          orgName
+        }
+        customerList {
+          customerId
+          customerName
+          customerType
+          lastLevelId
+        }
+        businessCode
+        businessStatus
+        businessStatusName
+        id
+      }
+      businessType
+      businessTypeName
+      commodities {
+        commoditySku {
+          totalType {
+            unitId
+            unitName
+          }
+          unitType {
+            unitId
+            unitName
+          }
+          categoryId
+          categoryName
+          commodityId
+          commodityName
+          commoditySkuId
+          commoditySkuName
+          commoditySpecOptionId
+          commoditySpecOptionName
+          conversion
+        }
+        createBy {
+          phoneNum
+          userId
+          userName
+        }
+        batch {
+          batchCode
+          batchId
+          createTime
+          totalQuantity
+          unitQuantity
+        }
+        totalType {
+          unitId
+          unitName
+        }
+        unitType {
+          unitId
+          unitName
+        }
+        warehouse {
+          warehouseId
+          warehouseName
+        }
+        commodityTypeId
+        commodityTypeName
+        createTime
+        stockOrderId
+        totalQuantity
+        unitQuantity
+        waitTotalQuantity
+        waitUnitQuantity
+      }
+      createTime
+      id
+      stockOrderCode
+      stockOrderType
+      stockOrderTypeName
+      stockOrderStatus
+      stockOrderStatusName
+      isExceptional
+    }
+    totalRecords
+  }
+}
+
+# 审核订单:角标统计
+query stockOrderBadge {
+  stockOrderBadge {
+    toBeInAudited
+    toBeOutAudited
+  }
+}
+
+# 审核订单:详情
+query stockOrderDetail($stockOrderDetailInput: StockOrderDetailInput) {
+  stockOrderDetail(stockOrderDetailInput: $stockOrderDetailInput) {
+    createBy {
+      phoneNum
+      userId
+      userName
+    }
+    org {
+      orgId
+      orgName
+    }
+    businessId
+    businessInfo {
+      belongOrg {
+        orgId
+        orgName
+      }
+      customerList {
+        customerId
+        customerName
+        customerType
+        lastLevelId
+      }
+      businessCode
+      businessStatus
+      businessStatusName
+      id
+    }
+    businessType
+    businessTypeName
+    commodities {
+      commoditySku {
+        totalType {
+          unitId
+          unitName
+        }
+        unitType {
+          unitId
+          unitName
+        }
+        categoryId
+        categoryName
+        commodityId
+        commodityName
+        commoditySkuId
+        commoditySkuName
+        commoditySpecOptionId
+        commoditySpecOptionName
+        conversion
+      }
+      createBy {
+        phoneNum
+        userId
+        userName
+      }
+      batch {
+        batchCode
+        batchId
+        createTime
+        totalQuantity
+        unitQuantity
+      }
+      totalType {
+        unitId
+        unitName
+      }
+      unitType {
+        unitId
+        unitName
+      }
+      warehouse {
+        warehouseId
+        warehouseName
+      }
+      commodityTypeId
+      commodityTypeName
+      createTime
+      stockOrderId
+      totalQuantity
+      unitQuantity
+      waitTotalQuantity
+      waitUnitQuantity
+      itemId
+      mark
+      markName
+      applyTotalQuantity
+      applyUnitQuantity
+    }
+    createTime
+    id
+    stockOrderCode
+    stockOrderType
+    stockOrderTypeName
+    stockOrderStatus
+    stockOrderStatusName
+    isExceptional
+    interval
+  }
+}
+
+# 审核订单:确认出/入库
+mutation confirmStockOrder($confirmStockOrderInput: ConfirmStockOrderInput) {
+  confirmStockOrder(confirmStockOrderInput: $confirmStockOrderInput)
+}
+
+# 审核订单:驳回
+mutation rejectStockOrder($rejectStockOrderInput: RejectStockOrderInput) {
+  rejectStockOrder(rejectStockOrderInput: $rejectStockOrderInput)
+}
+
+# 审核订单:列表统计
+query stockOrderListBadge($stockOrderListBadgeInput: StockOrderListBadgeInput) {
+  stockOrderListBadge(stockOrderListBadgeInput: $stockOrderListBadgeInput) {
+    count
+    stockOrderType
+  }
+}
+
+# 审核订单[出入库]:列表
+query pageStockWmsOrder($input: PageStockWmsOrderInput, $page: Page) {
+  pageStockWmsOrder(input: $input, page: $page) {
+    pageCurrent
+    pageSize
+    records {
+      businessId
+      businessInfo {
+        belongOrg {
+          orgId
+          orgName
+        }
+        customer {
+          customerId
+          customerName
+          customerType
+          lastLevelId
+        }
+        supplier {
+          supplierId
+          supplierName
+        }
+        businessCode
+        businessId
+        businessStatus
+        businessStatusName
+        businessType
+        businessTypeName
+        stockWmsOrderType
+        stockWmsOrderTypeName
+        warehouse {
+          warehouseId
+          warehouseName
+        }
+        createBy {
+          phoneNum
+          userId
+          userName
+        }
+        createTime
+      }
+      commodities {
+        batchInfo {
+          warehouse {
+            warehouseId
+            warehouseName
+          }
+          batchCode
+          batchId
+          commodityTypeId
+          commodityTypeName
+          createTime
+          totalQuantity
+          unitQuantity
+        }
+        commoditySku {
+          totalType {
+            unitId
+            unitName
+          }
+          unitType {
+            unitId
+            unitName
+          }
+          categoryId
+          categoryName
+          commodityId
+          commodityName
+          commoditySkuId
+          commoditySkuName
+          commoditySpecOptionId
+          commoditySpecOptionName
+          conversion
+        }
+        index
+        itemId
+        pricePosition
+        stockOrderId
+        totalQuantity
+        unitQuantity
+        waitTotalQuantity
+        waitUnitQuantity
+        markList
+        markListDesc
+        totalType {
+          unitId
+          unitName
+        }
+        unitType {
+          unitId
+          unitName
+        }
+      }
+      commodityTypeId
+      id
+      stockOrderCode
+      stockOrderStatus
+      stockOrderStatusName
+      stockOrderType
+      stockOrderTypeName
+      isExceptional
+    }
+    totalRecords
+  }
+}
+
+# 审核订单[出入库]:商品类型角标统计
+query stockWmsOrderCommodityTypeBadge(
+  $input: StockWmsOrderCommodityTypeBadgeInput
+) {
+  stockWmsOrderCommodityTypeBadge(input: $input) {
+    commodityTypeDesc
+    commodityTypeId
+    count
+  }
+}
+
+# 审核订单[出入库]:详情
+query stockWmsOrderDetail($input: StockWmsOrderDetailInput) {
+  stockWmsOrderDetail(input: $input) {
+    businessId
+    businessInfo {
+      belongOrg {
+        orgId
+        orgName
+      }
+      customer {
+        customerId
+        customerName
+        customerType
+        lastLevelId
+        lastLevelName
+      }
+      supplier {
+        supplierId
+        supplierName
+      }
+      businessCode
+      businessId
+      businessStatus
+      businessStatusName
+      businessType
+      businessTypeName
+      stockWmsOrderType
+      stockWmsOrderTypeName
+      warehouse {
+        warehouseId
+        warehouseName
+      }
+      createBy {
+        phoneNum
+        userId
+        userName
+      }
+      createTime
+    }
+    commodities {
+      batchInfo {
+        warehouse {
+          warehouseId
+          warehouseName
+        }
+        batchCode
+        batchId
+        commodityTypeId
+        commodityTypeName
+        createTime
+        totalQuantity
+        unitQuantity
+        customer {
+          customerId
+          customerName
+          customerType
+          lastLevelId
+          lastLevelName
+        }
+      }
+      commoditySku {
+        totalType {
+          unitId
+          unitName
+        }
+        unitType {
+          unitId
+          unitName
+        }
+        categoryId
+        categoryName
+        commodityId
+        commodityName
+        commoditySkuId
+        commoditySkuName
+        commoditySpecOptionId
+        commoditySpecOptionName
+        conversion
+      }
+      index
+      itemId
+      pricePosition
+      stockOrderId
+      totalQuantity
+      unitQuantity
+      waitTotalQuantity
+      waitUnitQuantity
+      markList
+      markListDesc
+      totalType {
+        unitId
+        unitName
+      }
+      unitType {
+        unitId
+        unitName
+      }
+      priceType {
+        unitId
+        unitName
+      }
+      price
+      applyTotalQuantity
+      applyUnitQuantity
+      belongCustomerId
+      belongCustomerName
+      belongCustomerType
+    }
+    commodityTypeId
+    id
+    stockOrderCode
+    stockOrderStatus
+    stockOrderStatusName
+    stockOrderType
+    stockOrderTypeName
+    commodityTypeName
+    note
+    isExceptional
+    interval
+  }
+}
+
+# 审核订单[出入库]:列表角标统计
+query stockWmsOrderListBadge($input: stockWmsOrderListBadgeInput) {
+  stockWmsOrderListBadge(input: $input) {
+    count
+    stockInOrderType
+  }
+}
+
+# 审核订单[出入库]:确认出/入库
+mutation confirmStockWmsOrder($input: ConfirmStockWmsOrderInput) {
+  confirmStockWmsOrder(input: $input)
+}
+
+# 审核订单[出入库]:结束出/入库
+mutation finishStockWmsOrder($input: FinishStockWmsOrderInput) {
+  finishStockWmsOrder(input: $input)
+}
+
+# 审核订单[出入库]:驳回出/入库
+mutation rejectStockWmsOrder($input: RejectStockWmsOrderInput) {
+  rejectStockWmsOrder(input: $input)
+}

@@ -1,0 +1,44 @@
+query getWorkerSalary {
+  getWorkerSalary {
+    id
+    configCode
+    orgId
+    configValue {
+      ... on WorkerSalaryPayload {
+        workerSalary
+      }
+      ... on ProductionSwitchPayload {
+        productionSwitch
+      }
+    }
+    createTime
+    updateTime
+    createBy
+    updateBy
+  }
+}
+query getProductionConfig {
+  getProductionConfig {
+    id
+    configCode
+    orgId
+    configValue {
+      ... on ProductionSwitchPayload {
+        productionSwitch
+      }
+      ... on WorkerSalaryPayload {
+        workerSalary
+      }
+    }
+    createTime
+    updateTime
+    createBy
+    updateBy
+  }
+}
+mutation saveWorkerSalary($saveWorkerSalary: SaveSalaryInput) {
+  saveWorkerSalary(saveWorkerSalary: $saveWorkerSalary)
+}
+mutation saveProductionConfig($saveConfigInput: SaveConfigInput) {
+  saveProductionConfig(saveConfigInput: $saveConfigInput)
+}

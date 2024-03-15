@@ -1,0 +1,266 @@
+query pageBreakContract(
+  $pageBreakContractInput: PageBreakContractInput
+  $page: Page
+) {
+  pageBreakContract(
+    pageBreakContractInput: $pageBreakContractInput
+    page: $page
+  ) {
+    records {
+      breakContractId
+      breakContractCode
+      status
+      statusDesc
+      statusNote
+      breakDate
+      saleDate
+      photos
+      saleOrderId
+      saleOrderType
+      saleOrderCode
+      breakContractItem {
+        breakContractId
+        breakContractItemId
+        commoditySku {
+          commoditySkuId
+          commoditySkuName
+          commodityId
+          commodityName
+          commoditySpecOptionId
+          commoditySpecOptionName
+          conversion
+          totalType {
+            unitId
+            unitName
+          }
+          unitType {
+            unitId
+            unitName
+          }
+          categoryId
+          categoryName
+        }
+        breakContractType
+        breakContractTypeDesc
+        estimateFine
+        breakContractReason
+        actualFine
+        fineDate
+        fineWay
+        fineWayDesc
+      }
+      customer {
+        customerId
+        customerName
+        customerType
+      }
+      createUser {
+        userId
+        userName
+        phoneNum
+      }
+      createTime
+      belongOrg {
+        orgId
+        orgName
+      }
+    }
+    pageCurrent
+    pageSize
+    totalRecords
+  }
+}
+
+query listBreakContractCommodity(
+  $breakContractCommodityInput: BreakContractCommodityInput
+) {
+  listBreakContractCommodity(
+    breakContractCommodityInput: $breakContractCommodityInput
+  ) {
+    customer {
+      customerId
+      customerName
+      customerType
+    }
+    saleTime
+    outOrderId
+    outOrderCode
+    commodities {
+      commoditySku {
+        commoditySkuId
+        commoditySkuName
+        commodityId
+        commodityName
+        commoditySpecOptionId
+        commoditySpecOptionName
+        conversion
+        totalType {
+          unitId
+          unitName
+        }
+        unitType {
+          unitId
+          unitName
+        }
+        categoryId
+        categoryName
+      }
+      outOrderItemId
+      outOrderId
+    }
+  }
+}
+
+query breakContractOrder($breakContractOrderInput: BreakContractOrderInput) {
+  breakContractOrder(breakContractOrderInput: $breakContractOrderInput) {
+    breakContractId
+    breakContractCode
+    status
+    statusDesc
+    statusNote
+    breakDate
+    saleDate
+    photos
+    saleOrderId
+    saleOrderType
+    saleOrderCode
+    breakContractItem {
+      breakContractId
+      breakContractItemId
+      commoditySku {
+        commoditySkuId
+        commoditySkuName
+        commodityId
+        commodityName
+        commoditySpecOptionId
+        commoditySpecOptionName
+        conversion
+        totalType {
+          unitId
+          unitName
+        }
+        unitType {
+          unitId
+          unitName
+        }
+        categoryId
+        categoryName
+      }
+      breakContractType
+      breakContractTypeDesc
+      estimateFine
+      breakContractReason
+      actualFine
+      fineDate
+      fineWay
+      fineWayDesc
+    }
+    customer {
+      customerId
+      customerName
+      customerType
+    }
+    createUser {
+      userId
+      userName
+      phoneNum
+    }
+    createTime
+    submitInfo {
+      breakContractId
+      submitUser {
+        userId
+        userName
+        phoneNum
+      }
+      submitTime
+    }
+    belongOrg {
+      orgId
+      orgName
+    }
+  }
+}
+
+query BreakContractFineType($labelId: Int!) {
+  breakContractFineType(labelId: $labelId) {
+    label
+    value
+  }
+}
+
+mutation createBreakContract(
+  $breakContractCreateInput: BreakContractCreateInput
+) {
+  createBreakContract(breakContractCreateInput: $breakContractCreateInput)
+}
+
+mutation UpdateBreakContract(
+  $breakContractUpdateInput: BreakContractUpdateInput
+) {
+  updateBreakContract(breakContractUpdateInput: $breakContractUpdateInput)
+}
+
+mutation SubmitBreakContract(
+  $breakContractSubmitInput: BreakContractSubmitInput
+) {
+  submitBreakContract(breakContractSubmitInput: $breakContractSubmitInput)
+}
+
+mutation CancelBreakContract(
+  $breakContractCancelInput: BreakContractCancelInput
+) {
+  cancelBreakContract(breakContractCancelInput: $breakContractCancelInput)
+}
+
+query breakContractFineWay {
+  breakContractFineWay {
+    label
+    value
+  }
+}
+
+mutation auditBreakContract($breakContractAuditInput: BreakContractAuditInput) {
+  auditBreakContract(breakContractAuditInput: $breakContractAuditInput)
+}
+
+mutation rollBackBreakContract(
+  $breakContractRollBackInput: BreakContractRollBackInput
+) {
+  rollBackBreakContract(breakContractRollBackInput: $breakContractRollBackInput)
+}
+
+mutation rejectedBreakContract(
+  $breakContractRejectedInput: BreakContractRejectedInput
+) {
+  rejectedBreakContract(breakContractRejectedInput: $breakContractRejectedInput)
+}
+
+query breakContractTraceLog(
+  $breakContractTraceLogInput: BreakContractTraceLogInput
+) {
+  breakContractTraceLog(
+    breakContractTraceLogInput: $breakContractTraceLogInput
+  ) {
+    logId
+    breakContractId
+    logType
+    logTypeText
+    logDescription
+    createTime
+    createBy {
+      userId
+      userName
+      phoneNum
+    }
+  }
+}
+
+query breakContractStatus($breakContractStatusInput: BreakContractStatusInput) {
+  breakContractStatus(breakContractStatusInput: $breakContractStatusInput) {
+    saleToSubmitCount
+    saleToAuditCount
+    saleToRejectedCount
+    auditToAuditCount
+  }
+}

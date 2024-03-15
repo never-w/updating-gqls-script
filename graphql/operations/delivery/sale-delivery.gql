@@ -1,0 +1,1478 @@
+# 销售配送单: 获取配送单列表
+query pageSaleDeliveryOrder($input: SaleDeliveryOrderQueryInput, $page: Page!) {
+  pageSaleDeliveryOrder(input: $input, page: $page) {
+    pageCurrent
+    pageSize
+    totalRecords
+    records {
+      belongOrg {
+        orgId
+        orgName
+      }
+      belongInfo {
+        customerBelongInfo {
+          customerName
+          customerId
+          customerType
+        }
+      }
+      createBy {
+        phoneNum
+        userId
+        userName
+      }
+      businessUserName
+      carNum
+      carType
+      completeTime
+      createTime
+      deliveryDate
+      deliveryGoodsSource
+      deliveryGoodsSourceDesc
+      deliveryMode
+      deliveryModeDesc
+      deliveryOrderItem {
+        commodityDetail {
+          sku {
+            categoryId
+            categoryName
+            commodityId
+            commodityName
+            commoditySkuId
+            commoditySkuName
+            commoditySpecOptionId
+            commoditySpecOptionName
+            availableSkuQuantity {
+              businessUnit {
+                unitId
+                unitName
+              }
+              unit {
+                unitId
+                unitName
+              }
+              conversion
+            }
+            baseUnit {
+              unitId
+              unitName
+            }
+          }
+          commodityTypeId
+          commodityTypeName
+          deliveryOutItemId
+          differenceReason
+          itemId
+          saleOrderItemId
+          stockBatchInfo {
+            customerBelongInfo {
+              customerId
+              customerName
+              customerType
+            }
+            unit {
+              unitId
+              unitName
+            }
+            batchCode
+            batchId
+            createTime
+            lockQuantity
+            lockQuantityItem {
+              unit {
+                unitId
+                unitName
+              }
+              quantity
+            }
+            quantity
+            quantityItem {
+              unit {
+                unitId
+                unitName
+              }
+              quantity
+            }
+          }
+          unit {
+            unitId
+            unitName
+          }
+          actualQuantity
+          deliverableQuantity
+          deliveredQuantity
+          differenceQuantity
+          markList
+          outQuantity
+          quantity
+          quantityItem {
+            unit {
+              unitId
+              unitName
+            }
+            quantity
+          }
+          returnQuantity
+          warehouse {
+            address
+            belongId
+            belongType
+            houseNumber
+            id
+            locationList
+            name
+            orgId
+            remark
+            status
+            typeId
+          }
+        }
+        itemId
+        orderId
+        outOrderId
+        saleDeliveryOrderType
+        sourceOrderCode
+        sourceOrderId
+        sourceOrderSaleDate
+        customerBelongInfo {
+          customerId
+          customerName
+          customerType
+        }
+      }
+      deliveryRequirement
+      deliveryRequirementDesc
+      deliveryReturnOrderCount
+      driverContact
+      driverName
+      orderCode
+      orderId
+      orderStatus
+      orderStatusDesc
+      saleOrderDate
+      statusNote
+      supplementalOrderCount
+      auditUser {
+        phoneNum
+        userId
+        userName
+      }
+      fileInfoList {
+        accessType
+        contentType
+        createTime
+        fileUrl
+        id
+        name
+        size
+        tags
+        updateTime
+      }
+      org {
+        orgId
+        orgName
+      }
+      deliveryOrderFee {
+        billDetailsList {
+          supplier {
+            supplierId
+            supplierName
+          }
+          billCostData
+          billDetailId
+          billMainId
+          businessItemValue
+          costAmount
+          costId
+          costName
+          dictItemId
+          note
+          paymentType
+          ruleCode
+          ruleId
+          showField
+        }
+        billMainId
+        billTemplateId
+      }
+    }
+  }
+}
+
+# 销售配送单: 获取配送单列表统计数据
+query deliveryOrderStats {
+  deliveryOrderStats {
+    unSubmit
+  }
+}
+
+# 销售配送单: 配送方式下拉
+query deliveryModeOption {
+  deliveryModeOption {
+    label
+    value
+  }
+}
+
+# 销售配送单: 选择配送货物
+query listSaleDeliveryGoods($input: ListSaleDeliveryGoodsInput) {
+  listSaleDeliveryGoods(input: $input) {
+    customerBelongInfo {
+      customerId
+      customerName
+      customerType
+    }
+    deliveryGoodsSource
+    outOrderId
+    outOrderStatus
+    saleGoodsItemInfo {
+      commodityDetail {
+        categoryId
+        categoryName
+        commodityId
+        commodityName
+        commoditySkuId
+        commoditySkuName
+        commoditySpecOptionId
+        commoditySpecOptionName
+        availableSkuQuantity {
+          businessUnit {
+            unitId
+            unitName
+          }
+          unit {
+            unitId
+            unitName
+          }
+          conversion
+        }
+        baseUnit {
+          unitId
+          unitName
+        }
+      }
+      saleOrderItemId
+      commodityTypeId
+      commodityTypeName
+      warehouse {
+        address
+        belongId
+        belongType
+        houseNumber
+        id
+        locationList
+        name
+        orgId
+        remark
+        status
+        typeId
+      }
+      markList
+      stockBatchInfo {
+        customerBelongInfo {
+          customerId
+          customerName
+          customerType
+        }
+        unit {
+          unitId
+          unitName
+        }
+        batchCode
+        batchId
+        createTime
+        lockQuantity
+        lockQuantityItem {
+          unit {
+            unitId
+            unitName
+          }
+          quantity
+        }
+        quantity
+        quantityItem {
+          unit {
+            unitId
+            unitName
+          }
+          quantity
+        }
+      }
+      unit {
+        unitId
+        unitName
+      }
+      deliverableQuantity
+      deliveredQuantity
+      price
+      saleQuantity
+      quantityItem {
+        unit {
+          unitId
+          unitName
+        }
+        quantity
+      }
+    }
+    saleOrderCode
+    saleOrderDate
+    saleOrderId
+  }
+}
+
+# 销售配送单: 选择配送货物批次（针对销售计划）
+query listSaleDeliveryGoodsBatch($input: ListSaleDeliveryGoodsBatchInput) {
+  listSaleDeliveryGoodsBatch(input: $input) {
+    commoditySku {
+      categoryId
+      categoryName
+      commodityId
+      commodityName
+      commoditySkuId
+      commoditySkuName
+      commoditySpecOptionId
+      commoditySpecOptionName
+      availableSkuQuantity {
+        businessUnit {
+          unitId
+          unitName
+        }
+        unit {
+          unitId
+          unitName
+        }
+        conversion
+      }
+      baseUnit {
+        unitId
+        unitName
+      }
+    }
+    customerBelongInfo {
+      customerId
+      customerName
+      customerType
+    }
+    batchCode
+    batchId
+    commodityType
+    commodityTypeName
+    inStockTime
+    unit {
+      unitId
+      unitName
+    }
+    price
+    quantity
+    quantityItem {
+      unit {
+        unitId
+        unitName
+      }
+      quantity
+    }
+  }
+}
+
+# 销售配送单: 保存
+mutation createSaleDeliveryOrder($input: CreateSaleDeliveryOrderInput!) {
+  createSaleDeliveryOrder(input: $input)
+}
+
+# 销售配送单: 获取配送单列表详情
+query saleDeliveryOrderDetail($input: SaleDeliveryOrderDetailQueryInput) {
+  saleDeliveryOrderDetail(input: $input) {
+    belongOrg {
+      orgId
+      orgName
+    }
+    createBy {
+      phoneNum
+      userId
+      userName
+    }
+    org {
+      orgId
+      orgName
+    }
+    belongInfo {
+      customerBelongInfo {
+        customerId
+        customerName
+        customerType
+      }
+    }
+    businessUserName
+    carNum
+    carType
+    completeTime
+    createTime
+    deliveryDate
+    deliveryGoodsSource
+    deliveryGoodsSourceDesc
+    deliveryMode
+    deliveryModeDesc
+    deliveryOrderFee {
+      billDetailsList {
+        supplier {
+          supplierId
+          supplierName
+        }
+        billCostData
+        billDetailId
+        billMainId
+        businessItemValue
+        costAmount
+        costId
+        costName
+        dictItemId
+        note
+        ruleCode
+        ruleId
+        showField
+        paymentType
+      }
+      billMainId
+      billTemplateId
+    }
+    deliveryOrderItem {
+      customerBelongInfo {
+        customerId
+        customerName
+        customerType
+      }
+      commodityDetail {
+        sku {
+          categoryId
+          categoryName
+          commodityId
+          commodityName
+          commoditySkuId
+          commoditySkuName
+          commoditySpecOptionId
+          commoditySpecOptionName
+          availableSkuQuantity {
+            businessUnit {
+              unitId
+              unitName
+            }
+            unit {
+              unitId
+              unitName
+            }
+            conversion
+          }
+          baseUnit {
+            unitId
+            unitName
+          }
+        }
+        commodityTypeId
+        commodityTypeName
+        deliveryOutItemId
+        differenceReason
+        itemId
+        saleOrderItemId
+        warehouse {
+          address
+          belongId
+          belongType
+          houseNumber
+          id
+          locationList
+          name
+          orgId
+          remark
+          status
+          typeId
+        }
+        stockBatchInfo {
+          customerBelongInfo {
+            customerId
+            customerName
+            customerType
+          }
+          batchCode
+          batchId
+          createTime
+          unit {
+            unitId
+            unitName
+          }
+          lockQuantity
+          lockQuantityItem {
+            unit {
+              unitId
+              unitName
+            }
+            quantity
+          }
+          quantity
+          quantityItem {
+            unit {
+              unitId
+              unitName
+            }
+            quantity
+          }
+        }
+        markList
+        unit {
+          unitId
+          unitName
+        }
+        actualQuantity
+        deliverableQuantity
+        deliveredQuantity
+        differenceQuantity
+        outQuantity
+        quantity
+        quantityItem {
+          unit {
+            unitId
+            unitName
+          }
+          quantity
+        }
+        returnQuantity
+      }
+      itemId
+      orderId
+      outOrderId
+      saleDeliveryOrderType
+      sourceOrderCode
+      sourceOrderId
+      sourceOrderSaleDate
+    }
+    deliveryRequirement
+    deliveryRequirementDesc
+    deliveryReturnOrderCount
+    driverContact
+    driverName
+    orderCode
+    orderId
+    orderStatus
+    orderStatusDesc
+    saleOrderDate
+    statusNote
+    supplementalOrderCount
+    auditUser {
+      phoneNum
+      userId
+      userName
+    }
+    fileInfoList {
+      accessType
+      contentType
+      createTime
+      fileUrl
+      id
+      name
+      size
+      tags
+      updateTime
+    }
+  }
+}
+
+# 销售配送单: 分页查询配送补充单
+query pageSupplementalOrder($input: PageSupplementalOrderInput, $page: Page!) {
+  pageSupplementalOrder(input: $input, page: $page) {
+    pageCurrent
+    pageSize
+    totalRecords
+    records {
+      belongOrg {
+        orgId
+        orgName
+      }
+      createBy {
+        phoneNum
+        userId
+        userName
+      }
+      createTime
+      deliveryDate
+      deliveryGoodsSource
+      deliveryGoodsSourceDesc
+      deliveryMode
+      deliveryModeDesc
+      deliveryOrderItem {
+        customerBelongInfo {
+          customerId
+          customerName
+          customerType
+        }
+        commodityDetail {
+          sku {
+            categoryId
+            categoryName
+            commodityId
+            commodityName
+            commoditySkuId
+            commoditySkuName
+            commoditySpecOptionId
+            commoditySpecOptionName
+            availableSkuQuantity {
+              businessUnit {
+                unitId
+                unitName
+              }
+              unit {
+                unitId
+                unitName
+              }
+              conversion
+            }
+            baseUnit {
+              unitId
+              unitName
+            }
+          }
+          commodityTypeId
+          commodityTypeName
+          deliveryOutItemId
+          differenceReason
+          itemId
+          saleOrderItemId
+          warehouse {
+            address
+            belongId
+            belongType
+            houseNumber
+            id
+            locationList
+            name
+            orgId
+            remark
+            status
+            typeId
+          }
+          stockBatchInfo {
+            customerBelongInfo {
+              customerId
+              customerName
+              customerType
+            }
+            batchCode
+            batchId
+            createTime
+            unit {
+              unitId
+              unitName
+            }
+            lockQuantity
+            lockQuantityItem {
+              unit {
+                unitId
+                unitName
+              }
+              quantity
+            }
+            quantity
+            quantityItem {
+              unit {
+                unitId
+                unitName
+              }
+              quantity
+            }
+          }
+          markList
+          unit {
+            unitId
+            unitName
+          }
+          actualQuantity
+          deliverableQuantity
+          deliveredQuantity
+          differenceQuantity
+          outQuantity
+          quantity
+          quantityItem {
+            unit {
+              unitId
+              unitName
+            }
+            quantity
+          }
+          returnQuantity
+        }
+        itemId
+        orderId
+        outOrderId
+        saleDeliveryOrderType
+        sourceOrderCode
+        sourceOrderId
+        sourceOrderSaleDate
+      }
+      orderCode
+      orderId
+      orderStatus
+      orderStatusDesc
+      saleDeliveryOrderCode
+      saleDeliveryOrderId
+    }
+  }
+}
+
+# 销售配送单: 分页查询配送退货单
+query pageSaleDeliveryReturnOrder($input: PageSaleDeliveryReturnInput, $page: Page!) {
+  pageSaleDeliveryReturnOrder(input: $input, page: $page) {
+    pageCurrent
+    pageSize
+    totalRecords
+    records {
+      belongOrg {
+        orgId
+        orgName
+      }
+      createBy {
+        phoneNum
+        userId
+        userName
+      }
+      customerBelongInfo {
+        customerId
+        customerName
+        customerType
+      }
+      createTime
+      deliveryDate
+      deliveryGoodsSource
+      deliveryGoodsSourceDesc
+      deliveryOrderItem {
+        customerBelongInfo {
+          customerId
+          customerName
+          customerType
+        }
+        commodityDetail {
+          sku {
+            categoryId
+            categoryName
+            commodityId
+            commodityName
+            commoditySkuId
+            commoditySkuName
+            commoditySpecOptionId
+            commoditySpecOptionName
+            availableSkuQuantity {
+              businessUnit {
+                unitId
+                unitName
+              }
+              unit {
+                unitId
+                unitName
+              }
+              conversion
+            }
+            baseUnit {
+              unitId
+              unitName
+            }
+          }
+          commodityTypeId
+          commodityTypeName
+          deliveryOutItemId
+          differenceReason
+          itemId
+          saleOrderItemId
+          warehouse {
+            address
+            belongId
+            belongType
+            houseNumber
+            id
+            locationList
+            name
+            orgId
+            remark
+            status
+            typeId
+          }
+          markList
+          stockBatchInfo {
+            customerBelongInfo {
+              customerId
+              customerName
+              customerType
+            }
+            unit {
+              unitId
+              unitName
+            }
+            batchCode
+            batchId
+            createTime
+            lockQuantity
+            lockQuantityItem {
+              unit {
+                unitId
+                unitName
+              }
+              quantity
+            }
+            quantity
+            quantityItem {
+              unit {
+                unitId
+                unitName
+              }
+              quantity
+            }
+          }
+          unit {
+            unitId
+            unitName
+          }
+          actualQuantity
+          deliverableQuantity
+          deliveredQuantity
+          differenceQuantity
+          outQuantity
+          quantity
+          quantityItem {
+            unit {
+              unitId
+              unitName
+            }
+            quantity
+          }
+          returnQuantity
+        }
+        itemId
+        orderId
+        outOrderId
+        saleDeliveryOrderType
+        sourceOrderCode
+        sourceOrderId
+        sourceOrderSaleDate
+      }
+      orderCode
+      orderId
+      orderStatus
+      orderStatusDesc
+      saleDeliveryOrderCode
+      saleDeliveryOrderId
+      existDifferenceOrder
+    }
+  }
+}
+
+# 销售配送单: 查询配送退货单详情
+query saleDeliveryReturnOrderDetail($input: SaleDeliveryReturnDetailInput) {
+  saleDeliveryReturnOrderDetail(input: $input) {
+    belongOrg {
+      orgId
+      orgName
+    }
+    createBy {
+      phoneNum
+      userId
+      userName
+    }
+    customerBelongInfo {
+      customerId
+      customerName
+      customerType
+    }
+    createTime
+    deliveryDate
+    deliveryGoodsSource
+    deliveryGoodsSourceDesc
+    deliveryOrderItem {
+      customerBelongInfo {
+        customerId
+        customerName
+        customerType
+      }
+      commodityDetail {
+        sku {
+          categoryId
+          categoryName
+          commodityId
+          commodityName
+          commoditySkuId
+          commoditySkuName
+          commoditySpecOptionId
+          commoditySpecOptionName
+          availableSkuQuantity {
+            businessUnit {
+              unitId
+              unitName
+            }
+            unit {
+              unitId
+              unitName
+            }
+            conversion
+          }
+          baseUnit {
+            unitId
+            unitName
+          }
+        }
+        commodityTypeId
+        commodityTypeName
+        deliveryOutItemId
+        differenceReason
+        itemId
+        saleOrderItemId
+        warehouse {
+          address
+          belongId
+          belongType
+          houseNumber
+          id
+          locationList
+          name
+          orgId
+          remark
+          status
+          typeId
+        }
+        stockBatchInfo {
+          customerBelongInfo {
+            customerId
+            customerName
+            customerType
+          }
+          batchCode
+          batchId
+          createTime
+          unit {
+            unitId
+            unitName
+          }
+          lockQuantity
+          lockQuantityItem {
+            unit {
+              unitId
+              unitName
+            }
+            quantity
+          }
+          quantity
+          quantityItem {
+            unit {
+              unitId
+              unitName
+            }
+            quantity
+          }
+        }
+        markList
+        unit {
+          unitId
+          unitName
+        }
+        actualQuantity
+        deliverableQuantity
+        deliveredQuantity
+        differenceQuantity
+        outQuantity
+        quantity
+        quantityItem {
+          unit {
+            unitId
+            unitName
+          }
+          quantity
+        }
+        returnQuantity
+      }
+      itemId
+      orderId
+      outOrderId
+      saleDeliveryOrderType
+      sourceOrderCode
+      sourceOrderId
+      sourceOrderSaleDate
+    }
+    orderCode
+    orderId
+    orderStatus
+    orderStatusDesc
+    saleDeliveryOrderCode
+    saleDeliveryOrderId
+    existDifferenceOrder
+  }
+}
+
+# 销售配送单: 查询配送补充单详情
+query supplementalOrderDetail($input: SupplementalOrderDetailInput) {
+  supplementalOrderDetail(input: $input) {
+    belongOrg {
+      orgId
+      orgName
+    }
+    createBy {
+      phoneNum
+      userId
+      userName
+    }
+    createTime
+    deliveryDate
+    deliveryGoodsSource
+    deliveryGoodsSourceDesc
+    deliveryMode
+    deliveryModeDesc
+    deliveryOrderItem {
+      customerBelongInfo {
+        customerId
+        customerName
+        customerType
+      }
+      commodityDetail {
+        sku {
+          categoryId
+          categoryName
+          commodityId
+          commodityName
+          commoditySkuId
+          commoditySkuName
+          commoditySpecOptionId
+          commoditySpecOptionName
+          availableSkuQuantity {
+            businessUnit {
+              unitId
+              unitName
+            }
+            unit {
+              unitId
+              unitName
+            }
+            conversion
+          }
+          baseUnit {
+            unitId
+            unitName
+          }
+        }
+        commodityTypeId
+        commodityTypeName
+        deliveryOutItemId
+        differenceReason
+        itemId
+        saleOrderItemId
+        warehouse {
+          address
+          belongId
+          belongType
+          houseNumber
+          id
+          locationList
+          name
+          orgId
+          remark
+          status
+          typeId
+        }
+        markList
+        stockBatchInfo {
+          customerBelongInfo {
+            customerId
+            customerName
+            customerType
+          }
+          unit {
+            unitId
+            unitName
+          }
+          batchCode
+          batchId
+          createTime
+          lockQuantity
+          lockQuantityItem {
+            unit {
+              unitId
+              unitName
+            }
+            quantity
+          }
+          quantity
+          quantityItem {
+            unit {
+              unitId
+              unitName
+            }
+            quantity
+          }
+        }
+        unit {
+          unitId
+          unitName
+        }
+        actualQuantity
+        deliverableQuantity
+        deliveredQuantity
+        differenceQuantity
+        outQuantity
+        quantity
+        quantityItem {
+          unit {
+            unitId
+            unitName
+          }
+          quantity
+        }
+        returnQuantity
+      }
+      itemId
+      orderId
+      outOrderId
+      saleDeliveryOrderType
+      sourceOrderCode
+      sourceOrderId
+      sourceOrderSaleDate
+    }
+    orderCode
+    orderId
+    orderStatus
+    orderStatusDesc
+    saleDeliveryOrderCode
+    saleDeliveryOrderId
+  }
+}
+
+# 销售配送单: 取消补充单
+mutation cancelSaleDeliverySupplementalOrder($input: CancelSupplementalOrderInput!) {
+  cancelSaleDeliverySupplementalOrder(input: $input)
+}
+
+# 销售配送单: 提交补充单
+mutation submitSaleDeliverySupplementalOrder($input: SubmitSupplementalOrderInput!) {
+  submitSaleDeliverySupplementalOrder(input: $input)
+}
+
+# 销售配送单: 作废补充单
+mutation voidSaleDeliverySupplementalOrder($input: VoidSupplementalOrderInput!) {
+  voidSaleDeliverySupplementalOrder(input: $input)
+}
+
+# 销售配送单: 配送收货差异原因列表
+query listDeliveryDifferenceReason {
+  listDeliveryDifferenceReason {
+    label
+    value
+  }
+}
+
+# 销售配送单: 配送退货原因列表
+query listDeliveryReturnReason {
+  listDeliveryReturnReason {
+    label
+    value
+  }
+}
+
+# 销售配送单: 完成收货
+mutation completeSaleDeliveryOrder($input: CompleteSaleDeliveryOrderInput!) {
+  completeSaleDeliveryOrder(input: $input)
+}
+
+# 销售配送单: 取消
+mutation cancelSaleDeliveryOrder($input: CancelSaleDeliveryOrderInput!) {
+  cancelSaleDeliveryOrder(input: $input)
+}
+
+# 销售配送单: 提交配送单
+mutation submitSaleDeliveryOrder($input: SubmitSaleDeliveryOrderInput!) {
+  submitSaleDeliveryOrder(input: $input)
+}
+
+# 销售配送单: 配送作废
+mutation voidDeliveryOrder($input: VoidSaleDeliveryOrderInput!) {
+  voidDeliveryOrder(input: $input)
+}
+
+# 销售配送单: 撤销配送
+mutation withdrawDeliveryOrder($input: WithdrawSaleDeliveryOrderInput!) {
+  withdrawDeliveryOrder(input: $input)
+}
+
+# 销售配送单: 修改配送信息
+mutation updateSaleDeliveryOrderDeliveryInfo($input: UpdateSaleDeliveryOrderDeliveryInfoInput!) {
+  updateSaleDeliveryOrderDeliveryInfo(input: $input)
+}
+
+# 销售配送单: 修改
+mutation updateSaleDeliveryOrder($input: UpdateSaleDeliveryOrderInput!) {
+  updateSaleDeliveryOrder(input: $input)
+}
+
+# 销售配送单: 选择配送补充单货物
+query listSaleDeliverySupplementalGoods($input: ListSaleDeliverySupplementalGoodsInput) {
+  listSaleDeliverySupplementalGoods(input: $input) {
+    customerBelongInfo {
+      customerId
+      customerName
+      customerType
+    }
+    deliveryGoodsSource
+    outOrderId
+    outOrderStatus
+    saleGoodsItemInfo {
+      commodityDetail {
+        categoryId
+        categoryName
+        commodityId
+        commodityName
+        commoditySkuId
+        commoditySkuName
+        commoditySpecOptionId
+        commoditySpecOptionName
+        availableSkuQuantity {
+          businessUnit {
+            unitId
+            unitName
+          }
+          unit {
+            unitId
+            unitName
+          }
+          conversion
+        }
+        baseUnit {
+          unitId
+          unitName
+        }
+      }
+      commodityTypeId
+      commodityTypeName
+      saleOrderItemId
+      warehouse {
+        address
+        belongId
+        belongType
+        houseNumber
+        id
+        locationList
+        name
+        orgId
+        remark
+        status
+        typeId
+      }
+      markList
+      stockBatchInfo {
+        customerBelongInfo {
+          customerId
+          customerName
+          customerType
+        }
+        unit {
+          unitId
+          unitName
+        }
+        batchCode
+        batchId
+        createTime
+        lockQuantity
+        lockQuantityItem {
+          unit {
+            unitId
+            unitName
+          }
+          quantity
+        }
+        quantity
+        quantityItem {
+          unit {
+            unitId
+            unitName
+          }
+          quantity
+        }
+      }
+      unit {
+        unitId
+        unitName
+      }
+      deliverableQuantity
+      deliveredQuantity
+      price
+      saleQuantity
+      quantityItem {
+        unit {
+          unitId
+          unitName
+        }
+        quantity
+      }
+    }
+    saleOrderCode
+    saleOrderDate
+    saleOrderId
+  }
+}
+
+# 销售配送单: 创建补充单
+mutation createSaleDeliverySupplementalOrder($input: CreateSaleDeliverySupplementalOrderInput!) {
+  createSaleDeliverySupplementalOrder(input: $input)
+}
+
+# 差异订单:获取差异订单列表
+query listDifferenceOrder($businessId: ID!) {
+  listDifferenceOrder(businessId: $businessId) {
+    belongOrg {
+      orgId
+      orgName
+    }
+    createUser {
+      phoneNum
+      userId
+      userName
+    }
+    customer {
+      customerId
+      customerName
+      customerType
+      lastLevelId
+      lastLevelName
+    }
+    businessCode
+    businessId
+    commodityList {
+      batchInfo {
+        warehouse {
+          warehouseId
+          warehouseName
+        }
+        batchCode
+        batchId
+        createTime
+        customer {
+          customerId
+          customerName
+          customerType
+          lastLevelId
+          lastLevelName
+        }
+        unit {
+          unitId
+          unitName
+        }
+        commodityTypeId
+        commodityTypeName
+        quantity
+        quantityItem {
+          unit {
+            unitId
+            unitName
+          }
+          quantity
+        }
+      }
+      commoditySku {
+        categoryId
+        categoryName
+        commodityId
+        commodityName
+        commoditySkuId
+        commoditySkuName
+        commoditySpecOptionId
+        commoditySpecOptionName
+        availableSkuQuantity {
+          businessUnit {
+            unitId
+            unitName
+          }
+          unit {
+            unitId
+            unitName
+          }
+          conversion
+        }
+        baseUnit {
+          unitId
+          unitName
+        }
+      }
+      commodityType {
+        commodityTypeId
+        commodityTypeName
+      }
+      businessItemId
+      orderId
+      orderItemId
+      planCode
+      planSaleTime
+      reason
+      saleOrderItemId
+      quantity
+      quantityItem {
+        unit {
+          unitId
+          unitName
+        }
+        quantity
+      }
+      unit {
+        unitId
+        unitName
+      }
+      batch {
+        unit {
+          unitId
+          unitName
+        }
+        batchCode
+        batchId
+        createTime
+        quantity
+        quantityItem {
+          unit {
+            unitId
+            unitName
+          }
+          quantity
+        }
+        sourceBatchCode
+        sourceBatchId
+      }
+      differenceOrderType
+      markList
+      markNameList
+      originDeliveryExtendInfo {
+        deliveryGoodsSource
+        deliveryGoodsSourceDesc
+        warehouse {
+          address
+          belongId
+          belongType
+          houseNumber
+          id
+          locationList
+          name
+          orgId
+          remark
+          status
+          typeId
+        }
+      }
+    }
+    createTime
+    deliveryTime
+    differenceOrderType
+    differenceOrderTypeDesc
+    orderCode
+    orderId
+    receiveTime
+    returnTime
+    depletionTime
+    differenceOrderStatus
+    differenceOrderStatusDesc
+    remark
+  }
+}
+
+# 销售配送单: 配送信息车型列表
+query listDeliveryCarType {
+  listDeliveryCarType {
+    label
+    value
+  }
+}

@@ -1,0 +1,1947 @@
+# 生产客户: 客户分页列表
+query pitayaCustomers($customersInput: CustomersInput, $page: Page) {
+  pitayaCustomers(customersInput: $customersInput, page: $page) {
+    pageCurrent
+    pageSize
+    records {
+      belongOrganization {
+        orgId
+        orgName
+      }
+      org {
+        orgId
+        orgName
+      }
+      addressList {
+        city {
+          firstChar
+          hasChildren
+          id
+          locationType
+          name
+        }
+        district {
+          firstChar
+          hasChildren
+          id
+          locationType
+          name
+        }
+        province {
+          firstChar
+          hasChildren
+          id
+          locationType
+          name
+        }
+        addressName
+        contactList {
+          alias
+          contactUserId
+          customerDetailId
+          fileRecordList {
+            beginTime
+            endTime
+            fileList {
+              fileId
+              fileName
+              fileUploadTime
+              fileUrl
+              fileInfo {
+                accessType
+                contentType
+                createTime
+                fileUrl
+                id
+                name
+                size
+                tags
+                updateTime
+              }
+              fileDirection
+            }
+            fileType
+          }
+          id
+          idNumber
+          mail
+          name
+          otherInfoOfIdCard
+          phone
+          remark
+          userId
+          wechat
+        }
+        coordinateList
+        country
+        customerDetailId
+        deliveryName
+        id
+        shortAddress
+        status
+      }
+      alias
+      appId
+      attribute
+      belongType
+      blacklistStatus
+      channelId
+      channelName
+      controlUser
+      cooperateTypeList
+      corporation
+      createTime
+      credit
+      customerAccountList {
+        accountType
+        bankCardNo
+        bankCityName
+        bankName
+        bankProvinceName
+        customerId
+        fileRecordList {
+          beginTime
+          endTime
+          fileList {
+            fileId
+            fileName
+            fileUploadTime
+            fileUrl
+            fileInfo {
+              accessType
+              contentType
+              createTime
+              fileUrl
+              id
+              name
+              size
+              tags
+              updateTime
+            }
+            fileDirection
+          }
+          fileType
+        }
+        id
+        updateBy
+        updateTime
+        accountName
+      }
+      customerContactList {
+        alias
+        contactUserId
+        customerDetailId
+        fileRecordList {
+          beginTime
+          endTime
+          fileList {
+            fileId
+            fileName
+            fileUploadTime
+            fileUrl
+            fileInfo {
+              accessType
+              contentType
+              createTime
+              fileUrl
+              id
+              name
+              size
+              tags
+              updateTime
+            }
+            fileDirection
+          }
+          fileType
+        }
+        id
+        idNumber
+        mail
+        name
+        otherInfoOfIdCard
+        phone
+        remark
+        userId
+        wechat
+      }
+      customerCooperation {
+        balanceMode
+        customerDetailId
+        cycleCheck
+        cycleCredit
+        cycleInvoicing
+        cyclePay
+        id
+        quota
+        updateBy
+        updateTime
+      }
+      customerId
+      customerQualification {
+        assetOther
+        assetProperty
+        assetVehicle
+        businessDuration
+        businessScale
+        businessTypesList
+        createBy
+        createTime
+        customerId
+        description
+        fileRecordList {
+          beginTime
+          endTime
+          fileList {
+            fileId
+            fileName
+            fileUploadTime
+            fileUrl
+            fileInfo {
+              accessType
+              contentType
+              createTime
+              fileUrl
+              id
+              name
+              size
+              tags
+              updateTime
+            }
+            fileDirection
+          }
+          fileType
+        }
+        historyAchievement
+        id
+        saleTypesList {
+          categoryId
+          categoryName
+        }
+        salesChannels
+        updateBy
+        updateTime
+      }
+      customerUserId
+      enable
+      establishTime
+      fascAdminId
+      fascId
+      fileRecordList {
+        beginTime
+        endTime
+        fileList {
+          fileId
+          fileName
+          fileUploadTime
+          fileUrl
+          fileInfo {
+            accessType
+            contentType
+            createTime
+            fileUrl
+            id
+            name
+            size
+            tags
+            updateTime
+          }
+          fileDirection
+        }
+        fileType
+      }
+      financialSystemCode
+      id
+      idNumber
+      infoAuth
+      initials
+      introducerId
+      longCooperation
+      mail
+      name
+      ncCode
+      operateAddress
+      payTaxesType
+      phone
+      pinyinOfName
+      realNameAuthStatus
+      registerAddress
+      registerCapital
+      registerStatus
+      remark
+      sourceType
+      taxpayerIdentificationNumber
+      tenantId
+      type
+      userStatus
+      wechat
+    }
+    totalRecords
+  }
+}
+
+# 生产客户: 客户列表
+query listCustomer($customerListInput: CustomerListInput) {
+  listCustomer(customerListInput: $customerListInput) {
+    belongOrganization {
+      orgId
+      orgName
+    }
+    org {
+      orgId
+      orgName
+    }
+    addressList {
+      city {
+        firstChar
+        hasChildren
+        id
+        locationType
+        name
+      }
+      district {
+        firstChar
+        hasChildren
+        id
+        locationType
+        name
+      }
+      province {
+        firstChar
+        hasChildren
+        id
+        locationType
+        name
+      }
+      addressName
+      contactList {
+        alias
+        contactUserId
+        customerDetailId
+        fileRecordList {
+          beginTime
+          endTime
+          fileList {
+            fileId
+            fileName
+            fileUploadTime
+            fileUrl
+            fileInfo {
+              accessType
+              contentType
+              createTime
+              fileUrl
+              id
+              name
+              size
+              tags
+              updateTime
+            }
+            fileDirection
+          }
+          fileType
+        }
+        id
+        idNumber
+        mail
+        name
+        otherInfoOfIdCard
+        phone
+        remark
+        userId
+        wechat
+      }
+      coordinateList
+      country
+      customerDetailId
+      deliveryName
+      id
+      shortAddress
+      status
+    }
+    alias
+    appId
+    attribute
+    belongType
+    blacklistStatus
+    channelId
+    channelName
+    controlUser
+    cooperateTypeList
+    corporation
+    createTime
+    credit
+    customerAccountList {
+      accountType
+      bankCardNo
+      bankCityName
+      bankName
+      bankProvinceName
+      customerId
+      fileRecordList {
+        beginTime
+        endTime
+        fileList {
+          fileId
+          fileName
+          fileUploadTime
+          fileUrl
+          fileInfo {
+            accessType
+            contentType
+            createTime
+            fileUrl
+            id
+            name
+            size
+            tags
+            updateTime
+          }
+          fileDirection
+        }
+        fileType
+      }
+      id
+      updateBy
+      updateTime
+      accountName
+    }
+    customerContactList {
+      alias
+      contactUserId
+      customerDetailId
+      fileRecordList {
+        beginTime
+        endTime
+        fileList {
+          fileId
+          fileName
+          fileUploadTime
+          fileUrl
+          fileInfo {
+            accessType
+            contentType
+            createTime
+            fileUrl
+            id
+            name
+            size
+            tags
+            updateTime
+          }
+          fileDirection
+        }
+        fileType
+      }
+      id
+      idNumber
+      mail
+      name
+      otherInfoOfIdCard
+      phone
+      remark
+      userId
+      wechat
+    }
+    customerCooperation {
+      balanceMode
+      customerDetailId
+      cycleCheck
+      cycleCredit
+      cycleInvoicing
+      cyclePay
+      id
+      quota
+      updateBy
+      updateTime
+    }
+    customerId
+    customerQualification {
+      assetOther
+      assetProperty
+      assetVehicle
+      businessDuration
+      businessScale
+      businessTypesList
+      createBy
+      createTime
+      customerId
+      description
+      fileRecordList {
+        beginTime
+        endTime
+        fileList {
+          fileId
+          fileName
+          fileUploadTime
+          fileUrl
+          fileInfo {
+            accessType
+            contentType
+            createTime
+            fileUrl
+            id
+            name
+            size
+            tags
+            updateTime
+          }
+          fileDirection
+        }
+        fileType
+      }
+      historyAchievement
+      id
+      saleTypesList {
+        categoryId
+        categoryName
+      }
+      salesChannels
+      updateBy
+      updateTime
+    }
+    customerUserId
+    enable
+    establishTime
+    fascAdminId
+    fascId
+    fileRecordList {
+      beginTime
+      endTime
+      fileList {
+        fileId
+        fileName
+        fileUploadTime
+        fileUrl
+        fileInfo {
+          accessType
+          contentType
+          createTime
+          fileUrl
+          id
+          name
+          size
+          tags
+          updateTime
+        }
+        fileDirection
+      }
+      fileType
+    }
+    financialSystemCode
+    id
+    idNumber
+    infoAuth
+    initials
+    introducerId
+    longCooperation
+    mail
+    name
+    ncCode
+    operateAddress
+    payTaxesType
+    phone
+    pinyinOfName
+    realNameAuthStatus
+    registerAddress
+    registerCapital
+    registerStatus
+    remark
+    sourceType
+    taxpayerIdentificationNumber
+    tenantId
+    type
+    userStatus
+    wechat
+  }
+}
+
+# 生产客户: 客户分组列表
+query pitayaCustomerGroups {
+  pitayaCustomerGroups {
+    customerGroupId
+    customerGroupName
+    customerPayloadList {
+      belongOrganization {
+        orgId
+        orgName
+      }
+      org {
+        orgId
+        orgName
+      }
+      addressList {
+        city {
+          firstChar
+          hasChildren
+          id
+          locationType
+          name
+        }
+        district {
+          firstChar
+          hasChildren
+          id
+          locationType
+          name
+        }
+        province {
+          firstChar
+          hasChildren
+          id
+          locationType
+          name
+        }
+        addressName
+        contactList {
+          alias
+          contactUserId
+          customerDetailId
+          fileRecordList {
+            beginTime
+            endTime
+            fileList {
+              fileId
+              fileName
+              fileUploadTime
+              fileUrl
+              fileInfo {
+                accessType
+                contentType
+                createTime
+                fileUrl
+                id
+                name
+                size
+                tags
+                updateTime
+              }
+              fileDirection
+            }
+            fileType
+          }
+          id
+          idNumber
+          mail
+          name
+          otherInfoOfIdCard
+          phone
+          remark
+          userId
+          wechat
+        }
+        coordinateList
+        country
+        customerDetailId
+        deliveryName
+        id
+        shortAddress
+        status
+      }
+      alias
+      appId
+      attribute
+      belongType
+      blacklistStatus
+      channelId
+      channelName
+      controlUser
+      cooperateTypeList
+      corporation
+      createTime
+      credit
+      customerAccountList {
+        accountType
+        bankCardNo
+        bankCityName
+        bankName
+        bankProvinceName
+        customerId
+        fileRecordList {
+          beginTime
+          endTime
+          fileList {
+            fileId
+            fileName
+            fileUploadTime
+            fileUrl
+            fileInfo {
+              accessType
+              contentType
+              createTime
+              fileUrl
+              id
+              name
+              size
+              tags
+              updateTime
+            }
+            fileDirection
+          }
+          fileType
+        }
+        id
+        updateBy
+        updateTime
+        accountName
+      }
+      customerContactList {
+        alias
+        contactUserId
+        customerDetailId
+        fileRecordList {
+          beginTime
+          endTime
+          fileList {
+            fileId
+            fileName
+            fileUploadTime
+            fileUrl
+            fileInfo {
+              accessType
+              contentType
+              createTime
+              fileUrl
+              id
+              name
+              size
+              tags
+              updateTime
+            }
+            fileDirection
+          }
+          fileType
+        }
+        id
+        idNumber
+        mail
+        name
+        otherInfoOfIdCard
+        phone
+        remark
+        userId
+        wechat
+      }
+      customerCooperation {
+        balanceMode
+        customerDetailId
+        cycleCheck
+        cycleCredit
+        cycleInvoicing
+        cyclePay
+        id
+        quota
+        updateBy
+        updateTime
+      }
+      customerId
+      customerQualification {
+        assetOther
+        assetProperty
+        assetVehicle
+        businessDuration
+        businessScale
+        businessTypesList
+        createBy
+        createTime
+        customerId
+        description
+        fileRecordList {
+          beginTime
+          endTime
+          fileList {
+            fileId
+            fileName
+            fileUploadTime
+            fileUrl
+            fileInfo {
+              accessType
+              contentType
+              createTime
+              fileUrl
+              id
+              name
+              size
+              tags
+              updateTime
+            }
+            fileDirection
+          }
+          fileType
+        }
+        historyAchievement
+        id
+        saleTypesList {
+          categoryId
+          categoryName
+        }
+        salesChannels
+        updateBy
+        updateTime
+      }
+      customerUserId
+      enable
+      establishTime
+      fascAdminId
+      fascId
+      fileRecordList {
+        beginTime
+        endTime
+        fileList {
+          fileId
+          fileName
+          fileUploadTime
+          fileUrl
+          fileInfo {
+            accessType
+            contentType
+            createTime
+            fileUrl
+            id
+            name
+            size
+            tags
+            updateTime
+          }
+          fileDirection
+        }
+        fileType
+      }
+      financialSystemCode
+      id
+      idNumber
+      infoAuth
+      initials
+      introducerId
+      longCooperation
+      mail
+      name
+      ncCode
+      operateAddress
+      payTaxesType
+      phone
+      pinyinOfName
+      realNameAuthStatus
+      registerAddress
+      registerCapital
+      registerStatus
+      remark
+      sourceType
+      taxpayerIdentificationNumber
+      tenantId
+      type
+      userStatus
+      wechat
+    }
+  }
+}
+
+query allListCustomer($customerAllListInput: CustomerAllListInput) {
+  allListCustomer(customerAllListInput: $customerAllListInput) {
+    belongOrganization {
+      orgId
+      orgName
+    }
+    org {
+      orgId
+      orgName
+    }
+    addressList {
+      city {
+        firstChar
+        hasChildren
+        id
+        locationType
+        name
+      }
+      district {
+        firstChar
+        hasChildren
+        id
+        locationType
+        name
+      }
+      province {
+        firstChar
+        hasChildren
+        id
+        locationType
+        name
+      }
+      addressName
+      contactList {
+        alias
+        contactUserId
+        customerDetailId
+        fileRecordList {
+          beginTime
+          endTime
+          fileList {
+            fileId
+            fileName
+            fileUploadTime
+            fileUrl
+            fileInfo {
+              accessType
+              contentType
+              createTime
+              fileUrl
+              id
+              name
+              size
+              tags
+              updateTime
+            }
+            fileDirection
+          }
+          fileType
+        }
+        id
+        idNumber
+        mail
+        name
+        otherInfoOfIdCard
+        phone
+        remark
+        userId
+        wechat
+      }
+      coordinateList
+      country
+      customerDetailId
+      deliveryName
+      id
+      shortAddress
+      status
+    }
+    alias
+    appId
+    attribute
+    belongType
+    blacklistStatus
+    channelId
+    channelName
+    controlUser
+    cooperateTypeList
+    corporation
+    createTime
+    credit
+    customerAccountList {
+      accountType
+      bankCardNo
+      bankCityName
+      bankName
+      bankProvinceName
+      customerId
+      fileRecordList {
+        beginTime
+        endTime
+        fileList {
+          fileId
+          fileName
+          fileUploadTime
+          fileUrl
+          fileInfo {
+            accessType
+            contentType
+            createTime
+            fileUrl
+            id
+            name
+            size
+            tags
+            updateTime
+          }
+          fileDirection
+        }
+        fileType
+      }
+      id
+      updateBy
+      updateTime
+      accountName
+    }
+    customerContactList {
+      alias
+      contactUserId
+      customerDetailId
+      fileRecordList {
+        beginTime
+        endTime
+        fileList {
+          fileId
+          fileName
+          fileUploadTime
+          fileUrl
+          fileInfo {
+            accessType
+            contentType
+            createTime
+            fileUrl
+            id
+            name
+            size
+            tags
+            updateTime
+          }
+          fileDirection
+        }
+        fileType
+      }
+      id
+      idNumber
+      mail
+      name
+      otherInfoOfIdCard
+      phone
+      remark
+      userId
+      wechat
+    }
+    customerCooperation {
+      balanceMode
+      customerDetailId
+      cycleCheck
+      cycleCredit
+      cycleInvoicing
+      cyclePay
+      id
+      quota
+      updateBy
+      updateTime
+    }
+    customerId
+    customerQualification {
+      assetOther
+      assetProperty
+      assetVehicle
+      businessDuration
+      businessScale
+      businessTypesList
+      createBy
+      createTime
+      customerId
+      description
+      fileRecordList {
+        beginTime
+        endTime
+        fileList {
+          fileId
+          fileName
+          fileUploadTime
+          fileUrl
+          fileInfo {
+            accessType
+            contentType
+            createTime
+            fileUrl
+            id
+            name
+            size
+            tags
+            updateTime
+          }
+          fileDirection
+        }
+        fileType
+      }
+      historyAchievement
+      id
+      saleTypesList {
+        categoryId
+        categoryName
+      }
+      salesChannels
+      updateBy
+      updateTime
+    }
+    customerUserId
+    enable
+    establishTime
+    fascAdminId
+    fascId
+    fileRecordList {
+      beginTime
+      endTime
+      fileList {
+        fileId
+        fileName
+        fileUploadTime
+        fileUrl
+        fileInfo {
+          accessType
+          contentType
+          createTime
+          fileUrl
+          id
+          name
+          size
+          tags
+          updateTime
+        }
+        fileDirection
+      }
+      fileType
+    }
+    financialSystemCode
+    id
+    idNumber
+    infoAuth
+    initials
+    introducerId
+    longCooperation
+    mail
+    name
+    ncCode
+    operateAddress
+    payTaxesType
+    phone
+    pinyinOfName
+    realNameAuthStatus
+    registerAddress
+    registerCapital
+    registerStatus
+    remark
+    sourceType
+    taxpayerIdentificationNumber
+    tenantId
+    type
+    userStatus
+    wechat
+  }
+  # 生产客户: 无客户信息接口查询
+  orgCustomer {
+    belongOrganization {
+      orgId
+      orgName
+    }
+    org {
+      orgId
+      orgName
+    }
+    addressList {
+      city {
+        firstChar
+        hasChildren
+        id
+        locationType
+        name
+      }
+      district {
+        firstChar
+        hasChildren
+        id
+        locationType
+        name
+      }
+      province {
+        firstChar
+        hasChildren
+        id
+        locationType
+        name
+      }
+      addressName
+      contactList {
+        alias
+        contactUserId
+        customerDetailId
+        fileRecordList {
+          beginTime
+          endTime
+          fileList {
+            fileInfo {
+              accessType
+              contentType
+              createTime
+              fileUrl
+              id
+              name
+              size
+              tags
+              updateTime
+            }
+            fileDirection
+            fileId
+            fileName
+            fileUploadTime
+            fileUrl
+          }
+          fileType
+        }
+        id
+        idNumber
+        mail
+        name
+        otherInfoOfIdCard
+        phone
+        remark
+        userId
+        wechat
+      }
+      coordinateList
+      country
+      customerDetailId
+      deliveryName
+      id
+      shortAddress
+      status
+    }
+    alias
+    appId
+    attribute
+    belongType
+    blacklistStatus
+    channelId
+    channelName
+    controlUser
+    cooperateTypeList
+    corporation
+    createTime
+    credit
+    customerAccountList {
+      accountName
+      accountType
+      bankCardNo
+      bankCityName
+      bankName
+      bankProvinceName
+      customerId
+      fileRecordList {
+        beginTime
+        endTime
+        fileList {
+          fileInfo {
+            accessType
+            contentType
+            createTime
+            fileUrl
+            id
+            name
+            size
+            tags
+            updateTime
+          }
+          fileDirection
+          fileId
+          fileName
+          fileUploadTime
+          fileUrl
+        }
+        fileType
+      }
+      id
+      updateBy
+      updateTime
+    }
+    customerContactList {
+      alias
+      contactUserId
+      customerDetailId
+      fileRecordList {
+        beginTime
+        endTime
+        fileList {
+          fileInfo {
+            accessType
+            contentType
+            createTime
+            fileUrl
+            id
+            name
+            size
+            tags
+            updateTime
+          }
+          fileDirection
+          fileId
+          fileName
+          fileUploadTime
+          fileUrl
+        }
+        fileType
+      }
+      id
+      idNumber
+      mail
+      name
+      otherInfoOfIdCard
+      phone
+      remark
+      userId
+      wechat
+    }
+    customerCooperation {
+      balanceMode
+      customerDetailId
+      cycleCheck
+      cycleCredit
+      cycleInvoicing
+      cyclePay
+      id
+      quota
+      updateBy
+      updateTime
+    }
+    customerId
+    customerQualification {
+      assetOther
+      assetProperty
+      assetVehicle
+      businessDuration
+      businessScale
+      businessTypesList
+      createBy
+      createTime
+      customerId
+      description
+      fileRecordList {
+        beginTime
+        endTime
+        fileList {
+          fileInfo {
+            accessType
+            contentType
+            createTime
+            fileUrl
+            id
+            name
+            size
+            tags
+            updateTime
+          }
+          fileDirection
+          fileId
+          fileName
+          fileUploadTime
+          fileUrl
+        }
+        fileType
+      }
+      historyAchievement
+      id
+      saleTypesList {
+        categoryId
+        categoryName
+      }
+      salesChannels
+      updateBy
+      updateTime
+    }
+    customerUserId
+    enable
+    establishTime
+    fascAdminId
+    fascId
+    fileRecordList {
+      beginTime
+      endTime
+      fileList {
+        fileInfo {
+          accessType
+          contentType
+          createTime
+          fileUrl
+          id
+          name
+          size
+          tags
+          updateTime
+        }
+        fileDirection
+        fileId
+        fileName
+        fileUploadTime
+        fileUrl
+      }
+      fileType
+    }
+    financialSystemCode
+    id
+    idNumber
+    infoAuth
+    initials
+    introducerId
+    longCooperation
+    mail
+    name
+    ncCode
+    operateAddress
+    payTaxesType
+    phone
+    pinyinOfName
+    realNameAuthStatus
+    registerAddress
+    registerCapital
+    registerStatus
+    remark
+    sourceType
+    taxpayerIdentificationNumber
+    tenantId
+    type
+    userStatus
+    wechat
+  }
+}
+
+# 生产客户: 创建整体客户(后端组合基础信息和详细信息)
+mutation createPitayaCustomer($customerInput: PitayaCustomerInput) {
+  createPitayaCustomer(customerInput: $customerInput)
+}
+
+# 生产客户: 客户详情
+query pitayaCustomer($customerId: Int) {
+  pitayaCustomer(customerId: $customerId) {
+    belongOrganization {
+      orgId
+      orgName
+    }
+    org {
+      orgId
+      orgName
+    }
+    addressList {
+      city {
+        firstChar
+        hasChildren
+        id
+        locationType
+        name
+      }
+      district {
+        firstChar
+        hasChildren
+        id
+        locationType
+        name
+      }
+      province {
+        firstChar
+        hasChildren
+        id
+        locationType
+        name
+      }
+      addressName
+      contactList {
+        alias
+        contactUserId
+        customerDetailId
+        fileRecordList {
+          beginTime
+          endTime
+          fileList {
+            fileId
+            fileName
+            fileUploadTime
+            fileUrl
+            fileInfo {
+              accessType
+              contentType
+              createTime
+              fileUrl
+              id
+              name
+              size
+              tags
+              updateTime
+            }
+            fileDirection
+          }
+          fileType
+        }
+        id
+        idNumber
+        mail
+        name
+        otherInfoOfIdCard
+        phone
+        remark
+        userId
+        wechat
+      }
+      coordinateList
+      country
+      customerDetailId
+      deliveryName
+      id
+      shortAddress
+      status
+    }
+    alias
+    appId
+    attribute
+    belongType
+    blacklistStatus
+    channelId
+    channelName
+    controlUser
+    cooperateTypeList
+    corporation
+    createTime
+    credit
+    customerAccountList {
+      accountType
+      bankCardNo
+      bankCityName
+      bankName
+      bankProvinceName
+      customerId
+      fileRecordList {
+        beginTime
+        endTime
+        fileList {
+          fileId
+          fileName
+          fileUploadTime
+          fileUrl
+          fileInfo {
+            accessType
+            contentType
+            createTime
+            fileUrl
+            id
+            name
+            size
+            tags
+            updateTime
+          }
+          fileDirection
+        }
+        fileType
+      }
+      id
+      updateBy
+      updateTime
+      accountName
+    }
+    customerContactList {
+      alias
+      contactUserId
+      customerDetailId
+      fileRecordList {
+        beginTime
+        endTime
+        fileList {
+          fileId
+          fileName
+          fileUploadTime
+          fileUrl
+          fileInfo {
+            accessType
+            contentType
+            createTime
+            fileUrl
+            id
+            name
+            size
+            tags
+            updateTime
+          }
+          fileDirection
+        }
+        fileType
+      }
+      id
+      idNumber
+      mail
+      name
+      otherInfoOfIdCard
+      phone
+      remark
+      userId
+      wechat
+    }
+    customerCooperation {
+      balanceMode
+      customerDetailId
+      cycleCheck
+      cycleCredit
+      cycleInvoicing
+      cyclePay
+      id
+      quota
+      updateBy
+      updateTime
+    }
+    customerId
+    customerQualification {
+      assetOther
+      assetProperty
+      assetVehicle
+      businessDuration
+      businessScale
+      businessTypesList
+      createBy
+      createTime
+      customerId
+      description
+      fileRecordList {
+        beginTime
+        endTime
+        fileList {
+          fileId
+          fileName
+          fileUploadTime
+          fileUrl
+          fileInfo {
+            accessType
+            contentType
+            createTime
+            fileUrl
+            id
+            name
+            size
+            tags
+            updateTime
+          }
+          fileDirection
+        }
+        fileType
+      }
+      historyAchievement
+      id
+      saleTypesList {
+        categoryId
+        categoryName
+      }
+      salesChannels
+      updateBy
+      updateTime
+    }
+    customerUserId
+    enable
+    establishTime
+    fascAdminId
+    fascId
+    fileRecordList {
+      beginTime
+      endTime
+      fileList {
+        fileId
+        fileName
+        fileUploadTime
+        fileUrl
+        fileInfo {
+          accessType
+          contentType
+          createTime
+          fileUrl
+          id
+          name
+          size
+          tags
+          updateTime
+        }
+        fileDirection
+      }
+      fileType
+    }
+    financialSystemCode
+    id
+    idNumber
+    infoAuth
+    initials
+    introducerId
+    longCooperation
+    mail
+    name
+    ncCode
+    operateAddress
+    payTaxesType
+    phone
+    pinyinOfName
+    realNameAuthStatus
+    registerAddress
+    registerCapital
+    registerStatus
+    remark
+    sourceType
+    taxpayerIdentificationNumber
+    tenantId
+    type
+    userStatus
+    wechat
+  }
+}
+
+# 生产客户: 更新整体客户(后端组合基础信息和详细信息)
+mutation updatePitayaCustomer($customerInput: PitayaCustomerInput) {
+  updatePitayaCustomer(customerInput: $customerInput)
+}
+
+# 生产客户: 新增客户地址
+mutation createPitayaAddress($input: CreateOrUpdatePitayaAddressInput) {
+  createPitayaAddress(input: $input)
+}
+
+# 生产客户: 更新客户地址
+mutation updatePitayaAddress($input: CreateOrUpdatePitayaAddressInput) {
+  updatePitayaAddress(input: $input)
+}
+
+# 生产客户: 联系人: 新增联系人
+mutation createPitayaCustomerContact($input: PitayaCustomerContactInput) {
+  createPitayaCustomerContact(input: $input)
+}
+
+# 生产客户: 联系人: 编辑联系人
+mutation updatePitayaCustomerContact($input: PitayaCustomerContactInput) {
+  updatePitayaCustomerContact(input: $input)
+}
+
+# 生产客户: 获取客户资质信息
+query getPitayaCustomerQualification($input: GetPitayaCustomerQualificationInput!) {
+  getPitayaCustomerQualification(input: $input) {
+    assetOther
+    assetProperty
+    assetVehicle
+    businessDuration
+    businessScale
+    businessTypesList
+    createBy
+    createTime
+    customerId
+    description
+    fileRecordList {
+      beginTime
+      endTime
+      fileList {
+        fileId
+        fileName
+        fileUploadTime
+        fileUrl
+        fileInfo {
+          accessType
+          contentType
+          createTime
+          fileUrl
+          id
+          name
+          size
+          tags
+          updateTime
+        }
+        fileDirection
+      }
+      fileType
+    }
+    historyAchievement
+    id
+    saleTypesList {
+      categoryId
+      categoryName
+    }
+    salesChannels
+    updateBy
+    updateTime
+  }
+}
+
+# 生产客户: 新增客户资质
+mutation createPitayaCustomerQualification($input: CreateOrUpdatePitayaQualificationInput) {
+  createPitayaCustomerQualification(input: $input)
+}
+
+# 生产客户: 客户资质-更新客户资质
+mutation updatePitayaCustomerQualification($input: CreateOrUpdatePitayaQualificationInput) {
+  updatePitayaCustomerQualification(input: $input)
+}
+
+# 生产客户: 合作信息-获取客户授信信息
+query getCustomerCooperation($input: GetPitayaCustomerCooperationInput!) {
+  getCustomerCooperation(input: $input) {
+    balanceMode
+    customerDetailId
+    cycleCheck
+    cycleCredit
+    cycleInvoicing
+    cyclePay
+    id
+    quota
+    updateBy
+    updateTime
+  }
+}
+
+# 生产客户: 合作信息-更新客户授信信息（不传合作信息id就会新增）
+mutation updatePitayaCustomerCooperation($input: UpdatePitayaCustomerCooperationInput) {
+  updatePitayaCustomerCooperation(input: $input)
+}
+
+# 生产客户: 合作信息: 列表查询银行账户信息
+query listPitayaCustomerAccount($input: ListPitayaCustomerAccountInput!) {
+  listPitayaCustomerAccount(input: $input) {
+    accountType
+    bankCardNo
+    bankCityName
+    bankName
+    bankProvinceName
+    customerId
+    fileRecordList {
+      beginTime
+      endTime
+      fileList {
+        fileId
+        fileName
+        fileUploadTime
+        fileUrl
+        fileInfo {
+          accessType
+          contentType
+          createTime
+          fileUrl
+          id
+          name
+          size
+          tags
+          updateTime
+        }
+        fileDirection
+      }
+      fileType
+    }
+    id
+    updateBy
+    updateTime
+    accountName
+  }
+}
+
+# 生产客户: 合作信息-新增银行信息
+mutation createPitayaCustomerAccount($input: CreatePitayaCustomerAccountInput) {
+  createPitayaCustomerAccount(input: $input)
+}
+
+# 生产客户: 合作信息-更新银行信息
+mutation updatePitayaCustomerAccount($input: UpdatePitayaCustomerAccountInput) {
+  updatePitayaCustomerAccount(input: $input)
+}
+
+# 生产客户: 合作信息-删除银行信息
+mutation deletePitayaCustomerAccount($input: DeletePitayaCustomerAccountInput) {
+  deletePitayaCustomerAccount(input: $input)
+}
+
+# 生产客户: 更新客户详细信息
+mutation updatePitayaCustomerDetail($input: UpdatePitayaCustomerDetailInput) {
+  updatePitayaCustomerDetail(input: $input)
+}
+
+# 生产客户: 查询客户基本信息
+query getCustomerBase($getCustomerBaseInput: GetCustomerBaseInput) {
+  getCustomerBase(getCustomerBaseInput: $getCustomerBaseInput) {
+    attribute
+    controlUser
+    corporation
+    customerUserId
+    establishTime
+    id
+    idNumber
+    infoAuth
+    mail
+    name
+    ncCode
+    operateAddress
+    payTaxesType
+    registerAddress
+    registerCapital
+    registerStatus
+    tfn
+    type
+    wechat
+    fileRecordList {
+      beginTime
+      endTime
+      fileList {
+        fileInfo {
+          accessType
+          contentType
+          createTime
+          fileUrl
+          id
+          name
+          size
+          tags
+          updateTime
+        }
+        fileId
+        fileName
+        fileUploadTime
+        fileUrl
+        fileDirection
+      }
+      fileType
+    }
+    phone
+  }
+}
+
+# 生产客户: 合同主体-获取客户合同关系
+query listPitayaCustomerContractRel($input: ListPitayaCustomerContractRelInput!) {
+  listPitayaCustomerContractRel(input: $input) {
+    customerDetailId
+    customerId
+    id
+    name
+    type
+  }
+}
+
+# 生产客户: 合同主体-新增合同主体
+mutation createPitayaCustomerContractRelReq($input: CreatePitayaCustomerContractRelInput) {
+  createPitayaCustomerContractRelReq(input: $input)
+}
+
+# 生产客户: 合同主体-删除合同主体
+mutation deletePitayaCustomerContractRelReq($input: DeletePitayaCustomerContractRelInput) {
+  deletePitayaCustomerContractRelReq(input: $input)
+}
+
+# 生产客户: 列表获取客户主表信息
+query listPitayaCustomerBaseInfo($input: ListPitayaCustomerBaseInfoInput!) {
+  listPitayaCustomerBaseInfo(input: $input) {
+    attribute
+    controlUser
+    corporation
+    customerUserId
+    establishTime
+    fileRecordList {
+      beginTime
+      endTime
+      fileList {
+        fileInfo {
+          accessType
+          contentType
+          createTime
+          fileUrl
+          id
+          name
+          size
+          tags
+          updateTime
+        }
+        fileDirection
+        fileId
+        fileName
+        fileUploadTime
+        fileUrl
+      }
+      fileType
+    }
+    id
+    idNumber
+    infoAuth
+    mail
+    name
+    ncCode
+    operateAddress
+    payTaxesType
+    phone
+    registerAddress
+    registerCapital
+    registerStatus
+    tfn
+    type
+    wechat
+  }
+}

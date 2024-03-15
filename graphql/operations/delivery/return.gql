@@ -1,0 +1,366 @@
+# 配送退货:列表页及查询
+query pageDeliveryReturn(
+  $pageDeliveryReturnInput: PageDeliveryReturnInput
+  $page: Page
+) {
+  pageDeliveryReturn(
+    pageDeliveryReturnInput: $pageDeliveryReturnInput
+    page: $page
+  ) {
+    records {
+      returnId
+      returnCode
+      returnOrderStatus
+      returnOrderStatusName
+      deliveryOrderId
+      deliveryOrderCode
+      warehouse {
+        warehouseId
+        warehouseName
+      }
+      deliveryDate
+      belongOrg {
+        orgId
+        orgName
+      }
+      belongInfo {
+        customerAddressInfo {
+          customerId
+          customerName
+          customerType
+          deliveryName
+        }
+      }
+      createTime
+      createUser {
+        userId
+        userName
+        phoneNum
+      }
+      orderDescription
+      latestDescription
+      commodities {
+        customer {
+          customerId
+          customerName
+          customerType
+        }
+        saleOrderId
+        saleOrderCode
+        canBeUpdated
+        returnId
+        commodityItems {
+          commoditySku {
+            commoditySkuId
+            commoditySkuName
+            commodityId
+            commodityName
+            commoditySpecOptionId
+            commoditySpecOptionName
+            conversion
+            totalType {
+              unitId
+              unitName
+            }
+            unitType {
+              unitId
+              unitName
+            }
+            categoryId
+            categoryName
+          }
+          returnQuantity {
+            unitQuantity
+            totalQuantity
+          }
+          outBoundQuantity {
+            unitQuantity
+            totalQuantity
+          }
+          returnFinishedQuantity {
+            unitQuantity
+            totalQuantity
+          }
+          returnToBeAuditedQuantity {
+            unitQuantity
+            totalQuantity
+          }
+          returnableQuantity {
+            unitQuantity
+            totalQuantity
+          }
+          returnThisQuantity {
+            unitQuantity
+            totalQuantity
+          }
+          returnThisToBeAuditedQuantity {
+            unitQuantity
+            totalQuantity
+          }
+          deliveryOrderItemId
+          deliveryReturnItemId
+        }
+        jointOrderId
+      }
+      deliveryOrderType
+    }
+    pageCurrent
+    pageSize
+    totalRecords
+  }
+}
+
+# 配送退货:列表页状态统计
+query deliveryReturnStatus(
+  $deliveryReturnStatusInput: DeliveryReturnStatusInput
+) {
+  deliveryReturnStatus(deliveryReturnStatusInput: $deliveryReturnStatusInput) {
+    toSubmit
+    toInbound
+    finished
+    canceled
+  }
+}
+
+# 配送退货:配送退货详情
+query deliveryReturnOrder($deliveryReturnOrderInput: DeliveryReturnOrderInput) {
+  deliveryReturnOrder(deliveryReturnOrderInput: $deliveryReturnOrderInput) {
+    returnId
+    returnCode
+    returnOrderStatus
+    returnOrderStatusName
+    deliveryOrderId
+    deliveryOrderCode
+    warehouse {
+      warehouseId
+      warehouseName
+    }
+    deliveryDate
+    belongOrg {
+      orgId
+      orgName
+    }
+    belongInfo {
+      customerAddressInfo {
+        customerId
+        customerName
+        customerType
+        deliveryName
+      }
+    }
+    createTime
+    createUser {
+      userId
+      userName
+      phoneNum
+    }
+    orderDescription
+    latestDescription
+    commodities {
+      customer {
+        customerId
+        customerName
+        customerType
+      }
+      saleOrderId
+      saleOrderCode
+      canBeUpdated
+      returnId
+      commodityItems {
+        commoditySku {
+          commoditySkuId
+          commoditySkuName
+          commodityId
+          commodityName
+          commoditySpecOptionId
+          commoditySpecOptionName
+          conversion
+          totalType {
+            unitId
+            unitName
+          }
+          unitType {
+            unitId
+            unitName
+          }
+          categoryId
+          categoryName
+        }
+        returnQuantity {
+          unitQuantity
+          totalQuantity
+        }
+        outBoundQuantity {
+          unitQuantity
+          totalQuantity
+        }
+        returnFinishedQuantity {
+          unitQuantity
+          totalQuantity
+        }
+        returnToBeAuditedQuantity {
+          unitQuantity
+          totalQuantity
+        }
+        returnableQuantity {
+          unitQuantity
+          totalQuantity
+        }
+        returnThisQuantity {
+          unitQuantity
+          totalQuantity
+        }
+        returnThisToBeAuditedQuantity {
+          unitQuantity
+          totalQuantity
+        }
+        deliveryOrderItemId
+        deliveryReturnItemId
+      }
+      jointOrderId
+    }
+    deliveryOrderType
+  }
+}
+
+# 配送退货:日志列表
+query listDeliveryReturnLogs(
+  $listDeliveryReturnLogsInput: ListDeliveryReturnLogsInput
+) {
+  listDeliveryReturnLogs(
+    listDeliveryReturnLogsInput: $listDeliveryReturnLogsInput
+  ) {
+    returnLogId
+    returnOrderId
+    type
+    typeText
+    remark
+    createTime
+    user {
+      userId
+      userName
+      phoneNum
+    }
+  }
+}
+
+# 配送退货:新增配送退货
+mutation createDeliveryReturn($returnCreateInput: ReturnCreateInput) {
+  createDeliveryReturn(returnCreateInput: $returnCreateInput)
+}
+
+# 配送退货:选择退货商品-配送单list
+query listDeliveryOrder($listDeliveryOrderInput: ListDeliveryOrderInput) {
+  listDeliveryOrder(listDeliveryOrderInput: $listDeliveryOrderInput) {
+    deliveryOrderId
+    deliveryOrderCode
+    belongOrg {
+      orgId
+      orgName
+    }
+    warehouse {
+      warehouseId
+      warehouseName
+    }
+    belongInfo {
+      customerAddressInfo {
+        customerId
+        customerName
+        customerType
+        deliveryName
+      }
+    }
+    commodities {
+      commoditySku {
+        commoditySkuName
+        commoditySpecOptionName
+      }
+    }
+  }
+}
+
+# 配送退货:选择退货商品-商品list
+query listDeliveryReturnCommodity(
+  $listDeliveryReturnCommodityInput: ListDeliveryReturnCommodityInput
+) {
+  listDeliveryReturnCommodity(
+    listDeliveryReturnCommodityInput: $listDeliveryReturnCommodityInput
+  ) {
+    customer {
+      customerId
+      customerName
+      customerType
+    }
+    saleOrderId
+    saleOrderCode
+    deliveryDate
+    commodities {
+      commoditySku {
+        commoditySkuId
+        commoditySkuName
+        commodityId
+        commodityName
+        commoditySpecOptionId
+        commoditySpecOptionName
+        conversion
+        totalType {
+          unitId
+          unitName
+        }
+        unitType {
+          unitId
+          unitName
+        }
+        categoryId
+        categoryName
+      }
+      returnQuantity {
+        unitQuantity
+        totalQuantity
+      }
+      outBoundQuantity {
+        unitQuantity
+        totalQuantity
+      }
+      returnFinishedQuantity {
+        unitQuantity
+        totalQuantity
+      }
+      returnToBeAuditedQuantity {
+        unitQuantity
+        totalQuantity
+      }
+      returnableQuantity {
+        unitQuantity
+        totalQuantity
+      }
+      returnThisQuantity {
+        unitQuantity
+        totalQuantity
+      }
+      returnThisToBeAuditedQuantity {
+        unitQuantity
+        totalQuantity
+      }
+      deliveryOrderItemId
+      deliveryReturnItemId
+    }
+    canBeUpdated
+    jointVentureCode
+  }
+}
+
+# 配送退货:取消配送退货
+mutation cancelDeliveryReturn($returnCancelInput: ReturnCancelInput) {
+  cancelDeliveryReturn(returnCancelInput: $returnCancelInput)
+}
+
+# 配送退货:提交配送退货
+mutation submitDeliveryReturn($returnSubmitInput: ReturnSubmitInput) {
+  submitDeliveryReturn(returnSubmitInput: $returnSubmitInput)
+}
+
+# 配送退货:修改配送退货
+mutation updateDeliveryReturn($returnUpdateInput: ReturnCreateInput) {
+  updateDeliveryReturn(returnUpdateInput: $returnUpdateInput)
+}

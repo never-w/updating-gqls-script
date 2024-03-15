@@ -1,0 +1,692 @@
+query outOrderList($productionOutOrderListInput: ProductionOutOrderListInput!) {
+  outOrderList(productionOutOrderListInput: $productionOutOrderListInput) {
+    outOrderId
+    taskId
+    taskCode
+    outOrderCode
+    outOrderType
+    outOrderTypeName
+    outOrderStatus
+    outOrderStatusName
+    commodityTypeId
+    commodityTypeName
+    customerType
+    customerId
+    customerName
+    customerDistributionId
+    customerDistributionName
+    organizationId
+    organizationName
+    warehouseId
+    warehouseName
+    outOrderDescription
+    createTime
+    createBy
+    createUserName
+    updateTime
+    updateBy
+    commodities {
+      outOrderItemId
+      outOrderId
+      commodityId
+      commodityName
+      commoditySkuId
+      commoditySpecOptionId
+      skuTextDescription
+      unitQuantity
+      unitType
+      unitTypeName
+      totalQuantity
+      totalType
+      totalTypeName
+      createTime
+      createBy
+      updateTime
+      stockTotalQuantity
+      stockTotalType
+      stockUnitQuantity
+      stockUnitType
+      conversion
+      batchId
+      batchCode
+      pickingUnitQuantity
+      pickingTotalQuantity
+      belongCustomerName
+      damageReason
+      photos
+      outStockFinishedQuantity {
+        unitQuantity
+        totalQuantity
+      }
+    }
+    cancelDescription
+  }
+}
+
+query outOrderStatusStatistics(
+  $orderStatusStatisticsInput: OrderStatusStatisticsInput
+) {
+  outOrderStatusStatistics(
+    orderStatusStatisticsInput: $orderStatusStatisticsInput
+  ) {
+    toSubmitNum
+    processingNum
+    completedNum
+  }
+}
+
+query getFabricationTatistics($taskId: ID) {
+  getFabricationStatistics(taskId: $taskId) {
+    pickingRecord
+    pickingRecordFinishUndone
+    warehousingRecord
+    warehousingRecordUndone
+    returnMaterial
+    returnMaterialUndone
+  }
+}
+
+# 生产任务:出库单据详情:
+query outOrderDetail($productionOutOrderInput: ProductionOutOrderInput) {
+  outOrderDetail(productionOutOrderInput: $productionOutOrderInput) {
+    outOrderId
+    taskId
+    taskCode
+    outOrderCode
+    outOrderType
+    outOrderTypeName
+    outOrderStatus
+    outOrderStatusName
+    commodityTypeId
+    commodityTypeName
+    customerType
+    customerId
+    customerName
+    customerDistributionId
+    customerDistributionName
+    organizationId
+    organizationName
+    warehouseId
+    warehouseName
+    outOrderDescription
+    createTime
+    createBy
+    createUserName
+    updateTime
+    updateBy
+    commodities {
+      outOrderItemId
+      outOrderId
+      commodityId
+      commodityName
+      commoditySkuId
+      commoditySpecOptionId
+      skuTextDescription
+      unitQuantity
+      unitType
+      unitTypeName
+      totalQuantity
+      totalType
+      totalTypeName
+      createTime
+      createBy
+      updateTime
+      stockTotalQuantity
+      stockTotalType
+      stockUnitQuantity
+      stockUnitType
+      conversion
+      batchId
+      batchCode
+      pickingUnitQuantity
+      pickingTotalQuantity
+      belongCustomerName
+      damageReason
+      photos
+      outStockFinishedQuantity {
+        unitQuantity
+        totalQuantity
+      }
+      salePrice
+      salePriceType {
+        unitId
+        unitName
+      }
+      unitTotalPrice
+      outStockBatchInfo {
+        batchId
+        batchCode
+        unitQuantity
+        unitType {
+          unitId
+          unitName
+        }
+        totalQuantity
+        totalType {
+          unitId
+          unitName
+        }
+      }
+      surplusTotalQuantity
+      surplusUnitQuantity
+      operableTotalQuantity
+      operableUnitQuantity
+      relationCommoditySku {
+        commoditySkuId
+        commoditySkuName
+        commodityId
+        commodityName
+        commoditySpecOptionId
+        commoditySpecOptionName
+        conversion
+        totalType {
+          unitId
+          unitName
+        }
+        unitType {
+          unitId
+          unitName
+        }
+        categoryId
+        categoryName
+      }
+    }
+    cancelDescription
+    plan {
+      planId
+      planCode
+      planStatus
+      customerType
+      customerId
+      customerName
+      customerDistributionId
+      customerDistributionName
+      planDate
+      planStartTime
+      planEndTime
+      planDescription
+      createType
+      commodityType
+      belongOrg {
+        orgId
+        orgName
+      }
+      warehouse {
+        warehouseId
+        warehouseName
+      }
+    }
+  }
+}
+
+query outOrderLog($outOrderId: ID!) {
+  outOrderLog(outOrderId: $outOrderId) {
+    outOrderLogId
+    outOrderId
+    outOrderLogType
+    outOrderLogTypeText
+    outOrderLogDescription
+    createTime
+    createBy
+    createUserName
+  }
+}
+
+query inOrderList($productionInOrderListInput: ProductionInOrderListInput!) {
+  inOrderList(productionInOrderListInput: $productionInOrderListInput) {
+    ProductionInOrdersList {
+      inOrderId
+      taskId
+      taskCode
+      inOrderCode
+      inOrderType
+      inOrderTypeName
+      inOrderStatus
+      inOrderStatusName
+      commodityTypeId
+      commodityTypeName
+      customerId
+      customerName
+      customerDistributionId
+      customerDistributionName
+      organizationId
+      organizationName
+      warehouseId
+      warehouseName
+      inOrderDescription
+      createTime
+      createBy
+      createUserName
+      updateTime
+      updateBy
+      commodities {
+        inOrderItemId
+        inOrderId
+        commodityId
+        commodityName
+        commoditySkuId
+        commoditySpecOptionId
+        skuTextDescription
+        unitQuantity
+        unitType
+        unitTypeName
+        totalQuantity
+        totalType
+        totalTypeName
+        createTime
+        createBy
+        updateTime
+        batch {
+          batchId
+          batchCode
+        }
+        conversion
+        inStockFinishedQuantity {
+          unitQuantity
+          totalQuantity
+        }
+        inStockBatchInfo {
+          batchId
+          batchCode
+          unitQuantity
+          unitType {
+            unitId
+            unitName
+          }
+          totalQuantity
+          totalType {
+            unitId
+            unitName
+          }
+        }
+        reason
+        customer {
+          customerId
+          customerName
+          customerType
+        }
+        operableTotalQuantity
+        operableUnitQuantity
+      }
+      cancelDescription
+      surplusTotalQuantity
+      surplusUnitQuantity
+      operableTotalQuantity
+      operableUnitQuantity
+    }
+  }
+}
+
+query inOrderStatusStatistics(
+  $orderStatusStatisticsInput: OrderStatusStatisticsInput
+) {
+  inOrderStatusStatistics(
+    orderStatusStatisticsInput: $orderStatusStatisticsInput
+  ) {
+    toSubmitNum
+    processingNum
+    completedNum
+  }
+}
+
+query inOrderDetail($productionInOrderInput: ProductionInOrderInput) {
+  inOrderDetail(productionInOrderInput: $productionInOrderInput) {
+    inOrderId
+    taskId
+    taskCode
+    inOrderCode
+    inOrderType
+    inOrderTypeName
+    inOrderStatus
+    inOrderStatusName
+    commodityTypeId
+    commodityTypeName
+    customerId
+    customerName
+    customerDistributionId
+    customerDistributionName
+    organizationId
+    organizationName
+    warehouseId
+    warehouseName
+    inOrderDescription
+    createTime
+    createBy
+    createUserName
+    updateTime
+    updateBy
+    commodities {
+      inOrderItemId
+      inOrderId
+      commodityId
+      commodityName
+      commoditySkuId
+      commoditySpecOptionId
+      skuTextDescription
+      unitQuantity
+      unitType
+      unitTypeName
+      totalQuantity
+      totalType
+      totalTypeName
+      createTime
+      createBy
+      updateTime
+      batch {
+        batchId
+        batchCode
+      }
+      conversion
+      inStockFinishedQuantity {
+        unitQuantity
+        totalQuantity
+      }
+      inStockBatchInfo {
+        batchId
+        batchCode
+        unitQuantity
+        unitType {
+          unitId
+          unitName
+        }
+        totalQuantity
+        totalType {
+          unitId
+          unitName
+        }
+      }
+      reason
+      customer {
+        customerId
+        customerName
+        customerType
+      }
+      operableTotalQuantity
+      operableUnitQuantity
+    }
+    cancelDescription
+    surplusTotalQuantity
+    surplusUnitQuantity
+    operableTotalQuantity
+    operableUnitQuantity
+  }
+}
+
+query inOrderLog($inOrderId: ID!) {
+  inOrderLog(inOrderId: $inOrderId) {
+    inOrderLogList {
+      inOrderLogId
+      inOrderId
+      inOrderLogType
+      inOrderLogTypeText
+      inOrderLogDescription
+      createTime
+      createBy
+      createUserName
+    }
+  }
+}
+
+mutation cancelInOrder($cancelInOrderInput: CancelInOrderInput!) {
+  cancelInOrder(cancelInOrderInput: $cancelInOrderInput)
+}
+
+mutation submitInOrder($inOrderId: ID!) {
+  submitInOrder(inOrderId: $inOrderId)
+}
+
+query taskInCommodities($taskInCommodityInput: TaskInCommodityInput) {
+  taskInCommodities(taskInCommodityInput: $taskInCommodityInput) {
+    surplusTotalQuantity
+    surplusUnitQuantity
+    operableTotalQuantity
+    operableUnitQuantity
+    taskInCommoditiesPayload {
+      commoditySku {
+        commoditySkuId
+        commoditySkuName
+        commodityId
+        commodityName
+        commoditySpecOptionId
+        commoditySpecOptionName
+        conversion
+        totalType {
+          unitId
+          unitName
+        }
+        unitType {
+          unitId
+          unitName
+        }
+        categoryId
+        categoryName
+      }
+      batchOperableTotalQuantity
+      batchOperableUnitQuantity
+      customer {
+        customerId
+        customerName
+        customerType
+      }
+      batch {
+        batchId
+        batchCode
+      }
+    }
+  }
+}
+
+query taskReturnMaterialCommodities(
+  $taskInCommodityInput: TaskInCommodityInput
+) {
+  taskReturnMaterialCommodities(taskInCommodityInput: $taskInCommodityInput) {
+    surplusTotalQuantity
+    surplusUnitQuantity
+    operableTotalQuantity
+    operableUnitQuantity
+    taskReturnMaterialCommoditiesPayload {
+      commoditySku {
+        commoditySkuId
+        commoditySkuName
+        commodityId
+        commodityName
+        commoditySpecOptionId
+        commoditySpecOptionName
+        conversion
+        totalType {
+          unitId
+          unitName
+        }
+        unitType {
+          unitId
+          unitName
+        }
+        categoryId
+        categoryName
+      }
+      batchOperableTotalQuantity
+      batchOperableUnitQuantity
+      customer {
+        customerId
+        customerName
+        customerType
+      }
+      batch {
+        batchId
+        batchCode
+      }
+    }
+  }
+}
+
+# 生产任务:出库单据详情:
+query destroyOutDetail($productionOutOrderInput: ProductionOutOrderInput) {
+  outOrderDetail(productionOutOrderInput: $productionOutOrderInput) {
+    outOrderId
+    taskId
+    taskCode
+    outOrderCode
+    outOrderType
+    outOrderTypeName
+    outOrderStatus
+    outOrderStatusName
+    commodityTypeId
+    commodityTypeName
+    customerType
+    customerId
+    customerName
+    customerDistributionId
+    customerDistributionName
+    organizationId
+    organizationName
+    warehouseId
+    warehouseName
+    outOrderDescription
+    createTime
+    createBy
+    createUserName
+    updateTime
+    updateBy
+    commodities {
+      outOrderItemId
+      outOrderId
+      commodityId
+      commodityName
+      commoditySkuId
+      commoditySpecOptionId
+      skuTextDescription
+      unitQuantity
+      unitType
+      unitTypeName
+      totalQuantity
+      totalType
+      totalTypeName
+      createTime
+      createBy
+      updateTime
+      stockTotalQuantity
+      stockTotalType
+      stockUnitQuantity
+      stockUnitType
+      conversion
+      batchId
+      batchCode
+      pickingUnitQuantity
+      pickingTotalQuantity
+      belongCustomerName
+      damageReason
+      photos
+      outStockFinishedQuantity {
+        unitQuantity
+        totalQuantity
+      }
+      salePrice
+      salePriceType {
+        unitId
+        unitName
+      }
+      unitTotalPrice
+      outStockBatchInfo {
+        batchId
+        batchCode
+        unitQuantity
+        unitType {
+          unitId
+          unitName
+        }
+        totalQuantity
+        totalType {
+          unitId
+          unitName
+        }
+      }
+      surplusTotalQuantity
+      surplusUnitQuantity
+      operableTotalQuantity
+      operableUnitQuantity
+      relationCommoditySku {
+        commoditySkuId
+        commoditySkuName
+        commodityId
+        commodityName
+        commoditySpecOptionId
+        commoditySpecOptionName
+        conversion
+        totalType {
+          unitId
+          unitName
+        }
+        unitType {
+          unitId
+          unitName
+        }
+        categoryId
+        categoryName
+      }
+    }
+    cancelDescription
+    plan {
+      planId
+      planCode
+      planStatus
+      customerType
+      customerId
+      customerName
+      customerDistributionId
+      customerDistributionName
+      planDate
+      planStartTime
+      planEndTime
+      planDescription
+      createType
+      commodityType
+      belongOrg {
+        orgId
+        orgName
+      }
+      warehouse {
+        warehouseId
+        warehouseName
+      }
+    }
+  }
+}
+
+query relationTaskAcquireMaterialCommodities(
+  $relationTaskAcquireMaterialCommoditiesInput: RelationTaskAcquireMaterialCommoditiesInput
+) {
+  relationTaskAcquireMaterialCommodities(
+    relationTaskAcquireMaterialCommoditiesInput: $relationTaskAcquireMaterialCommoditiesInput
+  ) {
+    commoditySkuInfos {
+      commoditySku {
+        commoditySkuId
+        commoditySkuName
+        commodityId
+        commodityName
+        commoditySpecOptionId
+        commoditySpecOptionName
+        conversion
+        totalType {
+          unitId
+          unitName
+        }
+        unitType {
+          unitId
+          unitName
+        }
+      }
+    }
+  }
+}
+
+query taskCommodityTypeStockDetail(
+  $taskCommodityTypeStockDetailInput: TaskCommodityTypeStockDetailInput
+) {
+  taskCommodityTypeStockDetail(
+    taskCommodityTypeStockDetailInput: $taskCommodityTypeStockDetailInput
+  ) {
+    semiProduct
+    returnedGoodsProduct
+  }
+}

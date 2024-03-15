@@ -1,0 +1,6 @@
+# 温度计:获取iframe
+query thermometerIframeUrl($input: ThermometerIframeInput) {
+  thermometerIframeUrl(input: $input) {
+    iframeUrl
+  }
+}
