@@ -114,6 +114,252 @@ query pageCommodityConvert($input: PageCommodityConvertInput, $page: Page) {
   }
 }
 
+# 商品转换: 转换订单详情
+query getConvertDetail($input: ConvertOrderIdInput) {
+  getConvertDetail(input: $input) {
+    belongId
+    belongName
+    belongType
+    commodities {
+      batchCode
+      batchId
+      commodityDetail {
+        categoryId
+        categoryName
+        commodityId
+        commodityName
+        commoditySkuId
+        commoditySkuName
+        commoditySpecOptionId
+        commoditySpecOptionName
+        conversion
+        totalType {
+          unitId
+          unitName
+        }
+        unitType {
+          unitId
+          unitName
+        }
+      }
+      convertToSku {
+        categoryId
+        categoryName
+        commodityId
+        commodityName
+        commoditySkuId
+        commoditySkuName
+        commoditySpecOptionId
+        commoditySpecOptionName
+        conversion
+        totalType {
+          unitId
+          unitName
+        }
+        unitType {
+          unitId
+          unitName
+        }
+      }
+      itemId
+      photos
+      priceType {
+        unitId
+        unitName
+      }
+      stockTotalQuantity
+      stockUnitQuantity
+      totalQuantity
+      totalType {
+        unitId
+        unitName
+      }
+      unitQuantity
+      unitType {
+        unitId
+        unitName
+      }
+      newBatchCode
+      newBatchId
+    }
+    convertAfterCommodityType
+    convertBeforeCommodityType
+    convertLogs {
+      convertLogId
+      convertOrderId
+      createBy {
+        phoneNum
+        userId
+        userName
+      }
+      createTime
+      description
+      typeText
+    }
+    convertOrderCode
+    convertOrderId
+    convertType
+    convertTypeName
+    createBy {
+      phoneNum
+      userId
+      userName
+    }
+    createTime
+    org {
+      orgId
+      orgName
+    }
+    remark
+    status
+    statusName
+    statusRemark
+    warehouse {
+      warehouseId
+      warehouseName
+    }
+    belongOrg {
+      orgId
+      orgName
+    }
+  }
+}
+
+# 分页查询商品转换待审核列表
+query pageAuditCommodityConvert($page: Page) {
+  pageAuditCommodityConvert(page: $page) {
+    records {
+      convertOrderId
+      convertOrderCode
+      convertType
+      convertTypeName
+      status
+      statusName
+      belongType
+      belongId
+      belongName
+      org {
+        orgId
+        orgName
+      }
+      warehouse {
+        warehouseId
+        warehouseName
+      }
+      remark
+      statusRemark
+      createBy {
+        userId
+        userName
+        phoneNum
+      }
+      createTime
+      commodities {
+        itemId
+        batchId
+        stockUnitQuantity
+        stockTotalQuantity
+        batchCode
+        commodityDetail {
+          commoditySkuId
+          commoditySkuName
+          commodityId
+          commodityName
+          commoditySpecOptionId
+          commoditySpecOptionName
+          conversion
+          totalType {
+            unitId
+            unitName
+          }
+          unitType {
+            unitId
+            unitName
+          }
+          categoryId
+          categoryName
+        }
+        unitType {
+          unitId
+          unitName
+        }
+        totalType {
+          unitId
+          unitName
+        }
+        priceType {
+          unitId
+          unitName
+        }
+        unitQuantity
+        totalQuantity
+        photos
+        convertToSku {
+          totalType {
+            unitId
+            unitName
+          }
+          unitType {
+            unitId
+            unitName
+          }
+          categoryId
+          categoryName
+          commodityId
+          commodityName
+          commoditySkuId
+          commoditySkuName
+          commoditySpecOptionId
+          commoditySpecOptionName
+          conversion
+        }
+        newBatchCode
+        newBatchId
+      }
+      convertLogs {
+        convertLogId
+        convertOrderId
+        typeText
+        description
+        createBy {
+          userId
+          userName
+          phoneNum
+        }
+        createTime
+      }
+      convertAfterCommodityType
+      convertBeforeCommodityType
+      belongOrg {
+        orgId
+        orgName
+      }
+    }
+    pageCurrent
+    pageSize
+    totalRecords
+  }
+}
+
+# 指定状态的数量查询
+query getStatusCount($input: GetStatusCountInput) {
+  getStatusCount(input: $input)
+}
+
+# 创建商品转换订单
+mutation createConvertOrder($input: CreateConvertInput) {
+  createConvertOrder(input: $input) {
+    orderId
+  }
+}
+
+# 更新商品转换订单
+mutation updateConvertOrder($input: UpdateConvertInput) {
+  updateConvertOrder(input: $input) {
+    orderId
+  }
+}
+
 # 提交订单
 mutation submitOrder($input: CommondOrderStatusInput) {
   submitOrder(input: $input)
@@ -122,4 +368,31 @@ mutation submitOrder($input: CommondOrderStatusInput) {
 # 商品转换: 取消订单
 mutation cancelConvertOrder($input: CommondOrderStatusInput) {
   cancelConvertOrder(input: $input)
+}
+
+# 审核订单
+mutation auditOrder($input: CommondOrderStatusInput) {
+  auditOrder(input: $input)
+}
+
+# 驳回订单
+mutation rejectOrder($input: CommondOrderStatusInput) {
+  rejectOrder(input: $input)
+}
+
+# 次品下拉选项
+query defectiveSkuOption($defectiveSkuOptionInput: DefectiveSkuOptionInput) {
+  defectiveSkuOption(defectiveSkuOptionInput: $defectiveSkuOptionInput) {
+    label
+    value
+  }
+}
+
+# 商品转换: 查询转换类型
+query listConvertCommodityType($input: ListConvertCommodityType) {
+  listConvertCommodityType(input: $input) {
+    commodityType
+    commodityTypeName
+    convertType
+  }
 }
