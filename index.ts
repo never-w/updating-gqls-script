@@ -2,7 +2,7 @@ import { globSync } from "glob"
 import path from "path"
 import fs from "fs"
 import { parseOperationWithDescriptions, printWithComments, getOperationNodesForFieldAstBySchema, fetchSchema } from "@fruits-chain/qiufen-pro-helpers"
-import { DefinitionNode, DocumentNode, ExecutableDefinitionNode, FieldNode, GraphQLSchema, OperationDefinitionNode } from "graphql"
+import { DefinitionNode, DocumentNode, ExecutableDefinitionNode, FieldNode, GraphQLSchema, Kind, OperationDefinitionNode } from "graphql"
 import _ from "lodash"
 import { updateOperationDefAst } from "./src/utils/updateOperationDefAst"
 
@@ -39,8 +39,12 @@ async function updateWorkspaceGqls(url: string, relativeFolderPathOfGqls: string
         const newDocumentNodes = fillOperationInWorkspace(absoluteGqlFilePath, operationStr, operationASTNodes, true)
         updateWorkspaceDocumentStr = printWithComments(newDocumentNodes, true)
       } else {
+        console.log(operationNames, "----")
         operationASTNodes.definitions.map((defNode: any) => {
           defNode.selectionSet.selections = defNode.selectionSet.selections.filter((selectionNode: any) => {
+            if (defNode.kind === Kind.FRAGMENT_DEFINITION) {
+              return true
+            }
             const newSelectionNode = selectionNode as FieldNode
             return newSelectionNode.name.value !== name
           })
@@ -96,7 +100,7 @@ function getGqlsFiles(relativeFolderPathOfGqls: string) {
  * 填充远程最新的operation到工作区对应文件里面
  */
 function fillOperationInWorkspace(filePath: string, gql: string, documentAst: DocumentNode, isAllAddComment = false) {
-  const workspaceDocumentAst = _.cloneDeep(documentAst)
+  const workspaceDocumentAst = documentAst
   const remoteDocumentAst = parseOperationWithDescriptions(gql)
 
   // 更新本地AST
@@ -114,7 +118,7 @@ function fillOperationInWorkspace(filePath: string, gql: string, documentAst: Do
           }
         )
 
-        if (!remoteDefinition) {
+        if (!remoteDefinition || workspaceDefinition.kind === Kind.FRAGMENT_DEFINITION || workspaceDefinition.loc?.source?.body?.includes("...")) {
           return workspaceDefinition
         }
         return updateOperationDefAst(workspaceDefinition, remoteDefinition)
